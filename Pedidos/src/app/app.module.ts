@@ -7,10 +7,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
-
+import { LoginModalComponent } from './login-modal/login-modal.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { PedidosComponent } from './pedidos/pedidos.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginModalComponent,
+    PedidosComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +23,10 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    MatSliderModule,
+    MatDialogModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
