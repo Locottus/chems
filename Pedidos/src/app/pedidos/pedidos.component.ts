@@ -9,6 +9,8 @@ import { LoginModalComponent } from '../login-modal/login-modal.component';
 })
 export class PedidosComponent implements OnInit {
 
+  exito: boolean = false;
+
   constructor(
     private matDialog: MatDialog,
   ) { }
@@ -17,7 +19,9 @@ export class PedidosComponent implements OnInit {
   }
 
 
-  openDialog(){
-    this.matDialog.open(LoginModalComponent);
+  openDialog() {
+    this.matDialog.open(LoginModalComponent,{ disableClose: true });
   }
+
+
 }

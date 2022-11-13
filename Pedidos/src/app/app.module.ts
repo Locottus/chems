@@ -11,6 +11,9 @@ import { LoginModalComponent } from './login-modal/login-modal.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     MatSliderModule,
     MatDialogModule,
-    
+    MatFormFieldModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
