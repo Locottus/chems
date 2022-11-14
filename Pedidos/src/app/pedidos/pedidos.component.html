@@ -2,15 +2,17 @@
   <div class="centrado">
     <h2>Creacion de Pedido</h2>
   </div>
-  <form>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div class="form-row ">
       <div class="col margenes">
         <input 
           type="text" 
           class="form-control" 
-          id="validationDefault01" 
-          placeholder="Nombre" 
+          id="Nombre" 
+          placeholder="Nombre"
+          name="Nombre" 
           required
+          ngModel
         >
       </div>
 
@@ -18,9 +20,11 @@
         <input 
           type="text" 
           class="form-control" 
-          id="validationDefault02" 
+          id="Telefono" 
           placeholder="Telefono" 
+          name="Telefono"
           required
+          ngModel
         >
       </div>
 
@@ -28,37 +32,63 @@
         <input 
           type="text" 
           class="form-control" 
-          id="validationDefault03" 
+          id="Ubicacion" 
           placeholder="Ubicacion" 
+          name="Ubicacion"
           required
+          ngModel
         >
       </div>
 
       <div class="col margenes">
         <textarea 
-          id="validationDefault04" 
+          id="Descripcion" 
           class="md-textarea form-control" 
           rows="10" 
           placeholder="Descripcion del producto"
+          name="Descripcion"
+          ngModel
         ></textarea>
       </div>
 
-      <div class="col-6 margenes">
-        <label>Fecha de entrega</label>
-        <input 
-          type="date" 
-          class="date form-control" 
-          id="start" 
-          name="trip-start"
-          value="2018-07-22"
-        >
+      <div class="row">
+        <div class="col-4 margenes">
+          <label>Fecha de entrega</label>
+          <input 
+            type="date" 
+            class="date form-control" 
+            id="Fecha" 
+            name="Fecha"
+            ngModel
+          >
+        </div>
+  
+        <div class="col-4 margenes">
+          <label>Hora de entrega</label>
+          <input 
+            type="time" 
+            class="time form-control" 
+            id="Hora" 
+            name="Hora"
+            min="09:00" 
+            max="18:00" 
+            required
+            ngModel
+          >
+         </div>  
       </div>
 
     </div>
-    <div class="col-12 centrado">
-      <button class="btn btn-primary">Submit form</button>&nbsp;
-      <button class="btn btn-warning" >Reset form</button>&nbsp;
-      <button class="btn btn-danger" >Logout form</button>
+    <div class="row">
+      <div class="col-4 centrado">
+        <button class="btn btn-primary" type="submit">Salvar</button>
+      </div>  
+      <div class="col-4 centrado">
+        <button class="btn btn-warning" >Limpiar</button>
+      </div>  
+      <div class="col-4 centrado">
+        <button class="btn btn-danger" (click)="onLogout()">Salir</button>
+      </div>  
     </div>
 
   </form>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { ServiciosService } from '../servicios.service';
@@ -35,8 +35,13 @@ export class PedidosComponent implements OnInit {
     this.matDialog.open(LoginModalComponent, { disableClose: true });
   }
 
-  salvarPedido() { 
+  onSubmit(f:NgForm) { 
+    console.log(f);
+  }
 
+  onLogout(){
+    this.autenticado = false;
+    this.openDialog();    
   }
 
 }
