@@ -1,6 +1,65 @@
-<p>https://getbootstrap.com/docs/4.0/components/alerts/</p>
-{{logueado}}
-<button class="btn btn-primary" (click)="openDialog()">open modal</button>
-<div class="container" *ngIf="logueado">
-    <h2>Ingreso de Pedido</h2>
+<div class="container" *ngIf="!autenticado">
+  <div class="centrado">
+    <h2>Creacion de Pedido</h2>
+  </div>
+  <form>
+    <div class="form-row ">
+      <div class="col margenes">
+        <input 
+          type="text" 
+          class="form-control" 
+          id="validationDefault01" 
+          placeholder="Nombre" 
+          required
+        >
+      </div>
+
+      <div class="col margenes">
+        <input 
+          type="text" 
+          class="form-control" 
+          id="validationDefault02" 
+          placeholder="Telefono" 
+          required
+        >
+      </div>
+
+      <div class="col margenes">
+        <input 
+          type="text" 
+          class="form-control" 
+          id="validationDefault03" 
+          placeholder="Ubicacion" 
+          required
+        >
+      </div>
+
+      <div class="col margenes">
+        <textarea 
+          id="validationDefault04" 
+          class="md-textarea form-control" 
+          rows="10" 
+          placeholder="Descripcion del producto"
+        ></textarea>
+      </div>
+
+      <div class="col-6 margenes">
+        <label>Fecha de entrega</label>
+        <input 
+          type="date" 
+          class="date form-control" 
+          id="start" 
+          name="trip-start"
+          value="2018-07-22"
+        >
+      </div>
+
+    </div>
+    <div class="col-12 centrado">
+      <button class="btn btn-primary">Submit form</button>&nbsp;
+      <button class="btn btn-warning" >Reset form</button>&nbsp;
+      <button class="btn btn-danger" >Logout form</button>
+    </div>
+
+  </form>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { ServiciosService } from '../servicios.service';
@@ -10,12 +11,14 @@ import { ServiciosService } from '../servicios.service';
 })
 export class PedidosComponent implements OnInit {
 
-  logueado: boolean = false;
+  pedido: FormGroup = new FormGroup({});;
+
+  autenticado: boolean = false;
   /**
   * observable to refresh the data when the modal updates.
   */
   dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
-    this.logueado = loginStatus;
+    this.autenticado = loginStatus;
   });
 
   constructor(
@@ -24,11 +27,16 @@ export class PedidosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.matDialog.open(LoginModalComponent, { disableClose: true });
+    //this.openDialog();
+    
   }
 
   openDialog() {
     this.matDialog.open(LoginModalComponent, { disableClose: true });
+  }
+
+  salvarPedido() { 
+
   }
 
 }
