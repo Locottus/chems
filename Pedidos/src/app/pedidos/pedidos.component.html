@@ -2,7 +2,7 @@
   <div class="centrado">
     <h2>Creacion de Pedido</h2>
   </div>
-  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
     <div class="form-row ">
       <div class="col margenes">
         <input 
@@ -70,8 +70,6 @@
             class="time form-control" 
             id="Hora" 
             name="Hora"
-            min="09:00" 
-            max="18:00" 
             required
             ngModel
           >
