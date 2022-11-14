@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
+import { ServiciosService } from '../servicios.service';
 
 @Component({
   selector: 'pedidos',
@@ -9,19 +10,25 @@ import { LoginModalComponent } from '../login-modal/login-modal.component';
 })
 export class PedidosComponent implements OnInit {
 
-  exito: boolean = false;
+  logueado: boolean = false;
+  /**
+  * observable to refresh the data when the modal updates.
+  */
+  dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
+    this.logueado = loginStatus;
+  });
 
   constructor(
     private matDialog: MatDialog,
+    private servicio: ServiciosService,
   ) { }
 
   ngOnInit(): void {
+    //this.matDialog.open(LoginModalComponent, { disableClose: true });
   }
-
 
   openDialog() {
-    this.matDialog.open(LoginModalComponent,{ disableClose: true });
+    this.matDialog.open(LoginModalComponent, { disableClose: true });
   }
-
 
 }

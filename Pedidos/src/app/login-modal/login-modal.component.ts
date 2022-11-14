@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ServiciosService } from '../servicios.service';
 
 @Component({
   selector: 'login-modal',
@@ -8,17 +9,15 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 })
 export class LoginModalComponent implements OnInit {
 
-  successLogin: boolean = false;
-  hide: boolean = false;
-
   usr: string = "";
   pwd: string = "";
 
-  errorLogin:boolean=true;
-  errorMsg:string="";
+  errorLogin: boolean = true;
+  errorMsg: string = "";
 
   constructor(
-    public dialogRef: MatDialogRef<LoginModalComponent>
+    public dialogRef: MatDialogRef<LoginModalComponent>,
+    public servicios: ServiciosService
   ) { }
 
   ngOnInit() {
@@ -26,13 +25,18 @@ export class LoginModalComponent implements OnInit {
   }
 
   validar() {
-    console.log('pressed validation');
-    console.log(this.usr,this.pwd);
-    //this.showError('credenciales incorrectas');
-    //this.dialogRef.close();
+    let successLogin: boolean = false;
+    if ('especiaschemita@gmail.com' === this.usr.toLowerCase() && 'Esp2022!' === this.pwd) {
+      successLogin = true;
+      this.dialogRef.close();
+    } else {
+      successLogin = false;
+      this.showError('credenciales incorrectas');
+    }
+    this.servicios.loginStatus(successLogin);
   }
 
-  showError(msg:string){
+  showError(msg: string) {
     this.errorLogin = false;
     this.errorMsg = msg;
     setTimeout(() => {
