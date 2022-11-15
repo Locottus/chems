@@ -44,7 +44,7 @@
         <textarea 
           id="Descripcion" 
           class="md-textarea form-control" 
-          rows="10" 
+          rows="8" 
           placeholder="Descripcion del producto"
           name="Descripcion"
           ngModel
@@ -73,7 +73,21 @@
             required
             ngModel
           >
+         </div> 
+         
+         <div class="col-6 margenes">
+          <label>Dias previos de recordatorio</label>
+          <input 
+            type="number" 
+            class="form-control" 
+            id="Recordatorio" 
+            placeholder="Recordatorio" 
+            name="Recordatorio"
+            required
+            ngModel
+            >
          </div>  
+
       </div>
 
     </div>
@@ -91,3 +105,4 @@
 
   </form>
 </div>
+<br/>
