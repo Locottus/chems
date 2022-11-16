@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import Catalogo from '../catalogo';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { ServiciosService } from '../servicios.service';
+
 
 @Component({
   selector: 'pedidos',
@@ -14,6 +16,7 @@ export class PedidosComponent implements OnInit {
   @ViewChild('f') forma: NgForm | undefined;
   pedido: FormGroup = new FormGroup({});;
   autenticado: boolean = false;
+  catalogo: Array<Catalogo> = [];
 
   /**
   * observable to refresh the data when the modal updates.
