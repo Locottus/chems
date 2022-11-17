@@ -32,11 +32,10 @@ export class PedidosComponent implements OnInit {
 
 
   columnDefs: ColDef[] = [
-    { field: 'Id', hide: false },
+    { field: 'Id', hide: false, maxWidth: 100, },
     { field: 'Nombre', hide: false },
     { field: 'Presentacion', hide: false, editable: true, },
     { field: 'Cantidad', hide: false, editable: true, },
-
   ];
 
   //default settings for all columns
@@ -64,7 +63,7 @@ export class PedidosComponent implements OnInit {
   ngOnInit(): void {
     //this.openDialog();
     this.rowData = this.servicio.getJSON();
-    console.log(this.rowData);
+    //console.log(this.rowData);
   }
 
   openDialog() {
@@ -74,7 +73,7 @@ export class PedidosComponent implements OnInit {
   onSubmit() {
     console.log(this.rowData);
     if (this.forma?.control.status === "VALID") {
-      
+
     } else {
       alert('No se han ingresado todos los campos');
     }
