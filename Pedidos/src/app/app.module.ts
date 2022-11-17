@@ -13,6 +13,7 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
-    
+    AgGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]
