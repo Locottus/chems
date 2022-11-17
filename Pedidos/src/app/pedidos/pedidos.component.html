@@ -40,13 +40,28 @@
         >
       </div>
 
+      <ag-grid-angular
+        id="agGrid"
+        #topGrid
+        class="ag-theme-alpine"
+        style="width: 100%; height: 300px;"
+        [rowData]="rowData"
+        [columnDefs]="columnDefs"
+        [animateRows]="true"
+        (firstDataRendered)="onFirstDataRendered($event)"
+        [groupDisplayType]="groupDisplayType"
+        (gridReady)="onGridReady($event)"
+        [defaultColDef]="defaultColDef"
+        (cellValueChanged)="onCellValueChanged($event)"      
+      ></ag-grid-angular>    
+
       <div class="col margenes">
         <textarea 
-          id="Descripcion" 
-          class="md-textarea form-control" 
-          rows="8" 
-          placeholder="Descripcion del producto"
-          name="Descripcion"
+          id="Notas" 
+          class="textarea form-control" 
+          rows="3" 
+          placeholder="Notas del Pedido"
+          name="Notas"
           ngModel
         ></textarea>
       </div>

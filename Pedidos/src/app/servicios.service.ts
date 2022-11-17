@@ -13,11 +13,11 @@ export class ServiciosService {
 
   constructor(
   ) {
-    this.getJSON();
+    //this.getJSON();
   }
 
   public getJSON() {
-    console.log(catalogo);
+    //console.log(catalogo);
     return catalogo;
     //this.http.get(this.URL).subscribe(console.log);
   }

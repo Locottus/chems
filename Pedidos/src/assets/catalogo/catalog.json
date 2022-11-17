@@ -2,401 +2,481 @@
   {
    "Id": 1,
    "Nombre": "azafran",
-   "Presentacion": "tira"
+   "Presentacion": "tira",
+   "Cantidad": 0
   },
   {
    "Id": 2,
    "Nombre": "Ajo Molido",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 3,
    "Nombre": "Albahaca",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 4,
    "Nombre": "Ablandador",
-   "Presentacion": "media libra, libra"
+   "Presentacion": "media libra, libra",
+   "Cantidad": 0
   },
   {
    "Id": 5,
    "Nombre": "Anis estrella",
-   "Presentacion": "docena"
+   "Presentacion": "docena",
+   "Cantidad": 0
   },
   {
    "Id": 6,
    "Nombre": "Apio molido",
-   "Presentacion": "docena"
+   "Presentacion": "docena",
+   "Cantidad": 0
   },
   {
    "Id": 7,
    "Nombre": "Barbacoa",
-   "Presentacion": "media libra, libra, arroba"
+   "Presentacion": "media libra, libra, arroba",
+   "Cantidad": 0
   },
   {
    "Id": 8,
    "Nombre": "Bicarbonato",
-   "Presentacion": "saco"
+   "Presentacion": "saco",
+   "Cantidad": 0
   },
   {
    "Id": 9,
    "Nombre": "Canela",
-   "Presentacion": "docena, media libra, libra"
+   "Presentacion": "docena, media libra, libra",
+   "Cantidad": 0
   },
   {
    "Id": 10,
    "Nombre": "Cardamomo en vaina",
-   "Presentacion": "Tira"
+   "Presentacion": "Tira",
+   "Cantidad": 0
   },
   {
    "Id": 11,
    "Nombre": "Cardamomo en semilla",
-   "Presentacion": "Tira"
+   "Presentacion": "Tira",
+   "Cantidad": 0
   },
   {
    "Id": 12,
    "Nombre": "Cardamomo molido",
-   "Presentacion": "Tira"
+   "Presentacion": "Tira",
+   "Cantidad": 0
   },
   {
    "Id": 13,
    "Nombre": "Cilantro molido",
-   "Presentacion": "docena"
+   "Presentacion": "docena",
+   "Cantidad": 0
   },
   {
    "Id": 14,
    "Nombre": "Cebolla deshidratada",
-   "Presentacion": "Tira"
+   "Presentacion": "Tira",
+   "Cantidad": 0
   },
   {
    "Id": 15,
    "Nombre": "Cebolla molida",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 16,
    "Nombre": "Clavo",
-   "Presentacion": "docena, media libra"
+   "Presentacion": "docena, media libra",
+   "Cantidad": 0
   },
   {
    "Id": 17,
    "Nombre": "Comino",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 18,
    "Nombre": "Consomé de pollo",
-   "Presentacion": "media libra, libra, saco"
+   "Presentacion": "media libra, libra, saco",
+   "Cantidad": 0
   },
   {
    "Id": 19,
    "Nombre": "Consomé de res",
-   "Presentacion": "media libra, libra"
+   "Presentacion": "media libra, libra",
+   "Cantidad": 0
   },
   {
    "Id": 20,
    "Nombre": "Cúrcuma",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 21,
    "Nombre": "Curry",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 22,
    "Nombre": "chile molido",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 23,
    "Nombre": "Chile coban",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 24,
    "Nombre": "Chimichurri",
-   "Presentacion": "docena"
+   "Presentacion": "docena",
+   "Cantidad": 0
   },
   {
    "Id": 25,
    "Nombre": "Eneldo",
-   "Presentacion": "Tira"
+   "Presentacion": "Tira",
+   "Cantidad": 0
   },
   {
    "Id": 26,
    "Nombre": "Empanizador",
-   "Presentacion": "onzas, media libra, libra, arroba, quintal"
+   "Presentacion": "onzas, media libra, libra, arroba, quintal",
+   "Cantidad": 0
   },
   {
    "Id": 27,
    "Nombre": "Jengibre",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 28,
    "Nombre": "Harina de arroz",
-   "Presentacion": "media libra, libra, arroba, quintal"
+   "Presentacion": "media libra, libra, arroba, quintal",
+   "Cantidad": 0
   },
   {
    "Id": 29,
    "Nombre": "Harina de haba",
-   "Presentacion": "libra, arroba"
+   "Presentacion": "libra, arroba",
+   "Cantidad": 0
   },
   {
    "Id": 30,
    "Nombre": "Laurel",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 31,
    "Nombre": "Levadura seca",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 32,
    "Nombre": "Nuez moscada",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 33,
    "Nombre": "Maicena",
-   "Presentacion": "libra, arroba"
+   "Presentacion": "libra, arroba",
+   "Cantidad": 0
   },
   {
    "Id": 34,
    "Nombre": "Oregano",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 35,
    "Nombre": "Paprika",
-   "Presentacion": "docena, media libra, libra"
+   "Presentacion": "docena, media libra, libra",
+   "Cantidad": 0
   },
   {
    "Id": 36,
    "Nombre": "Pimentón",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 37,
    "Nombre": "Pimienta blanca",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 38,
    "Nombre": "Pimienta cayena",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 39,
    "Nombre": "Pimienta gorda",
-   "Presentacion": "docena"
+   "Presentacion": "docena",
+   "Cantidad": 0
   },
   {
    "Id": 40,
    "Nombre": "Pimienta negra",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 41,
    "Nombre": "Polvo para hornear",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 42,
    "Nombre": "Preservante",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 43,
    "Nombre": "Protemas",
-   "Presentacion": "media, libra, saco"
+   "Presentacion": "media, libra, saco",
+   "Cantidad": 0
   },
   {
    "Id": 44,
    "Nombre": "Romero",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 45,
    "Nombre": "Sal ajo ",
-   "Presentacion": "media libra, libra, arroba"
+   "Presentacion": "media libra, libra, arroba",
+   "Cantidad": 0
   },
   {
    "Id": 46,
    "Nombre": "Sal cebolla",
-   "Presentacion": "media libra, libra, arroba"
+   "Presentacion": "media libra, libra, arroba",
+   "Cantidad": 0
   },
   {
    "Id": 47,
    "Nombre": "Saborin",
-   "Presentacion": "media libra, arroba, saco"
+   "Presentacion": "media libra, arroba, saco",
+   "Cantidad": 0
   },
   {
    "Id": 48,
    "Nombre": "Sazon completa",
-   "Presentacion": "docena, media libra, libra, arroba"
+   "Presentacion": "docena, media libra, libra, arroba",
+   "Cantidad": 0
   },
   {
    "Id": 49,
    "Nombre": "Tajin",
-   "Presentacion": "libra"
+   "Presentacion": "libra",
+   "Cantidad": 0
   },
   {
    "Id": 50,
    "Nombre": "Tomillo",
-   "Presentacion": "docena, libra"
+   "Presentacion": "docena, libra",
+   "Cantidad": 0
   },
   {
    "Id": 51,
    "Nombre": "Mantequilla ajo",
-   "Presentacion": "media docena, docena"
+   "Presentacion": "media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 52,
    "Nombre": "Mantequilla con oregano",
-   "Presentacion": "unidad docena, docena"
+   "Presentacion": "unidad docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 53,
    "Nombre": "Mantequilla con albahaca",
-   "Presentacion": "unidad docena, docena"
+   "Presentacion": "unidad docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 54,
    "Nombre": "Mantequilla con romero",
-   "Presentacion": "unidad docena, docena"
+   "Presentacion": "unidad docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 55,
    "Nombre": "Té lavanda",
-   "Presentacion": "Tira"
+   "Presentacion": "Tira",
+   "Cantidad": 0
   },
   {
    "Id": 56,
    "Nombre": "Té Jazmin",
-   "Presentacion": "Tira"
+   "Presentacion": "Tira",
+   "Cantidad": 0
   },
   {
    "Id": 57,
    "Nombre": "Té verde",
-   "Presentacion": "Tira"
+   "Presentacion": "Tira",
+   "Cantidad": 0
   },
   {
    "Id": 58,
    "Nombre": "Té azahar",
-   "Presentacion": "Tira"
+   "Presentacion": "Tira",
+   "Cantidad": 0
   },
   {
    "Id": 59,
    "Nombre": "Té para el estreñimiento",
-   "Presentacion": "media docena, docena"
+   "Presentacion": "media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 60,
    "Nombre": "Té negro",
-   "Presentacion": "Tira"
+   "Presentacion": "Tira",
+   "Cantidad": 0
   },
   {
    "Id": 61,
    "Nombre": "Té quema grasa",
-   "Presentacion": "Tira"
+   "Presentacion": "Tira",
+   "Cantidad": 0
   },
   {
    "Id": 62,
    "Nombre": "Té rojo",
-   "Presentacion": "Tira"
+   "Presentacion": "Tira",
+   "Cantidad": 0
   },
   {
    "Id": 63,
    "Nombre": "Té Chai",
-   "Presentacion": "Tira"
+   "Presentacion": "Tira",
+   "Cantidad": 0
   },
   {
    "Id": 64,
    "Nombre": "Té sistema nervioso",
-   "Presentacion": "media docena, docena"
+   "Presentacion": "media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 65,
    "Nombre": "Té tos y gripe",
-   "Presentacion": "media docena, docena"
+   "Presentacion": "media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 66,
    "Nombre": "Té limpia sangre",
-   "Presentacion": "media docena, docena"
+   "Presentacion": "media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 67,
    "Nombre": "Té para la diabetes",
-   "Presentacion": "media docena, docena"
+   "Presentacion": "media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 68,
    "Nombre": "Té digestivo",
-   "Presentacion": "media docena, docena"
+   "Presentacion": "media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 69,
    "Nombre": "Té para la mujer",
-   "Presentacion": "media docena, docena"
+   "Presentacion": "media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 70,
    "Nombre": "Té de 7 azahares",
-   "Presentacion": "media docena, docena"
+   "Presentacion": "media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 71,
    "Nombre": "Té presion alta",
-   "Presentacion": "media docena, docena"
+   "Presentacion": "media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 72,
    "Nombre": "Té limpia colón",
-   "Presentacion": "media docena, docena"
+   "Presentacion": "media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 73,
    "Nombre": "Té para la gastritis",
-   "Presentacion": "media docena, docena"
+   "Presentacion": "media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 74,
    "Nombre": "Té limpia riñones",
-   "Presentacion": "media docena, docena"
+   "Presentacion": "media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 75,
    "Nombre": "Fibra limpia colón",
-   "Presentacion": "unidad, media docena, docena"
+   "Presentacion": "unidad, media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 76,
    "Nombre": "Avena linaza nopal",
-   "Presentacion": "unidad, media docena, docena"
+   "Presentacion": "unidad, media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 77,
    "Nombre": "Linaza molida",
-   "Presentacion": "unidad, media docena, docena"
+   "Presentacion": "unidad, media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 78,
    "Nombre": "Fibra quema grasa",
-   "Presentacion": "unidad, media docena, docena"
+   "Presentacion": "unidad, media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 79,
    "Nombre": "Leche de alpiste",
-   "Presentacion": "unidad, media docena, docena"
+   "Presentacion": "unidad, media docena, docena",
+   "Cantidad": 0
   },
   {
    "Id": 80,
    "Nombre": "Aloe vera",
-   "Presentacion": "unidad, media docena, docena"
+   "Presentacion": "unidad, media docena, docena",
+   "Cantidad": 0
   }
  ]
