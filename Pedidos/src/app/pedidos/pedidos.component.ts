@@ -72,15 +72,15 @@ export class PedidosComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.rowData);//form.value.Nombre
-    let msg: string = `\Nombre: ${this.detallePedido.Nota}\nTelefono: ${this.detallePedido.Telefono}\nUbicacion: ${this.detallePedido.Ubicacion}`;
+    console.log(this.rowData);
+    let msg: string = `\nNombre: ${this.detallePedido.Nombre}\nTelefono: ${this.detallePedido.Telefono}\nUbicacion: ${this.detallePedido.Ubicacion}\n`;
+    let detalle: string = "";
     for (let i = 0; i < this.rowData.length; i++) {
       if (this.rowData[i].Cantidad > 0) {
-        msg = msg + `${i}   ${this.rowData[i].Nombre} ${this.rowData[i].Presentacion} ${this.rowData[i].Cantidad}\n` + msg;
+        detalle = `${i}. Producto: ${this.rowData[i].Nombre} Presentacion: ${this.rowData[i].Presentacion} Cantidad: ${this.rowData[i].Cantidad}\n` + detalle;
       }
     }
-    msg = msg + `\nNota:${this.detallePedido.Nota}\n`;
-    console.log(this.detallePedido);
+    msg = msg + `\nNota:${this.detallePedido.Nota}\n ${detalle}\n ${this.detallePedido.Fecha}\n ${this.detallePedido.Hora}\n` ;
     console.log(msg);
   }
 
@@ -117,5 +117,12 @@ export class PedidosComponent implements OnInit {
   reset(){
     this.detallePedido = new DetallePedido();
     this.rowData = this.servicio.getJSON();
+    for (let i = 0; i < this.rowData.length; i++){
+      this.rowData[i].Cantidad = this.rowData[i].Cantidad2;
+      this.rowData[i].Presentacion = this.rowData[i].Presentacion2;
+    }
+    this.gridApi.setRowData(this.rowData);
+    console.log(this.rowData);
   }
+  
 }
