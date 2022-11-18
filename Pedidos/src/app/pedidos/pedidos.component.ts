@@ -29,7 +29,7 @@ export class PedidosComponent implements OnInit {
   gridHeight: string = "600px";
   public groupDisplayType: RowGroupingDisplayType = 'groupRows';
 
-  detallePedido:DetallePedido = new DetallePedido();
+  detallePedido: DetallePedido = new DetallePedido();
 
   columnDefs: ColDef[] = [
     { field: 'Id', hide: false, maxWidth: 100, },
@@ -63,7 +63,7 @@ export class PedidosComponent implements OnInit {
   ngOnInit(): void {
     //this.openDialog();
     this.rowData = this.servicio.getJSON();
-    
+
     //console.log(this.rowData);
   }
 
@@ -74,8 +74,8 @@ export class PedidosComponent implements OnInit {
   onSubmit() {
     console.log(this.rowData);//form.value.Nombre
     let msg: string = `\Nombre: ${this.detallePedido.Nota}\nTelefono: ${this.detallePedido.Telefono}\nUbicacion: ${this.detallePedido.Ubicacion}`;
-    for (let i =0; i < this.rowData.length; i++){
-      if (this.rowData[i].Cantidad > 0){
+    for (let i = 0; i < this.rowData.length; i++) {
+      if (this.rowData[i].Cantidad > 0) {
         msg = msg + `${i}   ${this.rowData[i].Nombre} ${this.rowData[i].Presentacion} ${this.rowData[i].Cantidad}\n` + msg;
       }
     }
@@ -86,6 +86,7 @@ export class PedidosComponent implements OnInit {
 
   onLogout() {
     this.autenticado = false;
+    this.reset();
     this.openDialog();
   }
 
@@ -113,4 +114,8 @@ export class PedidosComponent implements OnInit {
   onCellValueChanged(e: CellValueChangedEvent) {
   }
 
+  reset(){
+    this.detallePedido = new DetallePedido();
+    this.rowData = this.servicio.getJSON();
+  }
 }
