@@ -2,7 +2,6 @@
   <div class="centrado">
     <h2>Creacion de Pedido</h2>
   </div>
-  <form (ngSubmit)="onSubmit()" #f="ngForm">
     <div class="form-row ">
       <div class="col margenes">
         <input 
@@ -12,7 +11,7 @@
           placeholder="Nombre"
           name="Nombre" 
           required
-          ngModel
+         [(ngModel)]="detallePedido.Nombre"
         >
       </div>
 
@@ -24,7 +23,7 @@
           placeholder="Telefono" 
           name="Telefono"
           required
-          ngModel
+          [(ngModel)]="detallePedido.Telefono"
         >
       </div>
 
@@ -36,7 +35,7 @@
           placeholder="Ubicacion" 
           name="Ubicacion"
           required
-          ngModel
+          [(ngModel)]="detallePedido.Ubicacion"
         >
       </div>
 
@@ -62,7 +61,7 @@
           rows="3" 
           placeholder="Notas del Pedido"
           name="Notas"
-          ngModel
+          [(ngModel)]="detallePedido.Nota"
         ></textarea>
       </div>
 
@@ -74,7 +73,7 @@
             class="date form-control" 
             id="Fecha" 
             name="Fecha"
-            ngModel
+            [(ngModel)]="detallePedido.Fecha"
           >
         </div>
   
@@ -86,7 +85,7 @@
             id="Hora" 
             name="Hora"
             required
-            ngModel
+            [(ngModel)]="detallePedido.Hora"
           >
          </div> 
          
@@ -99,7 +98,7 @@
             placeholder="Recordatorio" 
             name="Recordatorio"
             required
-            ngModel
+            [(ngModel)]="detallePedido.Recordatorio"
             >
          </div>  
 
@@ -118,6 +117,5 @@
       </div>  
     </div>
 
-  </form>
 </div>
 <br/>

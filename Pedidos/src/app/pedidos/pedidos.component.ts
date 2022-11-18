@@ -6,6 +6,7 @@ import { ColDef, GridReadyEvent, FirstDataRenderedEvent, GridApi, RowGroupingDis
 import Catalogo from '../catalogo';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { ServiciosService } from '../servicios.service';
+import { DetallePedido } from './DetallePedido';
 
 
 @Component({
@@ -15,10 +16,8 @@ import { ServiciosService } from '../servicios.service';
 })
 export class PedidosComponent implements OnInit {
 
-  @ViewChild('f') forma: NgForm | undefined;
   @ViewChild('topGrid') agGrid!: AgGridAngular;
 
-  pedido: FormGroup = new FormGroup({});;
   autenticado: boolean = false;
   catalogo: Array<Catalogo> = [];
 
@@ -30,6 +29,7 @@ export class PedidosComponent implements OnInit {
   gridHeight: string = "600px";
   public groupDisplayType: RowGroupingDisplayType = 'groupRows';
 
+  detallePedido:DetallePedido = new DetallePedido();
 
   columnDefs: ColDef[] = [
     { field: 'Id', hide: false, maxWidth: 100, },
@@ -63,6 +63,7 @@ export class PedidosComponent implements OnInit {
   ngOnInit(): void {
     //this.openDialog();
     this.rowData = this.servicio.getJSON();
+    
     //console.log(this.rowData);
   }
 
@@ -71,13 +72,16 @@ export class PedidosComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.rowData);
-    if (this.forma?.control.status === "VALID") {
-
-    } else {
-      alert('No se han ingresado todos los campos');
+    console.log(this.rowData);//form.value.Nombre
+    let msg: string = `\Nombre: ${this.detallePedido.Nota}\nTelefono: ${this.detallePedido.Telefono}\nUbicacion: ${this.detallePedido.Ubicacion}`;
+    for (let i =0; i < this.rowData.length; i++){
+      if (this.rowData[i].Cantidad > 0){
+        msg = msg + `${i}   ${this.rowData[i].Nombre} ${this.rowData[i].Presentacion} ${this.rowData[i].Cantidad}\n` + msg;
+      }
     }
-    console.log(this.forma);
+    msg = msg + `\nNota:${this.detallePedido.Nota}\n`;
+    console.log(this.detallePedido);
+    console.log(msg);
   }
 
   onLogout() {
