@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AgGridAngular } from 'ag-grid-angular';
@@ -14,8 +14,9 @@ import { DetallePedido } from './DetallePedido';
   templateUrl: './pedidos.component.html',
   styleUrls: ['./pedidos.component.css']
 })
-export class PedidosComponent implements OnInit {
+export class PedidosComponent implements OnInit, AfterViewInit {
 
+  @ViewChild("myInputFocus") myInputField: ElementRef;
   @ViewChild('topGrid') agGrid!: AgGridAngular;
 
   autenticado: boolean = false;
@@ -66,20 +67,23 @@ export class PedidosComponent implements OnInit {
     //this.openDialog();
   }
 
+  ngAfterViewInit() {
+    this.myInputField.nativeElement.focus();
+  }
+
   openDialog() {
     this.matDialog.open(LoginModalComponent, { disableClose: true });
   }
 
   onSubmit() {
-    console.log(this.rowData);
     let msg: string = `\nNombre: ${this.detallePedido.Nombre}\nTelefono: ${this.detallePedido.Telefono}\nUbicacion: ${this.detallePedido.Ubicacion}\n`;
     let detalle: string = "";
     for (let i = 0; i < this.rowData.length; i++) {
       if (this.rowData[i].Cantidad > 0) {
-        detalle = `${i}. Producto: ${this.rowData[i].Nombre} Presentacion: ${this.rowData[i].Presentacion} Cantidad: ${this.rowData[i].Cantidad}\n` + detalle;
+        detalle = `Producto: ${this.rowData[i].Nombre} Presentacion: ${this.rowData[i].Presentacion} Cantidad: ${this.rowData[i].Cantidad}\n` + detalle;
       }
     }
-    msg = msg + `\nNota:${this.detallePedido.Nota}\n ${detalle}\n ${this.detallePedido.Fecha}\n ${this.detallePedido.Hora}\n` ;
+    msg = msg + `\nNota:${this.detallePedido.Nota}\n${detalle}\n${this.detallePedido.Fecha}\n${this.detallePedido.Hora}\n`;
     console.log(msg);
     this.reset();
   }
@@ -114,15 +118,15 @@ export class PedidosComponent implements OnInit {
   onCellValueChanged(e: CellValueChangedEvent) {
   }
 
-  reset(){
+  reset() {
     this.detallePedido = new DetallePedido();
     this.rowData = this.servicio.getJSON();
-    for (let i = 0; i < this.rowData.length; i++){
+    for (let i = 0; i < this.rowData.length; i++) {
       this.rowData[i].Cantidad = this.rowData[i].Cantidad2;
       this.rowData[i].Presentacion = this.rowData[i].Presentacion2;
     }
     this.gridApi.setRowData(this.rowData);
-    console.log(this.rowData);
+    this.myInputField.nativeElement.focus();
   }
-  
+
 }
