@@ -34,6 +34,7 @@ export class PedidosComponent implements OnInit {
   columnDefs: ColDef[] = [
     { field: 'Id', hide: false, maxWidth: 100, },
     { field: 'Nombre', hide: false },
+    { field: 'Empresa', hide: false },
     { field: 'Presentacion', hide: false, editable: true, },
     { field: 'Cantidad', hide: false, editable: true, },
   ];
@@ -61,10 +62,8 @@ export class PedidosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.openDialog();
     this.rowData = this.servicio.getJSON();
-
-    //console.log(this.rowData);
+    this.openDialog();
   }
 
   openDialog() {
@@ -82,6 +81,7 @@ export class PedidosComponent implements OnInit {
     }
     msg = msg + `\nNota:${this.detallePedido.Nota}\n ${detalle}\n ${this.detallePedido.Fecha}\n ${this.detallePedido.Hora}\n` ;
     console.log(msg);
+    this.reset();
   }
 
   onLogout() {
