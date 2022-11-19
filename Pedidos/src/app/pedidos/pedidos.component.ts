@@ -21,6 +21,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
   autenticado: boolean = false;
   catalogo: Array<Catalogo> = [];
+  creds:any;
 
   gridApi!: GridApi;
   gridColumnApi!: any;
@@ -62,8 +63,10 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     private servicio: ServiciosService,
   ) { }
 
-  ngOnInit(): void {
-    this.rowData = this.servicio.getJSON();
+  ngOnInit() {
+    this.rowData = this.servicio.getCatalogo();
+    this.creds = this.servicio.getCredentials();
+    console.log(this.creds);
     //this.openDialog();
   }
 
@@ -121,7 +124,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
   reset() {
     this.detallePedido = new DetallePedido();
-    this.rowData = this.servicio.getJSON();
+    this.rowData = this.servicio.getCatalogo();
     for (let i = 0; i < this.rowData.length; i++) {
       this.rowData[i].Cantidad = this.rowData[i].Cantidad2;
       this.rowData[i].Presentacion = this.rowData[i].Presentacion2;
