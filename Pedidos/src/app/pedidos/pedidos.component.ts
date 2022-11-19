@@ -85,6 +85,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     }
     msg = msg + `\nNota:${this.detallePedido.Nota}\n${detalle}\n${this.detallePedido.Fecha}\n${this.detallePedido.Hora}\n`;
     console.log(msg);
+    //SEND EVENT
     this.reset();
   }
 

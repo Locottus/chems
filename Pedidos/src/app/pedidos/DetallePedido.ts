@@ -5,5 +5,5 @@ export class DetallePedido {
     public Nota: string;
     public Fecha: string;
     public Hora: string;
-    public Recordatorio:number = 0;
+    public Recordatorio: number = 0;
 }
