@@ -63,7 +63,7 @@ export class PedidosComponent implements OnInit {
 
   ngOnInit(): void {
     this.rowData = this.servicio.getJSON();
-    this.openDialog();
+    //this.openDialog();
   }
 
   openDialog() {
