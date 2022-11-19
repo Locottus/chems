@@ -18,9 +18,7 @@ export class ServiciosService {
   }
 
   public getCatalogo() {
-    //console.log(catalogo);
     return catalogo;
-    //this.http.get(this.URL).subscribe(console.log);
   }
 
   public getCredentials() {
