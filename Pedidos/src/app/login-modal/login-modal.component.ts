@@ -3,11 +3,11 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ServiciosService } from '../servicios.service';
 
 @Component({
-  selector: 'login-modal',
+  selector: 'app-login-modal',
   templateUrl: './login-modal.component.html',
   styleUrls: ['./login-modal.component.css']
 })
-export class LoginModalComponent implements OnInit {
+export class LoginModalComponent  {
 
   usr: string = "";
   pwd: string = "";
@@ -19,10 +19,6 @@ export class LoginModalComponent implements OnInit {
     public dialogRef: MatDialogRef<LoginModalComponent>,
     public servicios: ServiciosService
   ) { }
-
-  ngOnInit() {
-
-  }
 
   validar() {
     let successLogin: boolean = false;

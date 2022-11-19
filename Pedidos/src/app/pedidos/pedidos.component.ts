@@ -10,7 +10,7 @@ import { DetallePedido } from './DetallePedido';
 
 
 @Component({
-  selector: 'pedidos',
+  selector: 'app-pedidos',
   templateUrl: './pedidos.component.html',
   styleUrls: ['./pedidos.component.css']
 })
