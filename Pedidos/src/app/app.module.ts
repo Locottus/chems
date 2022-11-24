@@ -19,6 +19,19 @@ import { MenuComponent } from './menu/menu.component';
 import { CalendarioComponent } from './calendario/calendario.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
+import interactionPlugin from '@fullcalendar/interaction';
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  timeGridPlugin,
+  listPlugin,
+  interactionPlugin
+])
+
 
 @NgModule({
   declarations: [
@@ -43,7 +56,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ReactiveFormsModule,
     AgGridModule,
     HttpClientModule,
-    MatMenuModule
+    MatMenuModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
