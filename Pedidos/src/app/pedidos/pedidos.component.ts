@@ -19,7 +19,6 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   @ViewChild("myInputFocus") myInputField: ElementRef;
   @ViewChild('topGrid') agGrid!: AgGridAngular;
 
-  autenticado: boolean = false;
   catalogo: Array<Catalogo> = [];
   creds:any;
 
@@ -51,6 +50,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
   rowData: Array<Catalogo> = [];
 
+  autenticado: boolean = false;
   /**
   * observable to refresh the data when the modal updates.
   */

@@ -1,17 +1,19 @@
-<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+<div  *ngIf="!autenticado">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>dialpad</mat-icon>
-      <span>Redial</span>
+    <button mat-menu-item (click)="navegacion('calendario')">
+      <mat-icon>calendar_today</mat-icon>
+      <span>Calendario</span>
     </button>
-    <button mat-menu-item disabled>
-      <mat-icon>voicemail</mat-icon>
-      <span>Check voice mail</span>
+    <button mat-menu-item (click)="navegacion('pedidos')">
+      <mat-icon>note_add</mat-icon>
+      <span>Pedidos</span>
     </button>
     <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span>Disable alerts</span>
+      <mat-icon>transfer_within_a_station</mat-icon>
+      <span>Salir</span>
     </button>
   </mat-menu>
+</div>
