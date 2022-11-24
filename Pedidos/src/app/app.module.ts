@@ -15,12 +15,19 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { MenuComponent } from './menu/menu.component';
+import { CalendarioComponent } from './calendario/calendario.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginModalComponent,
-    PedidosComponent
+    PedidosComponent,
+    MenuComponent,
+    CalendarioComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     ReactiveFormsModule,
     AgGridModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

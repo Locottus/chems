@@ -1,1 +1,1 @@
-create database chems;
+create database chemita;

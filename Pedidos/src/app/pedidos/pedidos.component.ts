@@ -7,7 +7,7 @@ import Catalogo from '../catalogo';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { ServiciosService } from '../servicios.service';
 import { DetallePedido } from './DetallePedido';
-
+//https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow
 
 @Component({
   selector: 'app-pedidos',
