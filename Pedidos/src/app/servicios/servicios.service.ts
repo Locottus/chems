@@ -21,16 +21,15 @@ export class ServiciosService {
     this.behaviorSubject.next(success);
   }
 
-   async login(usuario:string, clave:string) {
-    //return  this.http.post<any>("http://localhost:3000/api/login", {usuario, clave});
-    return (await this.httpClient.post("http://localhost:3000/api/login",{
+  async login(usuario: string, clave: string) {
+    this.httpClient.post<any>('http://localhost:3000/api/login', {
       usuario: usuario,
       clave: clave
-    }));
-
-}
-
-
+    }).subscribe(data => {
+      console.log(data[0].count);
+      this.loginStatus((data[0].count > 0 ? true : false));
+    })
+  }
 
   logout() {
     this.behaviorSubject.next(false);

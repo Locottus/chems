@@ -15,21 +15,27 @@ export class LoginModalComponent  {
   errorLogin: boolean = true;
   errorMsg: string = "";
 
+  autenticado: boolean = false;
+  /**
+  * observable to refresh the data when the modal updates.
+  */
+  dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
+    this.autenticado = loginStatus;
+  });
+
+
   constructor(
     public dialogRef: MatDialogRef<LoginModalComponent>,
-    public servicios: ServiciosService
+    public servicio: ServiciosService
   ) { }
 
   validar() {
-    let successLogin: boolean = false;
-    if ('especiaschemita@gmail.com' === this.usr.toLowerCase() && 'Esp2022!' === this.pwd) {
-      successLogin = true;
+    this.servicio.login(this.usr.toLowerCase(),this.pwd);
+
+    if (this.autenticado)
       this.dialogRef.close();
-    } else {
-      successLogin = false;
+    else
       this.showError('credenciales incorrectas');
-    }
-    this.servicios.loginStatus(successLogin);
   }
 
   showError(msg: string) {

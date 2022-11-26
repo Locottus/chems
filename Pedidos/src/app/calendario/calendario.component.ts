@@ -17,7 +17,7 @@ export class CalendarioComponent implements OnInit {
     this.autenticado = loginStatus;
   });
 
-//https://fullcalendar.io/docs/angular
+  //https://fullcalendar.io/docs/angular
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     dateClick: this.handleDateClick.bind(this), // bind is important!
@@ -29,21 +29,20 @@ export class CalendarioComponent implements OnInit {
     ]
   };
 
-  handleDateClick(arg:any) {
+  handleDateClick(arg: any) {
     alert('date click! ' + arg.dateStr)
   }
-  
+
   constructor(
     private servicio: ServiciosService,
-    ) { }
+  ) { }
 
 
   ngOnInit(): void {
   }
 
-  async login(){
-    let x = this.servicio.login('herlich@gmail.com','password');
-    console.log(x);
+  async login() {
+    this.servicio.login('herlich@gmail.com', 'password');
   }
 
 }
