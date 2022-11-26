@@ -23,6 +23,7 @@ app.get(`${apiURL}`, (request, response) => {
 })
 
 app.post(`${apiURL}login`, db.loginUser)
+app.get(`${apiURL}catalogo`, db.catalogo)
 
 
 app.listen(port, () => {

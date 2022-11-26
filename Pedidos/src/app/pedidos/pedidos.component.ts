@@ -3,10 +3,13 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ColDef, GridReadyEvent, FirstDataRenderedEvent, GridApi, RowGroupingDisplayType, CellValueChangedEvent } from 'ag-grid-community';
-import Catalogo from '../catalogo';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { ServiciosService } from '../servicios/servicios.service';
-import { DetallePedido } from './DetallePedido';
+import { DetallePedido } from '../interfaces/DetallePedido';
+import { Catalogo } from '../interfaces/Catalogo';
+import { PedidosService } from '../servicios/pedidos.service';
+import { CatalogoService } from '../servicios/catalogo.service';
+
 //https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow
 
 @Component({
@@ -20,7 +23,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   @ViewChild('topGrid') agGrid!: AgGridAngular;
 
   catalogo: Array<Catalogo> = [];
-  creds:any;
+
 
   gridApi!: GridApi;
   gridColumnApi!: any;
@@ -33,11 +36,13 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   detallePedido: DetallePedido = new DetallePedido();
 
   columnDefs: ColDef[] = [
-    { field: 'Id', hide: false, maxWidth: 100, },
-    { field: 'Nombre', hide: false },
-    { field: 'Empresa', hide: false },
-    { field: 'Presentacion', hide: false, editable: true, },
-    { field: 'Cantidad', hide: false, editable: true, },
+    { field: 'id', hide: false, maxWidth: 100, },
+    { field: 'nombre', hide: false },
+    { field: 'empresa', hide: false },
+    { field: 'presentacion', hide: false, editable: true, },
+    { field: 'cantidad', hide: false, editable: true, },
+    { field: 'precio', hide: true, editable: true, },
+
   ];
 
   //default settings for all columns
@@ -54,20 +59,27 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   /**
   * observable to refresh the data when the modal updates.
   */
-  dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
+  dataLogin$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
     this.autenticado = loginStatus;
   });
+
+  dataCatalogo$ = this.catalogoService.subjectObservableCatalogo$.subscribe(async (data) => {
+    this.rowData = data;
+  })
 
   constructor(
     private matDialog: MatDialog,
     private servicio: ServiciosService,
+    private pedidosService: PedidosService,
+    private catalogoService: CatalogoService
   ) { }
 
   ngOnInit() {
-    //this.rowData = this.servicio.getCatalogo();
-    //this.creds = this.servicio.getCredentials();
-    console.log(this.creds);
-    //this.openDialog();
+    this.getCatalog();
+  }
+
+  getCatalog() {
+    this.catalogoService.getCatalogo();
   }
 
   ngAfterViewInit() {
@@ -82,8 +94,8 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     let msg: string = `\nNombre: ${this.detallePedido.Nombre}\nTelefono: ${this.detallePedido.Telefono}\nUbicacion: ${this.detallePedido.Ubicacion}\n`;
     let detalle: string = "";
     for (let i = 0; i < this.rowData.length; i++) {
-      if (this.rowData[i].Cantidad > 0) {
-        detalle = `Producto: ${this.rowData[i].Nombre} Presentacion: ${this.rowData[i].Presentacion} Cantidad: ${this.rowData[i].Cantidad}\n` + detalle;
+      if (this.rowData[i].cantidad > 0) {
+        detalle = `Producto: ${this.rowData[i].nombre} Presentacion: ${this.rowData[i].presentacion} Cantidad: ${this.rowData[i].cantidad}\n` + detalle;
       }
     }
     msg = msg + `\nNota:${this.detallePedido.Nota}\n${detalle}\n${this.detallePedido.Fecha}\n${this.detallePedido.Hora}\n`;
@@ -123,14 +135,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   }
 
   reset() {
-    this.detallePedido = new DetallePedido();
-    //this.rowData = this.servicio.getCatalogo();
-    for (let i = 0; i < this.rowData.length; i++) {
-      this.rowData[i].Cantidad = this.rowData[i].Cantidad2;
-      this.rowData[i].Presentacion = this.rowData[i].Presentacion2;
-    }
-    this.gridApi.setRowData(this.rowData);
-    this.myInputField.nativeElement.focus();
+    this.getCatalog();
   }
 
 }

@@ -72,6 +72,17 @@ const loginUser = (request, response) => {
 }
 
 
+const catalogo = (request, response) => {
+  var q = `select * from catalogo `;
+  pool.query(q, (error, results) => {
+    if (error) {
+      response.status(500).send('{"msg":"' + error + '"}');
+    }
+    response.status(200).json(results.rows);
+  })
+}
+
+
 
 const getestaciones = (request, response) => {
    //const fecha = request.query.fecha;//fecha en formato YYYY-MM-DD
@@ -335,6 +346,7 @@ const getdata = (request, response) => {
 
 module.exports = {
   loginUser,
+  catalogo,
   getestaciones,
   getyears,
   getmeses,
