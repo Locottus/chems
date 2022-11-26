@@ -3,8 +3,8 @@ const Pool = require('pg').Pool
  const pool = new Pool({
    user: 'postgres',
    host: '127.0.0.1',
-   database: 'chems',
-   password: 'secret',
+   database: 'chemita',
+   password: 'Guatemala1',
    port: 5432,
  });
 
@@ -60,6 +60,19 @@ const meses = [
       "id": "12",
   },
 ];
+
+const loginUser = (request, response) => {
+  const usuario = request.query.usuario;
+  const clave = request.query.clave;
+  var q = `select count(*) from usuarios where usuario = '${usuario}' and clave = '${clave}' `;
+  pool.query(q, (error, results) => {
+    if (error) {
+      response.status(500).send('{"msg":"' + error + '"}');
+    }
+    response.status(200).json(results.rows);
+  })
+}
+
 
 
 const getestaciones = (request, response) => {
@@ -323,6 +336,7 @@ const getdata = (request, response) => {
 
 
 module.exports = {
+  loginUser,
   getestaciones,
   getyears,
   getmeses,

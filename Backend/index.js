@@ -4,6 +4,7 @@ const app = express();
 const db = require('./queries');
 const port = 3000;
 const apiURL = '/api/'
+
 app.use(bodyParser.json())
 app.use(
   bodyParser.urlencoded({
@@ -21,14 +22,11 @@ app.get(`${apiURL}`, (request, response) => {
   response.json({ info: 'Node.js, Express, nginx  and Postgres API #CHEMS ' })
 })
 
-app.get(`${apiURL}getestaciones`, db.getestaciones)
-app.get(`${apiURL}getanios`, db.getyears)
-app.get(`${apiURL}getmeses`, db.getmeses)
-app.get(`${apiURL}getdata`, db.getdata)
+app.get(`${apiURL}login`, db.loginUser)
 
 
 app.listen(port, () => {
-  console.log(`App chems backend running on port ${port}.`)
+  console.log(`App chemita backend running on port ${port}.`)
 })
 
 
