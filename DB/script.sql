@@ -47,10 +47,14 @@ ALTER TABLE IF EXISTS public."pedido"
 CREATE TABLE IF NOT EXISTS public.catalogo
 (
     id numeric NOT NULL,
+	nombre text COLLATE pg_catalog."default" NOT NULL,
     empresa text COLLATE pg_catalog."default" NOT NULL,
-    producto text COLLATE pg_catalog."default" NOT NULL,
+    presentacion text COLLATE pg_catalog."default" NOT NULL,
+	cantidad numeric null,
+	precio numeric null,
     CONSTRAINT catalogo_pkey PRIMARY KEY (id)
 )
+
 
 TABLESPACE pg_default;
 

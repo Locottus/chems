@@ -5,7 +5,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { ColDef, GridReadyEvent, FirstDataRenderedEvent, GridApi, RowGroupingDisplayType, CellValueChangedEvent } from 'ag-grid-community';
 import Catalogo from '../catalogo';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
-import { ServiciosService } from '../servicios.service';
+import { ServiciosService } from '../servicios/servicios.service';
 import { DetallePedido } from './DetallePedido';
 //https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow
 
@@ -64,8 +64,8 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
-    this.rowData = this.servicio.getCatalogo();
-    this.creds = this.servicio.getCredentials();
+    //this.rowData = this.servicio.getCatalogo();
+    //this.creds = this.servicio.getCredentials();
     console.log(this.creds);
     //this.openDialog();
   }
@@ -124,7 +124,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
   reset() {
     this.detallePedido = new DetallePedido();
-    this.rowData = this.servicio.getCatalogo();
+    //this.rowData = this.servicio.getCatalogo();
     for (let i = 0; i < this.rowData.length; i++) {
       this.rowData[i].Cantidad = this.rowData[i].Cantidad2;
       this.rowData[i].Presentacion = this.rowData[i].Presentacion2;

@@ -9,7 +9,6 @@ const Pool = require('pg').Pool
  });
 
 
-
 const meses = [
   {
       "mes": "Enero",
@@ -62,8 +61,7 @@ const meses = [
 ];
 
 const loginUser = (request, response) => {
-  const usuario = request.query.usuario;
-  const clave = request.query.clave;
+  const { usuario, clave } = request.body
   var q = `select count(*) from usuarios where usuario = '${usuario}' and clave = '${clave}' `;
   pool.query(q, (error, results) => {
     if (error) {

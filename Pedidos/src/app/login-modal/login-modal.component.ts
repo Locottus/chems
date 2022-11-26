@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ServiciosService } from '../servicios.service';
+import { ServiciosService } from '../servicios/servicios.service';
 
 @Component({
   selector: 'app-login-modal',

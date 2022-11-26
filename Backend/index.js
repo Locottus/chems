@@ -22,7 +22,7 @@ app.get(`${apiURL}`, (request, response) => {
   response.json({ info: 'Node.js, Express, nginx  and Postgres API #CHEMS ' })
 })
 
-app.get(`${apiURL}login`, db.loginUser)
+app.post(`${apiURL}login`, db.loginUser)
 
 
 app.listen(port, () => {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
-import { ServiciosService } from '../servicios.service';
+import { ServiciosService } from '../servicios/servicios.service';
 
 @Component({
   selector: 'app-calendario',
@@ -39,6 +39,11 @@ export class CalendarioComponent implements OnInit {
 
 
   ngOnInit(): void {
+  }
+
+  async login(){
+    let x = this.servicio.login('herlich@gmail.com','password');
+    console.log(x);
   }
 
 }

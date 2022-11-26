@@ -20,9 +20,9 @@ ALTER TABLE IF EXISTS public.usuarios
 
 -- Table: public.Pedido
 
--- DROP TABLE IF EXISTS public."Pedido";
+-- DROP TABLE IF EXISTS public."pedido";
 
-CREATE TABLE IF NOT EXISTS public."Pedido"
+CREATE TABLE IF NOT EXISTS public."pedido"
 (
 	id SERIAL PRIMARY KEY,
     fecha timestamp without time zone NOT NULL,
@@ -37,8 +37,25 @@ CREATE TABLE IF NOT EXISTS public."Pedido"
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public."Pedido"
+ALTER TABLE IF EXISTS public."pedido"
     OWNER to postgres;
 	
-	
+-- Table: public.catalogo
+
+-- DROP TABLE IF EXISTS public.catalogo;
+
+CREATE TABLE IF NOT EXISTS public.catalogo
+(
+    id numeric NOT NULL,
+    empresa text COLLATE pg_catalog."default" NOT NULL,
+    producto text COLLATE pg_catalog."default" NOT NULL,
+    cantidad numeric null,
+    precio numeric null,
+    CONSTRAINT catalogo_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.catalogo
+    OWNER to postgres;	
 
