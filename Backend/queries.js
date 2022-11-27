@@ -73,7 +73,7 @@ const loginUser = (request, response) => {
 
 
 const catalogo = (request, response) => {
-  var q = `select * from catalogo `;
+  var q = `select * from catalogo order by id`;
   pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');
@@ -99,11 +99,10 @@ const insertaCatalogo = (request, response) => {
 const actualizaCatalogo = (request, response) => {
   let errors = 0;
   for (let i = 0; i < request.body.length; i++) {
-    const { id, nombre, empresa, presentacion, precio } = request.body;
+    const { id, nombre, empresa, presentacion, precio } = request.body[i];
     var q = `update catalogo  set nombre = '${nombre}', empresa = '${empresa}', 
               presentacion = '${presentacion}', precio = ${precio}
               where ${id} = id`;
-    console.log(q);
     pool.query(q, (error, results) => {
       if (error) {
         errors = errors + 1;
@@ -144,12 +143,6 @@ const savePedidosMes = (request, response) => {
     response.status(200).json('{"msg":"Success"}');
   })
 }
-
-
-
-
-
-
 
 
 module.exports = {

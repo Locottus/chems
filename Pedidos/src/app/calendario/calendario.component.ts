@@ -27,6 +27,7 @@ export class CalendarioComponent implements OnInit {
   */
      dataCalendar$ = this.calendarioService.subjectObservableCalendario$.subscribe(async (data) => {
       this.eventos = data;
+      
       console.log(this.eventos);
     });
 
@@ -38,6 +39,8 @@ export class CalendarioComponent implements OnInit {
     dateClick: this.handleDateClick.bind(this), // bind is important!
 
     events: this.eventos,
+    //events: [{"title":"event1","start":"2022-11-12 13:00:00","end":"2022-11-12 16:00:00"},
+    //{"title":"event2","start":"2022-11-28 13:00:00","end":"2022-11-28 15:00:00"}],
 
     eventClick: function (info: any) {
       console.log(info.event);
