@@ -25,7 +25,8 @@ ALTER TABLE IF EXISTS public.usuarios
 CREATE TABLE IF NOT EXISTS public."pedido"
 (
 	id SERIAL PRIMARY KEY,
-    fecha timestamp without time zone NOT NULL,
+	title text COLLATE pg_catalog."default" NOT NULL,
+    date timestamp without time zone NOT NULL,
     detalle text COLLATE pg_catalog."default" NOT NULL,
     nombre text COLLATE pg_catalog."default" NOT NULL,
     telefono text COLLATE pg_catalog."default" NOT NULL,
@@ -47,12 +48,14 @@ ALTER TABLE IF EXISTS public."pedido"
 CREATE TABLE IF NOT EXISTS public.catalogo
 (
     id numeric NOT NULL,
+	nombre text COLLATE pg_catalog."default" NOT NULL,
     empresa text COLLATE pg_catalog."default" NOT NULL,
-    producto text COLLATE pg_catalog."default" NOT NULL,
-    cantidad numeric null,
-    precio numeric null,
+    presentacion text COLLATE pg_catalog."default" NOT NULL,
+	cantidad numeric null,
+	precio numeric null,
     CONSTRAINT catalogo_pkey PRIMARY KEY (id)
 )
+
 
 TABLESPACE pg_default;
 

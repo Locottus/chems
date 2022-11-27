@@ -25,12 +25,13 @@ ALTER TABLE IF EXISTS public.usuarios
 CREATE TABLE IF NOT EXISTS public."pedido"
 (
 	id SERIAL PRIMARY KEY,
-    fecha timestamp without time zone NOT NULL,
+	title text COLLATE pg_catalog."default" NOT NULL,
+    date timestamp without time zone NOT NULL,
     detalle text COLLATE pg_catalog."default" NOT NULL,
     nombre text COLLATE pg_catalog."default" NOT NULL,
     telefono text COLLATE pg_catalog."default" NOT NULL,
     ubicacion text COLLATE pg_catalog."default",
-    notas text COLLATE pg_catalog."default",
+    nota text COLLATE pg_catalog."default",
     hora text COLLATE pg_catalog."default",
     recordatorio numeric
 )

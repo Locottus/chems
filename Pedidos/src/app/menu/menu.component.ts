@@ -34,9 +34,11 @@ export class MenuComponent implements OnInit {
       case 'pedidos':
         this.router.navigateByUrl('/pedidos')
         break;
-
     }
-    
+  }
+
+  salir(){
+    this.servicio.logout();
   }
 
 }

@@ -10,7 +10,7 @@ import { Catalogo } from '../interfaces/Catalogo';
 export class CatalogoService {
 
   cat: Array<Catalogo> = [];
-  
+
   private behaviorSubjectCatalogo = new BehaviorSubject<Array<Catalogo>>(this.cat);
   subjectObservableCatalogo$ = this.behaviorSubjectCatalogo.asObservable();
 
@@ -18,16 +18,17 @@ export class CatalogoService {
     private httpClient: HttpClient
   ) { }
 
-   catalogEmitter(c: Array<Catalogo>){
+  catalogEmitter(c: Array<Catalogo>) {
     this.cat = c;
-    this.behaviorSubjectCatalogo.next(c);
-   }
-   getCatalogo() {
+    this.behaviorSubjectCatalogo.next(this.cat);
+  }
+
+  getCatalogo() {
     this.httpClient.get<Array<Catalogo>>('http://localhost:3000/api/catalogo')
       .subscribe(data => {
         this.cat = data;
+        this.cat.forEach(e => { e.cantidad = 0; })
         this.catalogEmitter(this.cat);
-        console.log(this.cat)
       })
   }
 

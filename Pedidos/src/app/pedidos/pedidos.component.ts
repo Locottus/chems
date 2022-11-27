@@ -91,16 +91,16 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    let msg: string = `\nNombre: ${this.detallePedido.Nombre}\nTelefono: ${this.detallePedido.Telefono}\nUbicacion: ${this.detallePedido.Ubicacion}\n`;
+    let msg: string = `\nNombre: ${this.detallePedido.nombre}\nTelefono: ${this.detallePedido.telefono}\nUbicacion: ${this.detallePedido.ubicacion}\n`;
     let detalle: string = "";
     for (let i = 0; i < this.rowData.length; i++) {
       if (this.rowData[i].cantidad > 0) {
         detalle = `Producto: ${this.rowData[i].nombre} Presentacion: ${this.rowData[i].presentacion} Cantidad: ${this.rowData[i].cantidad}\n` + detalle;
       }
     }
-    msg = msg + `\nNota:${this.detallePedido.Nota}\n${detalle}\n${this.detallePedido.Fecha}\n${this.detallePedido.Hora}\n`;
+    msg = msg + `\nNota:${this.detallePedido.nota}\n${detalle}\n${this.detallePedido.date}\n${this.detallePedido.hora}\n`;
     console.log(msg);
-    //SEND EVENT
+    this.pedidosService.guardaPedido(this.detallePedido);
     this.reset();
   }
 
@@ -136,6 +136,8 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
   reset() {
     this.getCatalog();
+    this.detallePedido = new DetallePedido();
+    this.myInputField.nativeElement.focus();
   }
 
 }

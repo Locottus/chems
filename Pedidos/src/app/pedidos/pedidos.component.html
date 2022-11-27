@@ -4,6 +4,21 @@
     
     <h2>Creacion de Pedido</h2>
   </div>
+  <div class="form-row ">
+    <div class="col margenes">
+      <input 
+        type="text" 
+        class="form-control" 
+        id="Titulo" 
+        placeholder="Titulo Pedido"
+        name="Titulo" 
+        required
+       [(ngModel)]="detallePedido.title"
+       autofocus
+       #myInputFocus
+      >
+    </div>
+    
     <div class="form-row ">
       <div class="col margenes">
         <input 
@@ -13,9 +28,7 @@
           placeholder="Nombre"
           name="Nombre" 
           required
-         [(ngModel)]="detallePedido.Nombre"
-         autofocus
-         #myInputFocus
+         [(ngModel)]="detallePedido.nombre"
         >
       </div>
 
@@ -27,7 +40,7 @@
           placeholder="Telefono" 
           name="Telefono"
           required
-          [(ngModel)]="detallePedido.Telefono"
+          [(ngModel)]="detallePedido.telefono"
         >
       </div>
 
@@ -39,7 +52,7 @@
           placeholder="Ubicacion" 
           name="Ubicacion"
           required
-          [(ngModel)]="detallePedido.Ubicacion"
+          [(ngModel)]="detallePedido.ubicacion"
         >
       </div>
 
@@ -67,7 +80,7 @@
           rows="3" 
           placeholder="Notas del Pedido"
           name="Notas"
-          [(ngModel)]="detallePedido.Nota"
+          [(ngModel)]="detallePedido.nota"
         ></textarea>
       </div>
 
@@ -79,7 +92,7 @@
             class="date form-control" 
             id="Fecha" 
             name="Fecha"
-            [(ngModel)]="detallePedido.Fecha"
+            [(ngModel)]="detallePedido.date"
           >
         </div>
   
@@ -91,7 +104,7 @@
             id="Hora" 
             name="Hora"
             required
-            [(ngModel)]="detallePedido.Hora"
+            [(ngModel)]="detallePedido.hora"
           >
          </div> 
          
@@ -104,7 +117,7 @@
             placeholder="Recordatorio" 
             name="Recordatorio"
             required
-            [(ngModel)]="detallePedido.Recordatorio"
+            [(ngModel)]="detallePedido.recordatorio"
             >
          </div>  
 

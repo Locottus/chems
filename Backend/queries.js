@@ -82,26 +82,39 @@ const catalogo = (request, response) => {
   })
 }
 
+const getmeses = (request, response) => {
+  response.status(200).json(meses);
+}
 
+const pedidosMes = (request, response) => {
+  const fechaInicio = request.query.fechaInicio;
+  const fechaFin = request.query.fechaFin;
 
-const getestaciones = (request, response) => {
-   //const fecha = request.query.fecha;//fecha en formato YYYY-MM-DD
-  var q = 'select distinct estacion,longitud,latitud,zona_vida from historico_estaciones order by estacion asc'  ;
+  var q = `select * from pedidos where date between ${fechaInicio} and ${fechaFin} `;
   pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');
     }
-    console.log('#CLIMA GET Method ALL STATIONS');
-	console.log(results);
-	  response.status(200).json(results.rows);
+    response.status(200).json(results.rows);
+  })
+}
+
+const savePedidosMes = (request, response) => {
+  const { title, date, detalle, nombre, telefono, ubicacion, nota, hora, recordatorio } = request.body
+  var q = `insert into pedido (title, date, detalle, nombre, telefono, ubicacion, nota, hora, recordatorio) 
+           values
+           ('${title}', '${date}', '${detalle}', '${nombre}', '${telefono}', '${ubicacion}', '${nota}', '${hora}', '${recordatorio}');`;
+  pool.query(q, (error, results) => {
+    if (error) {
+      response.status(500).send('{"msg":"' + error + '"}');
+    }
+    response.status(200).json('{"msg":"Success"}');
   })
 }
 
 
-const getmeses = (request, response) => {
-  console.log("ENTRANDO A GET MESES");
-  response.status(200).json(meses);
-}
+
+
 
 
 const getyears = (request, response) => {
@@ -347,9 +360,11 @@ const getdata = (request, response) => {
 module.exports = {
   loginUser,
   catalogo,
-  getestaciones,
-  getyears,
+  pedidosMes,
+  savePedidosMes,
   getmeses,
+
+  getyears,
   getdata,
   getdata2,
   getdata3,
