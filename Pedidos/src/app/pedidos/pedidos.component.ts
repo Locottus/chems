@@ -99,6 +99,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     }
     msg = msg + `\nNota:${this.detallePedido.nota}\n${detalle}\n${this.detallePedido.date}\n${this.detallePedido.hora}\n`;
     console.log(msg);
+    this.detallePedido.detalle = detalle;
     this.pedidosService.guardaPedido(this.detallePedido);
     this.reset();
   }

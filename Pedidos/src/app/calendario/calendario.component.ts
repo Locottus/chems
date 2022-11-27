@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
+import { DetallePedido } from '../interfaces/DetallePedido';
 import { CalendarioService } from '../servicios/calendario.service';
 import { ServiciosService } from '../servicios/servicios.service';
 
@@ -21,18 +22,22 @@ export class CalendarioComponent implements OnInit {
     this.autenticado = loginStatus;
   });
 
-  e = [
-    { title: 'fulano 1', date: '2022-11-01', detalle: 'detalle 1' },
-    { title: 'event 0', date: '2022-11-01', detalle: 'detalle 0 ' },
-    { title: 'event 44', date: '2022-11-01', detalle: 'detalle 44' },
-    { title: 'event 2', date: '2022-11-02', detalle: 'detalle 2' }
-  ];
+    /**
+  * observable to refresh the data when the modal updates.
+  */
+     dataCalendar$ = this.calendarioService.subjectObservableCalendario$.subscribe(async (data) => {
+      this.eventos = data;
+      console.log(this.eventos);
+    });
+
+  eventos:Array<DetallePedido> = [];
+
   //https://fullcalendar.io/docs/angular
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     dateClick: this.handleDateClick.bind(this), // bind is important!
 
-    events: this.e ,
+    events: this.eventos,
 
     eventClick: function (info: any) {
       console.log(info.event);
@@ -58,6 +63,7 @@ export class CalendarioComponent implements OnInit {
 
 
   ngOnInit() {
+    this.calendarioService.getPedidosCalendario('2020-01-01','2023-12-31');
   }
 
 }
