@@ -147,6 +147,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
   Actualizar(){
    this.catalogoService.actualizaCatalogo(this.rowData);
+   alert('Actualizado');
    
   }
 }

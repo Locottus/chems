@@ -24,6 +24,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
+import { NuevoPedidoComponent } from './pedidos/componentes/nuevo-pedido/nuevo-pedido.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -40,7 +41,8 @@ FullCalendarModule.registerPlugins([
     PedidosComponent,
     MenuComponent,
     CalendarioComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NuevoPedidoComponent
   ],
   imports: [
     BrowserModule,

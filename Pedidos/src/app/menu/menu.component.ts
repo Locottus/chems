@@ -34,6 +34,10 @@ export class MenuComponent implements OnInit {
       case 'pedidos':
         this.router.navigateByUrl('/pedidos')
         break;
+      case 'nuevo-producto':
+        this.router.navigateByUrl('/nuevo-producto')
+        break;
+  
     }
   }
 

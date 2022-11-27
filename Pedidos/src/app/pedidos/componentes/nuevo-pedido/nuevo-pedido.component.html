@@ -1,0 +1,38 @@
+<div class="container" *ngIf="!autenticado">
+    <app-menu></app-menu>
+    <div class="form-group">
+        <label for="id">Id</label>
+        <input type="number" class="form-control" id="id" [(ngModel)]="catalogo.id" aria-describedby="id"
+            placeholder="id">
+        <small id="idhelp" class="form-text text-muted">codigo del producto</small>
+    </div>
+    <div class="form-group">
+        <label for="nombre">Nombre del producto</label>
+        <input type="text" class="form-control" id="nombreproducto" [(ngModel)]="catalogo.nombre" placeholder="Nombre">
+    </div>
+    <div class="form-group">
+        <label for="nombre">Empresa</label>
+        <input type="text" class="form-control" id="empresa" [(ngModel)]="catalogo.empresa" placeholder="Empresa">
+    </div>
+    <div class="form-group">
+        <label for="presentacion">Presentacion</label>
+        <input type="text" class="form-control" id="presentacion" [(ngModel)]="catalogo.presentacion"
+            placeholder="Presentacion">
+    </div>
+    <!--
+    <div class="form-group">
+        <label for="cantidad">Cantidad</label>
+        <input type="number" class="form-control" id="cantidad" [(ngModel)]="catalogo.cantidad" placeholder="Cantidad">
+    </div>
+    -->
+    <div class="form-group">
+        <label for="precio">Precio</label>
+        <input type="number" class="form-control" id="precio" [(ngModel)]="catalogo.precio" placeholder="Precio">
+    </div>
+    <br />
+    <button class="btn btn-primary" (click)="agregarCatalogo()">Agregar</button>
+
+    <div *ngIf="!errorLogin" class="alert alert-danger" role="alert">
+        {{errorMsg}}
+    </div>
+</div>
