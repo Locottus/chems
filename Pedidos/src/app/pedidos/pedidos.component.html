@@ -71,6 +71,17 @@
           [defaultColDef]="defaultColDef"
           (cellValueChanged)="onCellValueChanged($event)"      
         ></ag-grid-angular>    
+
+        <div class="row">
+          <br/>
+          <div class="col centrado">
+            <button class="btn btn-primary" (click)="Actualizar()">Actualizar Catalogo</button>
+          </div>
+          <div class="col centrado">
+            <button class="btn btn-primary" (click)="agregarProducto()">Agregar Producto</button>
+          </div>
+        </div>
+
       </div>
 
       <div class="col margenes">
@@ -120,9 +131,7 @@
             [(ngModel)]="detallePedido.recordatorio"
             >
          </div>  
-
       </div>
-
     </div>
     <div class="row">
       <div class="col-4 centrado">

@@ -82,6 +82,38 @@ const catalogo = (request, response) => {
   })
 }
 
+const insertaCatalogo = (request, response) => {
+  const { id, nombre, empresa, presentacion, precio } = request.body
+  var q = `insert into catalogo (id, nombre, empresa, presentacion, precio) 
+           values
+           ('${id}', '${nombre}', '${empresa}', '${presentacion}', ${precio});`;
+  console.log(q);
+  pool.query(q, (error, results) => {
+    if (error) {
+      response.status(500).send('{"msg":"' + error + '"}');
+    }
+    response.status(200).json('{"msg":"Success"}');
+  })
+}
+
+const actualizaCatalogo = (request, response) => {
+  let errors = 0;
+  for (let i = 0; i < request.body.length; i++) {
+    const { id, nombre, empresa, presentacion, precio } = request.body;
+    var q = `update catalogo  set nombre = '${nombre}', empresa = '${empresa}', 
+              presentacion = '${presentacion}', precio = ${precio}
+              where ${id} = id`;
+    console.log(q);
+    pool.query(q, (error, results) => {
+      if (error) {
+        errors = errors + 1;
+      }
+    })
+  }
+  response.status(200).json(`{"msg":"Success", "errors": ${errors}}`);
+}
+
+
 const getmeses = (request, response) => {
   response.status(200).json(meses);
 }
@@ -363,6 +395,8 @@ module.exports = {
   pedidosMes,
   savePedidosMes,
   getmeses,
+  insertaCatalogo,
+  actualizaCatalogo,
 
   getyears,
   getdata,

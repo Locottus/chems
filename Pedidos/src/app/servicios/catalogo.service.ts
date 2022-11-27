@@ -32,4 +32,13 @@ export class CatalogoService {
       })
   }
 
+  actualizaCatalogo(catalogo: Array<Catalogo>) {
+    return this.httpClient.put('http://localhost:3000/api/catalogo', catalogo).subscribe();
+  }
+
+  insertaCatalogo(catalogo: Catalogo) {
+    return this.httpClient.post('http://localhost:3000/api/catalogo', catalogo).subscribe();
+  }
+
+
 }

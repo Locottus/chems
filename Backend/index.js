@@ -12,9 +12,11 @@ app.use(
   })
 )
 
-app.use(function(req, res, next) {
+
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Content-Type', 'application/x-www-form-urlencoded');
   next();
 });
 
@@ -23,7 +25,11 @@ app.get(`${apiURL}`, (request, response) => {
 })
 
 app.post(`${apiURL}login`, db.loginUser)
+
 app.get(`${apiURL}catalogo`, db.catalogo)
+app.post(`${apiURL}catalogo`, db.insertaCatalogo)
+app.put(`${apiURL}catalogo`, db.actualizaCatalogo)
+
 app.get(`${apiURL}pedidos-mes`, db.pedidosMes)
 app.post(`${apiURL}pedidos-mes`, db.savePedidosMes)
 
