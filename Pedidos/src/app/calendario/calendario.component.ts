@@ -36,6 +36,10 @@ export class CalendarioComponent implements OnInit {
         initialView: 'dayGridMonth',
         dateClick: this.onDateClick.bind(this),
         events: this.eventos,
+        eventClick: function(info:any) {
+          console.log('clicked',info);
+          alert(info.event._def.title);
+          }
       };
     });
 
@@ -53,13 +57,11 @@ export class CalendarioComponent implements OnInit {
   constructor(
     private servicio: ServiciosService,
     private calendarioService: CalendarioService,
-
   ) { }
 
 
   ngOnInit() {
     this.calendarioService.getPedidosCalendario('2020-01-01','2023-12-31');
-     
   }
 
 }
