@@ -33,14 +33,14 @@ export class CalendarioService {
     }).subscribe(
       data => {
         this.pedidos = data;
-        this.pedidos.forEach(e => {
+        /*this.pedidos.forEach(e => {
           let tmp = e.date.split('T')[0];
           //console.log(e.date);
           //console.log(tmp)
           //console.log( tmp.split('-')[2] + '/' + tmp.split('-')[1]  + '/' +tmp.split('-')[0] );
           e.date = tmp.split('-')[1] + '/' + tmp.split('-')[2] + '/' + tmp.split('-')[0];
 
-        })
+        })*/
         this.calendarioEmitter(this.pedidos);
       }
     );

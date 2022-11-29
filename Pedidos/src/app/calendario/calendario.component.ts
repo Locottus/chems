@@ -12,8 +12,13 @@ import { ServiciosService } from '../servicios/servicios.service';
 export class CalendarioComponent implements OnInit {
 
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
-
+  calendarOptions: CalendarOptions;
   autenticado: boolean = false;
+
+  onDateClick(res:any) {
+    alert('Clicked on date : ' + res.dateStr)
+  }
+
 
   /**
   * observable to refresh the data when the modal updates.
@@ -27,30 +32,17 @@ export class CalendarioComponent implements OnInit {
   */
      dataCalendar$ = this.calendarioService.subjectObservableCalendario$.subscribe(async (data) => {
       this.eventos = data;
-      
-      console.log(this.eventos);
+      this.calendarOptions = {
+        initialView: 'dayGridMonth',
+        dateClick: this.onDateClick.bind(this),
+        events: this.eventos,
+      };
     });
 
   eventos:Array<DetallePedido> = [];
 
-  //https://fullcalendar.io/docs/angular
-  calendarOptions: CalendarOptions = {
-    initialView: 'dayGridMonth',
-    dateClick: this.handleDateClick.bind(this), // bind is important!
-
-    events: this.eventos,
-    //events: [{"title":"event1","start":"2022-11-12 13:00:00","end":"2022-11-12 16:00:00"},
-    //{"title":"event2","start":"2022-11-28 13:00:00","end":"2022-11-28 15:00:00"}],
-
-    eventClick: function (info: any) {
-      console.log(info.event);
-      alert('Event: ' + info.event.title + ' ' + info.event.extendedProps.detalle);
-      //alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-      //alert('View: ' + info.view.type);
-    }
-  };
-
   onCalendarInit(e: any) {
+    console.log('iniciando cal')
     console.log(e);
   }
 
@@ -67,6 +59,7 @@ export class CalendarioComponent implements OnInit {
 
   ngOnInit() {
     this.calendarioService.getPedidosCalendario('2020-01-01','2023-12-31');
+     
   }
 
 }

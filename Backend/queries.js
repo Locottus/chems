@@ -121,8 +121,12 @@ const pedidosMes = (request, response) => {
   const fechaInicio = request.query.fechaInicio;
   const fechaFin = request.query.fechaFin;
   console.log(fechaInicio,fechaFin);
-  var q = `select * from pedido where date between '${fechaInicio}' and '${fechaFin}' `;
-  console.log(q);
+  var q = `
+            select
+            ID,TITLE,to_char("date", 'YYYY-MM-DD') AS DATE,
+            DETALLE,NOMBRE,TELEFONO,UBICACION,NOTA,
+            HORA,RECORDATORIO 
+            from pedido where date between '${fechaInicio}' and '${fechaFin}' `;
   pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');
