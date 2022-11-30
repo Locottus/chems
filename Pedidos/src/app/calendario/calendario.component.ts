@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 import { DetallePedido } from '../interfaces/DetallePedido';
+import { MostrarPedidoComponent } from '../pedidos/componentes/mostrar-pedido/mostrar-pedido.component';
 import { CalendarioService } from '../servicios/calendario.service';
 import { ServiciosService } from '../servicios/servicios.service';
 
@@ -9,9 +11,11 @@ import { ServiciosService } from '../servicios/servicios.service';
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css']
 })
-export class CalendarioComponent implements OnInit {
+export class CalendarioComponent implements OnInit,AfterViewInit  {
 
-  @ViewChild('calendar') calendarComponent: FullCalendarComponent;
+  @ViewChild('calendar') calendarComponent: FullCalendarComponent; 
+
+  calendarApi:any;
   calendarOptions: CalendarOptions;
   autenticado: boolean = false;
 
@@ -36,15 +40,17 @@ export class CalendarioComponent implements OnInit {
         initialView: 'dayGridMonth',
         dateClick: this.onDateClick.bind(this),
         events: this.eventos,
-        eventClick: function(info:any) {
-          console.log('clicked',info);
-          alert(info.event._def.title);
+        eventClick: (info:any) =>{
+          console.log('clicked',info.event._def);
+          //alert(info.event._def.title);
+          this.openDialog(info.event._def);
           }
       };
     });
 
   eventos:Array<DetallePedido> = [];
 
+  
   onCalendarInit(e: any) {
     console.log('iniciando cal')
     console.log(e);
@@ -57,11 +63,29 @@ export class CalendarioComponent implements OnInit {
   constructor(
     private servicio: ServiciosService,
     private calendarioService: CalendarioService,
+    public matDialog: MatDialog,
   ) { }
-
 
   ngOnInit() {
     this.calendarioService.getPedidosCalendario('2020-01-01','2023-12-31');
+  }
+
+  ngAfterViewInit(){
+    this.calendarApi = this.calendarComponent.getApi();
+    let currentDate = this.calendarApi.view.currentStart;
+    let currentDate2 = this.calendarApi.view.intervalStart;
+    console.log(currentDate); 
+    console.log(this.calendarApi);
+  }
+
+  openDialog(info:any) {
+    this.matDialog.open(MostrarPedidoComponent, 
+      { 
+        disableClose: true,
+        data: {
+          pedido: info
+        }
+      });
   }
 
 }

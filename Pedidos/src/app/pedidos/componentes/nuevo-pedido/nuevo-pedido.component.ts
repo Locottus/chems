@@ -15,14 +15,14 @@ export class NuevoPedidoComponent implements OnInit {
 
   autenticado: boolean = false;
 
-  catalogo:Catalogo = new Catalogo();
+  catalogo: Catalogo = new Catalogo();
 
-    /**
+  /**
   * observable to refresh the data when the modal updates.
   */
-     dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
-      this.autenticado = loginStatus;
-    });
+  dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
+    this.autenticado = loginStatus;
+  });
 
   constructor(
     private servicio: ServiciosService,
@@ -33,7 +33,7 @@ export class NuevoPedidoComponent implements OnInit {
   ngOnInit() {
   }
 
-  agregarCatalogo(){
+  agregarCatalogo() {
     this.catalogoService.insertaCatalogo(this.catalogo);
     alert('Actualizado');
     this.catalogo = new Catalogo();

@@ -1,0 +1,27 @@
+<div class="container centrado">
+    <div class="col centrado">
+        <button class="btn btn-primary" (click)="cerrarPedido()">Cerrar</button>
+    </div>
+
+    <h1>{{pedido.title}}</h1>
+    <p> <strong>Ubicacion:</strong> {{pedido.extendedProps.ubicacion }}</p>
+    <p> <strong>Telefono:</strong> {{pedido.extendedProps.telefono }}  </p>
+
+    <div class="col">
+        <div class="row">
+            <p></p>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="row">
+            <p>{{pedido.extendedProps.detalle}}</p>
+        </div>
+    </div>
+    <div class="col">
+        <div class="row">
+            <p><strong>nota:</strong> {{pedido.extendedProps.nota}}</p>
+            <p><strong>hora:</strong> {{pedido.extendedProps.hora}}</p>
+        </div>
+    </div>    
+</div>
