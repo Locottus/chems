@@ -60,6 +60,10 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   */
   dataLogin$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
     this.autenticado = loginStatus;
+    if (!this.autenticado){
+      this.servicio.navegaOrigen();
+    }
+
   });
 
   dataCatalogo$ = this.catalogoService.subjectObservableCatalogo$.subscribe(async (data) => {
@@ -85,9 +89,6 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     this.myInputField.nativeElement.focus();
   }
 
-  openDialog() {
-    this.matDialog.open(LoginModalComponent, { disableClose: true });
-  }
 
   onSubmit() {
     let msg: string = `\nNombre: ${this.detallePedido.nombre}\nTelefono: ${this.detallePedido.telefono}\nUbicacion: ${this.detallePedido.ubicacion}\n`;
@@ -107,7 +108,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   onLogout() {
     this.autenticado = false;
     this.reset();
-    this.openDialog();
+    this.servicio.openDialog();
   }
 
   /**

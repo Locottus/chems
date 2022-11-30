@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable, shareReplay, tap } from 'rxjs';
+import { LoginModalComponent } from '../login-modal/login-modal.component';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,8 @@ export class ServiciosService {
   subjectObservable$ = this.behaviorSubject.asObservable();
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private matDialog: MatDialog
   ) {
     //this.getJSON();
   }
@@ -35,4 +38,11 @@ export class ServiciosService {
     this.behaviorSubject.next(false);
   }
 
+  openDialog() {
+    this.matDialog.open(LoginModalComponent, { disableClose: true });
+  }
+
+  navegaOrigen(){
+    window.location.href = '/';
+  }
 }

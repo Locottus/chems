@@ -22,6 +22,10 @@ export class NuevoPedidoComponent implements OnInit {
   */
   dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
     this.autenticado = loginStatus;
+    if (!this.autenticado){
+      this.servicio.navegaOrigen();
+    }
+
   });
 
   constructor(

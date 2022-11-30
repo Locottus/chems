@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { ServiciosService } from '../servicios/servicios.service';
 
 @Component({
@@ -7,7 +9,7 @@ import { ServiciosService } from '../servicios/servicios.service';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, AfterViewInit {
 
   autenticado: boolean = false;
   /**
@@ -15,15 +17,34 @@ export class MenuComponent implements OnInit {
   */
   dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
     this.autenticado = loginStatus;
+
+    if (!this.autenticado){
+      this.openDialog();
+    }
   });
 
   constructor( 
+    private matDialog: MatDialog,
     private servicio: ServiciosService,
     private router: Router
     ) { }
-
-  ngOnInit(): void {
+  
+  
+  ngAfterViewInit() {
+    if (!this.autenticado){
+      this.openDialog();
+    }
+    
   }
+
+  ngOnInit() {
+
+  }
+
+  openDialog() {
+    this.matDialog.open(LoginModalComponent, { disableClose: true });
+  }
+
 
   //https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
   navegacion(ruta:string){

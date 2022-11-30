@@ -21,6 +21,11 @@ export class LoginModalComponent  {
   */
   dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
     this.autenticado = loginStatus;
+    if (this.autenticado)
+      this.dialogRef.close();
+    else
+      this.showError('Ingrese Credenciales');
+
   });
 
 
@@ -32,10 +37,6 @@ export class LoginModalComponent  {
   validar() {
     this.servicio.login(this.usr.toLowerCase(),this.pwd);
 
-    if (this.autenticado)
-      this.dialogRef.close();
-    else
-      this.showError('credenciales incorrectas');
   }
 
   showError(msg: string) {

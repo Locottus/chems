@@ -5,6 +5,7 @@ import { DetallePedido } from '../interfaces/DetallePedido';
 import { MostrarPedidoComponent } from '../pedidos/componentes/mostrar-pedido/mostrar-pedido.component';
 import { CalendarioService } from '../servicios/calendario.service';
 import { ServiciosService } from '../servicios/servicios.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-calendario',
@@ -18,11 +19,33 @@ export class CalendarioComponent implements OnInit,AfterViewInit  {
   calendarApi:any;
   calendarOptions: CalendarOptions;
   autenticado: boolean = false;
+  /**
+  * observable to refresh the data when the modal updates.
+  */
+  dataLogin$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
+    this.autenticado = loginStatus;
+    if (!this.autenticado){
+      this.servicio.navegaOrigen();
+    }
+  });
+
+  constructor(
+    private servicio: ServiciosService,
+    private calendarioService: CalendarioService,
+    public matDialog: MatDialog,
+    
+  ) { }
+
+  
+
+  ngOnInit() {
+    this.calendarioService.getPedidosCalendario('2020-01-01','2023-12-31');
+  }
+
 
   onDateClick(res:any) {
     alert('Clicked on date : ' + res.dateStr)
   }
-
 
   /**
   * observable to refresh the data when the modal updates.
@@ -60,15 +83,7 @@ export class CalendarioComponent implements OnInit,AfterViewInit  {
     alert('date click! ' + arg.dateStr)
   }
 
-  constructor(
-    private servicio: ServiciosService,
-    private calendarioService: CalendarioService,
-    public matDialog: MatDialog,
-  ) { }
 
-  ngOnInit() {
-    this.calendarioService.getPedidosCalendario('2020-01-01','2023-12-31');
-  }
 
   ngAfterViewInit(){
     this.calendarApi = this.calendarComponent.getApi();
