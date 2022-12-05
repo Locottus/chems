@@ -100,6 +100,7 @@ export class GridCalendarioComponent implements OnInit {
   }
 
   excel() {
-
+    this.gridApi.exportDataAsCsv();
+    //this.gridApi.exportDataAsExcel({});
   }
 }
