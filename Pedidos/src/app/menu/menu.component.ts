@@ -58,6 +58,9 @@ export class MenuComponent implements OnInit, AfterViewInit {
       case 'nuevo-producto':
         this.router.navigateByUrl('/nuevo-producto')
         break;
+      case 'historicos':
+        this.router.navigateByUrl('/grid-calendario')
+        break;
   
     }
   }
