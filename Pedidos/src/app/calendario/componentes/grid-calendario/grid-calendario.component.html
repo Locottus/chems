@@ -1,0 +1,50 @@
+<div class="container" >
+    <!--
+    <app-menu></app-menu>
+    -->
+    <div class="centrado">
+        <div class="row">
+            <div class="col-sm-6">
+                <label>Fecha de Inicio</label>
+                <input 
+                  type="date" 
+                  class="date form-control" 
+                  id="Fecha" 
+                  name="Fecha"
+                  [(ngModel)]="fechaInicio"
+                >      
+            </div>
+            <div class="col-sm-6">
+                <label>Fecha de Fin</label>
+                <input 
+                  type="date" 
+                  class="date form-control" 
+                  id="Fecha" 
+                  name="Fecha"
+                  [(ngModel)]="fechaFin"
+                >
+            </div>
+        </div>
+
+        <button class="btn btn-primary" (click)="obtienePedidos()" >Cargar Pedidos</button>
+
+        <ag-grid-angular
+        id="agGrid"
+        #topGrid
+        class="ag-theme-alpine"
+        style="width: 100%; height: 450px;"
+        [rowData]="rowData"
+        [columnDefs]="columnDefs"
+        [animateRows]="true"
+        (firstDataRendered)="onFirstDataRendered($event)"
+        [groupDisplayType]="groupDisplayType"
+        (gridReady)="onGridReady($event)"
+        [defaultColDef]="defaultColDef"
+        (cellValueChanged)="onCellValueChanged($event)"      
+        ></ag-grid-angular>
+        
+        <button class="btn btn-primary" (click)="excel()" >Excel</button>
+
+    </div>
+</div>
+

@@ -125,8 +125,9 @@ const pedidosMes = (request, response) => {
             select
             ID,TITLE,to_char("date", 'YYYY-MM-DD') AS DATE,
             DETALLE,NOMBRE,TELEFONO,UBICACION,NOTA,
-            HORA,RECORDATORIO 
-            from pedido where date between '${fechaInicio}' and '${fechaFin}' `;
+            HORA,RECORDATORIO  
+            from pedido where date between '${fechaInicio}' and '${fechaFin}'  
+            order by date asc `;
   pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');
