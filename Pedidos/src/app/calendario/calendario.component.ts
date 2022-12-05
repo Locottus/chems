@@ -46,7 +46,7 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
       dateClick: this.onDateClick.bind(this),
       events: this.eventos,
       eventClick: (info: any) => {
-        console.log('clicked', info.event._def);
+        //console.log('clicked', info.event._def);
         //alert(info.event._def.title);
         this.openDialog(info.event._def);
       }
@@ -79,12 +79,11 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
 
 
   onCalendarInit(e: any) {
-    console.log('iniciando cal')
-    console.log(e);
+    //console.log(e);
   }
 
   handleDateClick(arg: any) {
-    alert('date click! ' + arg.dateStr)
+    //alert('date click! ' + arg.dateStr)
   }
 
 
@@ -93,8 +92,8 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
     this.calendarApi = this.calendarComponent.getApi();
     let currentDate = this.calendarApi.view.currentStart;
     let currentDate2 = this.calendarApi.view.intervalStart;
-    console.log(currentDate);
-    console.log(this.calendarApi);
+    //console.log(currentDate);
+    //console.log(this.calendarApi);
   }
 
   openDialog(info: any) {
