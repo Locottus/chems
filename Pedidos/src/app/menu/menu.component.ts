@@ -9,7 +9,7 @@ import { ServiciosService } from '../servicios/servicios.service';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit, AfterViewInit {
+export class MenuComponent implements  AfterViewInit {
 
   autenticado: boolean = false;
   /**
@@ -37,9 +37,6 @@ export class MenuComponent implements OnInit, AfterViewInit {
     
   }
 
-  ngOnInit() {
-
-  }
 
   openDialog() {
     this.matDialog.open(LoginModalComponent, { disableClose: true });

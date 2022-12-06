@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css']
 })
-export class CalendarioComponent implements OnInit, AfterViewInit {
+export class CalendarioComponent implements  AfterViewInit {
 
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
 
@@ -56,18 +56,12 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
 
   eventos: Array<DetallePedido> = [];
 
-
   constructor(
     private servicio: ServiciosService,
     private calendarioService: CalendarioService,
     public matDialog: MatDialog,
-
   ) { }
 
-
-
-  ngOnInit() {
-  }
 
   cargaFechasCalendario(dateStart: Date, dateEnd: Date) {
     //const date = new Date();
@@ -75,6 +69,8 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
       this.calendarioService.addDaysToDate(dateStart, 0),
       this.calendarioService.addDaysToDate(dateEnd, 0));
   }
+
+
   handleDates(args: any) {
     //aqui puedo recargar el calendario
     let fechaStart = new Date(args.startStr.toString().split('T')[0]);
@@ -82,9 +78,9 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
 
     this.cargaFechasCalendario(fechaStart, fechaEnd);
 
-    console.log('************************', fechaStart);
-    console.log('************************', fechaEnd);
-    console.log(args);
+    //console.log('************************', fechaStart);
+    //console.log('************************', fechaEnd);
+    //console.log(args);
   }
 
   onDateClick(res: any) {
@@ -120,7 +116,5 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
         }
       });
   }
-
-
 
 }

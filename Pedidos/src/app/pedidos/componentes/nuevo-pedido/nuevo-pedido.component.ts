@@ -9,7 +9,7 @@ import { ServiciosService } from 'src/app/servicios/servicios.service';
   templateUrl: './nuevo-pedido.component.html',
   styleUrls: ['./nuevo-pedido.component.css']
 })
-export class NuevoPedidoComponent implements OnInit {
+export class NuevoPedidoComponent  {
   errorLogin: boolean = true;
   errorMsg: string = "";
 
@@ -33,9 +33,6 @@ export class NuevoPedidoComponent implements OnInit {
     private pedidosService: PedidosService,
     private catalogoService: CatalogoService
   ) { }
-
-  ngOnInit() {
-  }
 
   agregarCatalogo() {
     this.catalogoService.insertaCatalogo(this.catalogo);

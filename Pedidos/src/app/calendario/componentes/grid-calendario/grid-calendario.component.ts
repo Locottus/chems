@@ -12,7 +12,7 @@ import { ServiciosService } from 'src/app/servicios/servicios.service';
   templateUrl: './grid-calendario.component.html',
   styleUrls: ['./grid-calendario.component.css']
 })
-export class GridCalendarioComponent implements OnInit {
+export class GridCalendarioComponent  {
   @ViewChild("myInputFocus") myInputField: ElementRef;
   @ViewChild('topGrid') agGrid!: AgGridAngular;
 
@@ -78,8 +78,6 @@ export class GridCalendarioComponent implements OnInit {
     public matDialog: MatDialog,
   ) { }
 
-  ngOnInit(): void {
-  }
 
   /**
 * event function for ag-grid
