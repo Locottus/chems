@@ -49,7 +49,8 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
         //console.log('clicked', info.event._def);
         //alert(info.event._def.title);
         this.openDialog(info.event._def);
-      }
+      },
+      datesSet: this.handleDates.bind(this),
     };
   });
 
@@ -66,12 +67,25 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit() {
-    const date = new Date();
-    this.calendarioService.getPedidosCalendario(
-      this.addDaysToDate(date, -15),
-      this.addDaysToDate(date, +30));
   }
 
+  cargaFechasCalendario(dateStart: Date, dateEnd: Date) {
+    //const date = new Date();
+    this.calendarioService.getPedidosCalendario(
+      this.calendarioService.addDaysToDate(dateStart, 0),
+      this.calendarioService.addDaysToDate(dateEnd, 0));
+  }
+  handleDates(args: any) {
+    //aqui puedo recargar el calendario
+    let fechaStart = new Date(args.startStr.toString().split('T')[0]);
+    let fechaEnd = new Date(args.endStr.toString().split('T')[0]);
+
+    this.cargaFechasCalendario(fechaStart, fechaEnd);
+
+    console.log('************************', fechaStart);
+    console.log('************************', fechaEnd);
+    console.log(args);
+  }
 
   onDateClick(res: any) {
     alert('Clicked on date : ' + res.dateStr)
@@ -89,11 +103,12 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit() {
+
     this.calendarApi = this.calendarComponent.getApi();
     let currentDate = this.calendarApi.view.currentStart;
-    let currentDate2 = this.calendarApi.view.intervalStart;
-    //console.log(currentDate);
-    //console.log(this.calendarApi);
+
+    console.log(currentDate); // result: current calendar start date
+
   }
 
   openDialog(info: any) {
@@ -107,16 +122,5 @@ export class CalendarioComponent implements OnInit, AfterViewInit {
   }
 
 
-  taskDate(dateMilli: string) {
-    var d = (new Date(dateMilli) + '').split(' ');
-    d[2] = d[2] + ',';
-
-    return [d[0], d[1], d[2], d[3]].join(' ');
-  }
-
-  addDaysToDate(date: Date, days: number): string {
-    date.setDate(date.getDate() + days);
-    return this.taskDate(date.toString());
-  }
 
 }

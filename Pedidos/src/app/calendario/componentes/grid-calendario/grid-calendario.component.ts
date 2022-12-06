@@ -52,6 +52,18 @@ export class GridCalendarioComponent implements OnInit {
   fechaInicio: string = "";
   fechaFin: string = "";
 
+  autenticado: boolean = false;
+  /**
+  * observable to refresh the data when the modal updates.
+  */
+   dataLogin$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
+    this.autenticado = loginStatus;
+    if (!this.autenticado) {
+      this.servicio.navegaOrigen();
+    }
+  });
+
+
   /**
 * observable to refresh the data when the modal updates.
 */
