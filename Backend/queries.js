@@ -87,7 +87,6 @@ const insertaCatalogo = (request, response) => {
   var q = `insert into catalogo (id, nombre, empresa, presentacion, precio) 
            values
            ('${id}', '${nombre}', '${empresa}', '${presentacion}', ${precio});`;
-  console.log(q);
   pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');
@@ -120,7 +119,7 @@ const getmeses = (request, response) => {
 const pedidosMes = (request, response) => {
   const fechaInicio = request.query.fechaInicio;
   const fechaFin = request.query.fechaFin;
-  console.log(fechaInicio,fechaFin);
+  //console.log(fechaInicio,fechaFin);
   var q = `
             select
             ID,TITLE,to_char("date", 'YYYY-MM-DD') AS DATE,
@@ -148,7 +147,6 @@ const savePedidosMes = (request, response) => {
     response.status(200).json('{"msg":"Success"}');
   })
 }
-
 
 module.exports = {
   loginUser,
