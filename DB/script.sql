@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS public."pedido"
     ubicacion text COLLATE pg_catalog."default",
     nota text COLLATE pg_catalog."default",
     hora text COLLATE pg_catalog."default",
+    detallejson text COLLATE pg_catalog."default" NOT NULL,
     recordatorio numeric
 )
 
@@ -61,4 +62,22 @@ TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.catalogo
     OWNER to postgres;	
+
+
+
+-- Table: public.detalle-pedido
+
+-- DROP TABLE IF EXISTS public."detalle-pedido";
+
+CREATE TABLE IF NOT EXISTS public."detalle-pedido"
+(
+    id numeric NOT NULL,
+    detalle text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "detalle-pedido_pkey" PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."detalle-pedido"
+    OWNER to postgres;
 

@@ -93,14 +93,20 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   onSubmit() {
     let msg: string = `\nNombre: ${this.detallePedido.nombre}\nTelefono: ${this.detallePedido.telefono}\nUbicacion: ${this.detallePedido.ubicacion}\n`;
     let detalle: string = "";
+    let detalleJson: Array<any> = [];
     for (let i = 0; i < this.rowData.length; i++) {
       if (this.rowData[i].cantidad > 0) {
         detalle = `Producto: ${this.rowData[i].nombre} Presentacion: ${this.rowData[i].presentacion} Cantidad: ${this.rowData[i].cantidad}\n` + detalle;
+        detalleJson.push({
+          Producto: this.rowData[i].nombre,
+          Presentacion: this.rowData[i].presentacion,
+          Cantidad: this.rowData[i].cantidad
+        });
       }
     }
     msg = msg + `\nNota:${this.detallePedido.nota}\n${detalle}\n${this.detallePedido.date}\n${this.detallePedido.hora}\n`;
-    console.log(msg);
     this.detallePedido.detalle = detalle;
+    this.detallePedido.detalleJson = detalleJson;
     this.pedidosService.guardaPedido(this.detallePedido);
     this.reset();
   }

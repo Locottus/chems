@@ -7,5 +7,6 @@ export class DetallePedido {
     public ubicacion: string;
     public nota: string;
     public hora: string;
-    public recordatorio: number = 0;
+    public recordatorio: number = 1;
+    public detalleJson: Array<any> = [];
 }
