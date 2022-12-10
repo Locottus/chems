@@ -1,62 +1,62 @@
 const Pool = require('pg').Pool
 
- const pool = new Pool({
-   user: 'postgres',
-   host: '127.0.0.1',
-   database: 'chemita',
-   password: 'Guatemala1',
-   port: 5432,
- });
+const pool = new Pool({
+  user: 'postgres',
+  host: '127.0.0.1',
+  database: 'chemita',
+  password: 'Guatemala1',
+  port: 5432,
+});
 
 
 const meses = [
   {
-      "mes": "Enero",
-      "id": "1",
+    "mes": "Enero",
+    "id": "1",
   },
   {
-      "mes": "Febrero",
-      "id": "2",
+    "mes": "Febrero",
+    "id": "2",
   },
   {
-      "mes": "Marzo",
-      "id": "3",
+    "mes": "Marzo",
+    "id": "3",
   },
   {
-      "mes": "Abril",
-      "id": "4",
+    "mes": "Abril",
+    "id": "4",
   },
   {
-      "mes": "Mayo",
-      "id": "5",
+    "mes": "Mayo",
+    "id": "5",
   },
   {
-      "mes": "Junio",
-      "id": "6",
+    "mes": "Junio",
+    "id": "6",
   },
   {
-      "mes": "Julio",
-      "id": "7",
+    "mes": "Julio",
+    "id": "7",
   },
   {
-      "mes": "Agosto",
-      "id": "8",
+    "mes": "Agosto",
+    "id": "8",
   },
   {
-      "mes": "Septiembre",
-      "id": "9",
+    "mes": "Septiembre",
+    "id": "9",
   },
   {
-      "mes": "Octubre",
-      "id": "10",
+    "mes": "Octubre",
+    "id": "10",
   },
   {
-      "mes": "Noviembre",
-      "id": "11",
+    "mes": "Noviembre",
+    "id": "11",
   },
   {
-      "mes": "Diciembre",
-      "id": "12",
+    "mes": "Diciembre",
+    "id": "12",
   },
 ];
 
@@ -124,7 +124,7 @@ const pedidosMes = (request, response) => {
             select
             ID,TITLE,to_char("date", 'YYYY-MM-DD') AS DATE,
             DETALLE,NOMBRE,TELEFONO,UBICACION,NOTA,
-            HORA,RECORDATORIO  
+            HORA,RECORDATORIO,TOTAL  
             from pedido where date between '${fechaInicio}' and '${fechaFin}'  
             order by date asc `;
   pool.query(q, (error, results) => {
@@ -136,11 +136,11 @@ const pedidosMes = (request, response) => {
 }
 
 const savePedidosMes = (request, response) => {
-  const { title, date, detalle, nombre, telefono, ubicacion, nota, hora, recordatorio, detalleJson } = request.body
-  var q = `insert into pedido (title, date, detalle, nombre, telefono, ubicacion, nota, hora, recordatorio, detalleJson) 
+  const { title, date, detalle, nombre, telefono, ubicacion, nota, hora, recordatorio, detalleJson, total } = request.body
+  var q = `insert into pedido (title, date, detalle, nombre, telefono, ubicacion, nota, hora, recordatorio, detalleJson, total) 
            values
-           ('${title}', '${date}', '${detalle}', '${nombre}', '${telefono}', '${ubicacion}', '${nota}', '${hora}', '${recordatorio}', '${JSON.stringify(detalleJson)}');`;
-    pool.query(q, (error, results) => {
+           ('${title}', '${date}', '${detalle}', '${nombre}', '${telefono}', '${ubicacion}', '${nota}', '${hora}', '${recordatorio}', '${JSON.stringify(detalleJson)}', '${total}');`;
+  pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');
     }
@@ -156,5 +156,5 @@ module.exports = {
   getmeses,
   insertaCatalogo,
   actualizaCatalogo,
-  }
-  
+}
+

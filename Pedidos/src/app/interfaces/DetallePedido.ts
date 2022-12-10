@@ -9,4 +9,5 @@ export class DetallePedido {
     public hora: string;
     public recordatorio: number = 1;
     public detalleJson: Array<any> = [];
+    public total:number;
 }

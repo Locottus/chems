@@ -33,8 +33,9 @@ CREATE TABLE IF NOT EXISTS public."pedido"
     ubicacion text COLLATE pg_catalog."default",
     nota text COLLATE pg_catalog."default",
     hora text COLLATE pg_catalog."default",
-    detallejson text COLLATE pg_catalog."default" NOT NULL,
-    recordatorio numeric
+    detallejson text COLLATE pg_catalog."default",
+    recordatorio numeric,
+    total numeric
 )
 
 TABLESPACE pg_default;

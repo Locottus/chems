@@ -94,19 +94,28 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     let msg: string = `\nNombre: ${this.detallePedido.nombre}\nTelefono: ${this.detallePedido.telefono}\nUbicacion: ${this.detallePedido.ubicacion}\n`;
     let detalle: string = "";
     let detalleJson: Array<any> = [];
+    let total: number = 0;
     for (let i = 0; i < this.rowData.length; i++) {
       if (this.rowData[i].cantidad > 0) {
-        detalle = `Producto: ${this.rowData[i].nombre} Presentacion: ${this.rowData[i].presentacion} Cantidad: ${this.rowData[i].cantidad}\n` + detalle;
+
+        total = this.rowData[i].cantidad * this.rowData[i].precio + total;
+        let subtotal = this.rowData[i].cantidad * this.rowData[i].precio;
+
         detalleJson.push({
           Producto: this.rowData[i].nombre,
           Presentacion: this.rowData[i].presentacion,
-          Cantidad: this.rowData[i].cantidad
+          Cantidad: this.rowData[i].cantidad,
+          Subtotal: subtotal
         });
+
+        detalle = `Producto: ${this.rowData[i].nombre} Presentacion: ${this.rowData[i].presentacion} Cantidad: ${this.rowData[i].cantidad} SubTotal: ${subtotal} \n` + detalle;
+
       }
     }
-    msg = msg + `\nNota:${this.detallePedido.nota}\n${detalle}\n${this.detallePedido.date}\n${this.detallePedido.hora}\n`;
+    detalle = msg + `\nNota:${this.detallePedido.nota}\n${detalle}\n${this.detallePedido.date}\n${this.detallePedido.hora}\nTOTAL: ${total}\n`;
     this.detallePedido.detalle = detalle;
     this.detallePedido.detalleJson = detalleJson;
+    this.detallePedido.total = total;
     this.pedidosService.guardaPedido(this.detallePedido);
     this.reset();
   }
