@@ -9,13 +9,13 @@ import { NuevoPedidoComponent } from './pedidos/componentes/nuevo-pedido/nuevo-p
 import { PedidosComponent } from './pedidos/pedidos.component';
 
 const routes: Routes = [
-  { path: 'calendario', component: CalendarioComponent,canActivate:[AuthGuard] },
-  { path: 'pedidos', component: PedidosComponent,canActivate:[AuthGuard] },
-  { path: 'nuevo-producto', component: NuevoPedidoComponent,canActivate:[AuthGuard] },
-  { path: 'grid-calendario', component: GridCalendarioComponent,canActivate:[AuthGuard] },
+  { path: 'calendario', component: CalendarioComponent, canActivate: [AuthGuard] },
+  { path: 'pedidos', component: PedidosComponent, canActivate: [AuthGuard] },
+  { path: 'nuevo-producto', component: NuevoPedidoComponent, canActivate: [AuthGuard] },
+  { path: 'grid-calendario', component: GridCalendarioComponent, canActivate: [AuthGuard] },
   { path: '', component: MenuComponent },
-  { path: '**', component: NotFoundComponent },
-  
+  { path: '**', component: NotFoundComponent, canActivate: [AuthGuard] },
+
 ];
 
 @NgModule({
