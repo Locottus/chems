@@ -11,6 +11,7 @@ import { ServiciosService } from '../servicios/servicios.service';
 })
 export class MenuComponent implements  AfterViewInit {
 
+  
   autenticado: boolean = false;
   /**
   * observable to refresh the data when the modal updates.

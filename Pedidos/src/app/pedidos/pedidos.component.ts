@@ -54,17 +54,17 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
   rowData: Array<Catalogo> = [];
 
-  autenticado: boolean = false;
+  //autenticado: boolean = false;
   /**
   * observable to refresh the data when the modal updates.
   */
-  dataLogin$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
+  /*dataLogin$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
     this.autenticado = loginStatus;
     if (!this.autenticado){
       this.servicio.navegaOrigen();
     }
 
-  });
+  });*/
 
   dataCatalogo$ = this.catalogoService.subjectObservableCatalogo$.subscribe(async (data) => {
     this.rowData = data;
@@ -120,12 +120,12 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     this.reset();
   }
 
-  onLogout() {
-    this.autenticado = false;
+/*  onLogout() {
+    //this.autenticado = false;
     this.reset();
     this.servicio.openDialog();
   }
-
+*/
   /**
  * event function for ag-grid
  * @param params 

@@ -13,21 +13,21 @@ export class NuevoPedidoComponent  {
   errorLogin: boolean = true;
   errorMsg: string = "";
 
-  autenticado: boolean = false;
+  //autenticado: boolean = false;
 
   catalogo: Catalogo = new Catalogo();
 
   /**
   * observable to refresh the data when the modal updates.
   */
-  dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
+  /*dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
     this.autenticado = loginStatus;
     if (!this.autenticado){
       this.servicio.navegaOrigen();
     }
 
   });
-
+*/
   constructor(
     private servicio: ServiciosService,
     private pedidosService: PedidosService,

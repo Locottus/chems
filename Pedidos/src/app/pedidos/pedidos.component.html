@@ -1,4 +1,4 @@
-<div class="container" *ngIf="autenticado">
+<div class="container" >
   <app-menu></app-menu>
   <div class="centrado">]
     
@@ -132,16 +132,17 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-4 centrado">
+      <div class="col-6 centrado">
         <button class="btn btn-primary" (click)="onSubmit()">Salvar</button>
       </div>  
-      <div class="col-4 centrado">
+      <div class="col-6 centrado">
         <button class="btn btn-warning" (click)="reset()">Limpiar</button>
       </div>  
+      <!--
       <div class="col-4 centrado">
         <button class="btn btn-danger" (click)="onLogout()">Salir</button>
       </div>  
     </div>
-
+    -->
 </div>
 <br/>
