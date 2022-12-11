@@ -18,24 +18,24 @@ export class CalendarioComponent implements  AfterViewInit {
 
   calendarApi: any;
   calendarOptions: CalendarOptions;
-  autenticado: boolean = false;
+  //autenticado: boolean = false;
   /**
   * observable to refresh the data when the modal updates.
   */
-  dataLogin$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
+  /*dataLogin$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
     this.autenticado = loginStatus;
     if (!this.autenticado) {
       this.servicio.navegaOrigen();
     }
-  });
+  });*/
 
   /**
 * observable to refresh the data when the modal updates.
 */
-  dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
+/*  dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
     this.autenticado = loginStatus;
   });
-
+*/
   /**
   * observable to refresh the data when the modal updates.
   */
@@ -77,10 +77,6 @@ export class CalendarioComponent implements  AfterViewInit {
     let fechaEnd = new Date(args.endStr.toString().split('T')[0]);
 
     this.cargaFechasCalendario(fechaStart, fechaEnd);
-
-    //console.log('************************', fechaStart);
-    //console.log('************************', fechaEnd);
-    //console.log(args);
   }
 
   onDateClick(res: any) {
