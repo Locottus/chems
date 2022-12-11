@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-mostrar-pedido',
@@ -8,7 +8,9 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class MostrarPedidoComponent implements OnInit {
 
-  pedido:any;
+  pedido: any;
+  lista: Array<string> = [];
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<MostrarPedidoComponent>,
@@ -16,11 +18,16 @@ export class MostrarPedidoComponent implements OnInit {
 
   ngOnInit() {
     this.pedido = this.data.pedido;
+    this.lista = this.pedido.extendedProps.detalle.toString().split('\n');
   }
 
-  cerrarPedido(){
+  cerrarPedido() {
     //this.cerrar.emit(true);
     this.dialogRef.close();
+  }
+
+  imprimir() {
+    window.print();
   }
 
 }

@@ -1,3 +1,8 @@
 .centrado{
     text-align: center;
 }
+
+.scroll_div{
+    overflow-y: auto;
+    max-height: 500px;
+}

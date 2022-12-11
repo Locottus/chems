@@ -37,8 +37,8 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
   columnDefs: ColDef[] = [
     { field: 'id', hide: false, maxWidth: 100, },
-    { field: 'nombre', hide: false,editable: true },
-    { field: 'empresa', hide: false,editable: true },
+    { field: 'nombre', hide: false, editable: true },
+    { field: 'empresa', hide: false, editable: true },
     { field: 'presentacion', hide: false, editable: true, },
     { field: 'cantidad', hide: false, editable: true, },
     { field: 'precio', hide: false, editable: true, },
@@ -120,12 +120,12 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     this.reset();
   }
 
-/*  onLogout() {
-    //this.autenticado = false;
-    this.reset();
-    this.servicio.openDialog();
-  }
-*/
+  /*  onLogout() {
+      //this.autenticado = false;
+      this.reset();
+      this.servicio.openDialog();
+    }
+  */
   /**
  * event function for ag-grid
  * @param params 
@@ -156,14 +156,14 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     this.myInputField.nativeElement.focus();
   }
 
-  agregarProducto(){
+  agregarProducto() {
     //TODO
     //this.catalogoService.insertaCatalogo(this.rowData);
   }
 
-  Actualizar(){
-   this.catalogoService.actualizaCatalogo(this.rowData);
-   alert('Actualizado');
-   
+  Actualizar() {
+    this.catalogoService.actualizaCatalogo(this.rowData);
+    alert('Actualizado');
+
   }
 }

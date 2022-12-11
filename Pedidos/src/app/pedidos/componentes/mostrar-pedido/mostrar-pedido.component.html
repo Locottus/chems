@@ -1,27 +1,33 @@
-<div class="container centrado" >
-    <div class="col centrado">
-        <button class="btn btn-primary" (click)="cerrarPedido()">Cerrar</button>
-    </div>
-
-    <h1>{{pedido.title}}</h1>
-    <p> <strong>Ubicacion:</strong> {{pedido.extendedProps.ubicacion }}</p>
-    <p> <strong>Telefono:</strong> {{pedido.extendedProps.telefono }}  </p>
-
+<div class="container centrado ">
     <div class="col">
         <div class="row">
-            <p></p>
+            <button class="btn btn-primary" (click)="cerrarPedido()">Cerrar</button>
         </div>
     </div>
+    <br />
+    <div class="col">
+        <div class="row">
+            <button class="btn btn-warning" (click)="imprimir()">Imprimir</button>
+        </div>
+    </div>
+    <br />
+    <div class=" scroll_div">
+        <h1>{{pedido.title}}</h1>
+        <p> <strong>Ubicacion:</strong> {{pedido.extendedProps.ubicacion }}</p>
+        <p> <strong>Telefono:</strong> {{pedido.extendedProps.telefono }} </p>
 
-    <div class="col">
-        <div class="row">
-            <p>{{pedido.extendedProps.detalle}}</p>
+        <div class="col ">
+            <div class="row" *ngFor="let item of lista">
+                <!--<p>{{pedido.extendedProps.detalle}}</p>-->
+                <p>{{item}}</p>
+            </div>
         </div>
+        <div class="col">
+            <div class="row">
+                <p><strong>Nota:</strong> {{pedido.extendedProps.nota}}</p>
+                <p><strong>Hora de entrega:</strong> {{pedido.extendedProps.hora}}</p>
+            </div>
+        </div>
+        <br/>
     </div>
-    <div class="col">
-        <div class="row">
-            <p><strong>nota:</strong> {{pedido.extendedProps.nota}}</p>
-            <p><strong>hora:</strong> {{pedido.extendedProps.hora}}</p>
-        </div>
-    </div>    
 </div>
