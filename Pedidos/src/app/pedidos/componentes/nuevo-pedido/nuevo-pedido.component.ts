@@ -36,7 +36,7 @@ export class NuevoPedidoComponent  {
 
   agregarCatalogo() {
     this.catalogoService.insertaCatalogo(this.catalogo);
-    alert('Actualizado');
+    //alert('Actualizado');
     this.catalogo = new Catalogo();
   }
 

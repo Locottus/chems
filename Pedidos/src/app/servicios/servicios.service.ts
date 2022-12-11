@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable, shareReplay, tap } from 'rxjs';
+import { Usuario } from '../interfaces/Usuario';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 
 @Injectable({
@@ -32,6 +33,17 @@ export class ServiciosService {
       this.loginStatus((data.length > 0 && data[0].activo == 1 ? true : false));
     })
   }
+
+  async nuevoUsuario(usuario: Usuario) {
+    this.httpClient.post<Usuario>('http://localhost:3000/api/usuarios', usuario)
+    .subscribe(data => {
+
+      //console.log(data);
+      alert(data);
+      //this.loginStatus((data.length > 0 && data[0].activo == 1 ? true : false));
+    })
+  }
+
 
   logout() {
     this.behaviorSubject.next(false);

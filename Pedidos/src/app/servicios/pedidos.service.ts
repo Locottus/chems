@@ -13,7 +13,9 @@ export class PedidosService {
   ) { }
 
   guardaPedido(pedido: DetallePedido) {
-    return this.httpClient.post('http://localhost:3000/api/pedidos-mes', pedido).subscribe();
+    this.httpClient.post('http://localhost:3000/api/pedidos-mes', pedido).subscribe(data =>{
+      alert(data);
+    });
   }
 
 }

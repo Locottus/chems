@@ -1,14 +1,19 @@
-<ag-grid-angular
-id="agGrid"
-#topGrid
-class="ag-theme-alpine"
-style="width: 100%; height: 450px;"
-[rowData]="rowData"
-[columnDefs]="columnDefs"
-[animateRows]="true"
-(firstDataRendered)="onFirstDataRendered($event)"
-[groupDisplayType]="groupDisplayType"
-(gridReady)="onGridReady($event)"
-[defaultColDef]="defaultColDef"
-(cellValueChanged)="onCellValueChanged($event)"      
-></ag-grid-angular>    
+<div class="container">
+    <h1>Administracion de Usuarios</h1>
+    
+    <ag-grid-angular
+    id="agGrid"
+    #topGrid
+    class="ag-theme-alpine"
+    style="width: 100%; height: 450px;"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    [animateRows]="true"
+    (firstDataRendered)="onFirstDataRendered($event)"
+    [groupDisplayType]="groupDisplayType"
+    (gridReady)="onGridReady($event)"
+    [defaultColDef]="defaultColDef"
+    (cellValueChanged)="onCellValueChanged($event)"      
+    ></ag-grid-angular>    
+    
+</div>

@@ -2,14 +2,24 @@
     <label for="exampleInputEmail1">Direccion de correo</label>
     <input type="email" class="form-control" id="exampleInputEmail1" [(ngModel)]="usr" aria-describedby="emailHelp"
         placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">Nunca comparta este usuario con nadie mas.</small>
+    <small id="emailHelp" class="form-text text-muted">No comparta este usuario.</small>
 </div>
 <div class="form-group">
     <label for="exampleInputPassword1">Clave de acceso</label>
     <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="pwd" placeholder="Password">
+
+    <label for="exampleInputPassword2" [hidden]="!isCreation" >Escriba nuevamente la clave de acceso</label>    
+    <input type="password" [hidden]="!isCreation" class="form-control" id="exampleInputPassword2" [(ngModel)]="pwd2" placeholder="Password">
+
+    <label for="exampleInputNombre" [hidden]="!isCreation" >Escriba el nombre del Usuario</label>    
+    <input type="text" [hidden]="!isCreation" class="form-control" id="nombre" [(ngModel)]="nombre" placeholder="Nombre del Usuario">
+
 </div>
 <br />
-<button class="btn btn-primary" (click)="validar()">Submit</button>
+<button class="btn btn-primary" [hidden]="isCreation" (click)="validar()">Submit</button>
+
+<button class="btn btn-warning" [hidden]="!isCreation" (click)="cerrar()">Cerrar</button>
+<button class="btn btn-danger" [hidden]="!isCreation" (click)="crearUsuario()">Crear Usuario</button>
 
 <div *ngIf="!errorLogin" class="alert alert-danger" role="alert">
     {{errorMsg}}

@@ -29,7 +29,7 @@ app.post(`${apiURL}login`, db.loginUser)
 
 app.get(`${apiURL}usuarios`, db.getUsers)
 app.post(`${apiURL}usuarios`, db.newUser)
-app.put(`${apiURL}usuarios`, db.updateUser)
+app.put(`${apiURL}usuarios`, db.updateUsers)
 
 
 app.get(`${apiURL}catalogo`, db.catalogo)

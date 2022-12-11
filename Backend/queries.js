@@ -97,7 +97,7 @@ const newUser = (request, response) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');
     }
-    response.status(200).json(results.rows);
+    response.status(200).json('{"msg":"Usuario Creado Correctamente"}');
   })
 }
 

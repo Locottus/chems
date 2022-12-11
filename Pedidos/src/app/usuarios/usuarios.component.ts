@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowGroupingDisplayType } from 'ag-grid-community';
+import { ServiciosService } from '../servicios/servicios.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -40,9 +41,12 @@ export class UsuariosComponent implements OnInit {
 
   rowData: Array<any> = [];
   
-  constructor() { }
+  constructor(
+    private servicio: ServiciosService,
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
   }
 
     /**

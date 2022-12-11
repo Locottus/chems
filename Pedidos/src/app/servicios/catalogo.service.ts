@@ -32,12 +32,16 @@ export class CatalogoService {
       })
   }
 
-  async actualizaCatalogo(catalogo: Array<Catalogo>) {
-    return this.httpClient.put('http://localhost:3000/api/catalogo', catalogo).subscribe();
+  actualizaCatalogo(catalogo: Array<Catalogo>) {
+    this.httpClient.put('http://localhost:3000/api/catalogo', catalogo).subscribe(data =>{
+      alert(data);
+    });
   }
 
   insertaCatalogo(catalogo: Catalogo) {
-    return this.httpClient.post('http://localhost:3000/api/catalogo', catalogo).subscribe();
+    this.httpClient.post('http://localhost:3000/api/catalogo', catalogo).subscribe(data =>{
+      alert(data);
+    });
   }
 
 
