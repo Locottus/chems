@@ -27,6 +27,11 @@ app.get(`${apiURL}`, (request, response) => {
 
 app.post(`${apiURL}login`, db.loginUser)
 
+app.get(`${apiURL}usuarios`, db.getUsers)
+app.post(`${apiURL}usuarios`, db.newUser)
+app.put(`${apiURL}usuarios`, db.updateUser)
+
+
 app.get(`${apiURL}catalogo`, db.catalogo)
 app.post(`${apiURL}catalogo`, db.insertaCatalogo)
 app.put(`${apiURL}catalogo`, db.actualizaCatalogo)

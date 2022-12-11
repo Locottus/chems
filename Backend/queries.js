@@ -8,7 +8,6 @@ const pool = new Pool({
   port: 5432,
 });
 
-
 const meses = [
   {
     "mes": "Enero",
@@ -65,6 +64,46 @@ const loginUser = (request, response) => {
   var q = `select usuario, activo, rol, nombre 
             from usuarios 
             where usuario = '${usuario}' and clave = '${clave}'  `;
+  pool.query(q, (error, results) => {
+    if (error) {
+      response.status(500).send('{"msg":"' + error + '"}');
+    }
+    response.status(200).json(results.rows);
+  })
+}
+
+const updateUsers = (request, response) => {
+  let errors = 0;
+  for (let i = 0; i < request.body.length; i++) {
+    const { usuario, clave, nombre, activo, rol } = request.body
+    var q = `update usuarios set  nombre = '${nombre}'
+            activo = '${activo}', rol = '${rol}' 
+            where usuario = '${usuario}' `;
+      pool.query(q, (error, results) => {
+      if (error) {
+        errors = errors + 1;
+      }
+    })
+  }
+  response.status(200).json(`{"msg":"Success", "errors": ${errors}}`);
+}
+
+
+const newUser = (request, response) => {
+  const { usuario, clave, nombre, } = request.body
+  var q = `insert into usuarios (usuario,clave,nombre)
+            values ('${usuario}' , '${clave}', '${nombre}') `;
+  pool.query(q, (error, results) => {
+    if (error) {
+      response.status(500).send('{"msg":"' + error + '"}');
+    }
+    response.status(200).json(results.rows);
+  })
+}
+
+const getUsers = (request, response) => {
+  var q = `select usuario, activo, rol, nombre 
+            from usuarios `;
   pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');
@@ -152,6 +191,9 @@ const savePedidosMes = (request, response) => {
 
 module.exports = {
   loginUser,
+  getUsers,
+  updateUsers,
+  newUser,
   catalogo,
   pedidosMes,
   savePedidosMes,
