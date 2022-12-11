@@ -29,8 +29,7 @@ export class ServiciosService {
       usuario: usuario,
       clave: clave
     }).subscribe(data => {
-      console.log(data[0].count);
-      this.loginStatus((data[0].count > 0 ? true : false));
+      this.loginStatus((data.length > 0 && data[0].activo == 1 ? true : false));
     })
   }
 
@@ -42,7 +41,7 @@ export class ServiciosService {
     this.matDialog.open(LoginModalComponent, { disableClose: true });
   }
 
-  navegaOrigen(){
+  navegaOrigen() {
     window.location.href = '/';
   }
 }

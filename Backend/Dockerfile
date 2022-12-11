@@ -1,5 +1,5 @@
-# docker build  -t ng-backend-docker .
-# docker run  ng-backend-docker
+# docker build  -t ng-backend-chemita .
+# docker run  ng-backend-chemita
 
 FROM node:19
 

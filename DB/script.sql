@@ -8,8 +8,9 @@ CREATE TABLE IF NOT EXISTS public.usuarios
 (
     usuario text COLLATE pg_catalog."default" NOT NULL,
     clave text COLLATE pg_catalog."default" NOT NULL,
-    activo numeric,
-    rol numeric,
+    activo numeric default 1,
+    rol numeric default 0,
+    nombre text,
     CONSTRAINT usuarios_pkey PRIMARY KEY (usuario)
 )
 

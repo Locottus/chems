@@ -27,6 +27,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { NuevoPedidoComponent } from './pedidos/componentes/nuevo-pedido/nuevo-pedido.component';
 import { MostrarPedidoComponent } from './pedidos/componentes/mostrar-pedido/mostrar-pedido.component';
 import { GridCalendarioComponent } from './calendario/componentes/grid-calendario/grid-calendario.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -46,7 +47,8 @@ FullCalendarModule.registerPlugins([
     NotFoundComponent,
     NuevoPedidoComponent,
     MostrarPedidoComponent,
-    GridCalendarioComponent
+    GridCalendarioComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,

@@ -7,15 +7,16 @@ import { MenuComponent } from './menu/menu.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NuevoPedidoComponent } from './pedidos/componentes/nuevo-pedido/nuevo-pedido.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const routes: Routes = [
+  { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
   { path: 'calendario', component: CalendarioComponent, canActivate: [AuthGuard] },
   { path: 'pedidos', component: PedidosComponent, canActivate: [AuthGuard] },
   { path: 'nuevo-producto', component: NuevoPedidoComponent, canActivate: [AuthGuard] },
   { path: 'grid-calendario', component: GridCalendarioComponent, canActivate: [AuthGuard] },
   { path: '', component: MenuComponent },
   { path: '**', component: NotFoundComponent, canActivate: [AuthGuard] },
-
 ];
 
 @NgModule({

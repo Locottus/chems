@@ -2,8 +2,8 @@ version: '3.5'
 services:
  backend:
   image: node:19
-  volumes:
-   - c:\angular\chems\backend:/var/lib/postgresql/data #windows setup
+#  volumes:
+#   - c:\angular\chems\backend:/var/lib/postgresql/data #windows setup
    #- /var/postgres/:/var/lib/postgresql/data #linux setup
   restart: always
   ports:

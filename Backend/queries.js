@@ -62,7 +62,9 @@ const meses = [
 
 const loginUser = (request, response) => {
   const { usuario, clave } = request.body
-  var q = `select count(*) from usuarios where usuario = '${usuario}' and clave = '${clave}' `;
+  var q = `select usuario, activo, rol, nombre 
+            from usuarios 
+            where usuario = '${usuario}' and clave = '${clave}'  `;
   pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');
