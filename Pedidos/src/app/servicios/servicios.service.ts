@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable, shareReplay, tap } from 'rxjs';
+import { Constantes } from '../interfaces/Constantes';
 import { Usuario } from '../interfaces/Usuario';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 
@@ -16,7 +17,9 @@ export class ServiciosService {
 
   constructor(
     private httpClient: HttpClient,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private constantes: Constantes,
+
   ) {
     //this.getJSON();
   }
@@ -26,7 +29,7 @@ export class ServiciosService {
   }
 
   async login(usuario: string, clave: string) {
-    this.httpClient.post<any>('http://localhost:3000/api/login', {
+    this.httpClient.post<any>(`${this.constantes.backend}login`, {
       usuario: usuario,
       clave: clave
     }).subscribe(data => {
@@ -35,7 +38,7 @@ export class ServiciosService {
   }
 
   async nuevoUsuario(usuario: Usuario) {
-    this.httpClient.post<Usuario>('http://localhost:3000/api/usuarios', usuario)
+    this.httpClient.post<Usuario>(`${this.constantes.backend}usuarios`, usuario)
     .subscribe(data => {
 
       //console.log(data);
