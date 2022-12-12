@@ -80,7 +80,7 @@ export class CalendarioComponent implements  AfterViewInit {
   }
 
   onDateClick(res: any) {
-    alert('Clicked on date : ' + res.dateStr)
+    //alert('Clicked on date : ' + res.dateStr)
   }
 
 
