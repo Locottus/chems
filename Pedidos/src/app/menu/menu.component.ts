@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Usuario } from '../interfaces/Usuario';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { ServiciosService } from '../servicios/servicios.service';
 
@@ -16,13 +17,19 @@ export class MenuComponent implements  AfterViewInit {
   /**
   * observable to refresh the data when the modal updates.
   */
-  dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
+  dataChangeLogin$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
     this.autenticado = loginStatus;
 
     if (!this.autenticado){
       this.openDialog();
     }
   });
+
+  usuario: Usuario = new Usuario();
+  dataUsuario$ = this.servicio.subjectObservableUsuario$.subscribe(async (usrData)=>{
+    this.usuario = usrData;
+    console.log(this.usuario);
+  })
 
   constructor( 
     private matDialog: MatDialog,
@@ -38,13 +45,13 @@ export class MenuComponent implements  AfterViewInit {
     
   }
 
-
   openDialog() {
     this.matDialog.open(LoginModalComponent, { disableClose: true });
   }
 
 
   //https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
+  //https://www.geeksforgeeks.org/how-to-add-background-color-to-a-div-in-bootstrap/
   navegacion(ruta:string){
     switch (ruta){
       case 'calendario':

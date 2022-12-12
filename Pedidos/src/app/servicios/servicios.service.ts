@@ -15,6 +15,12 @@ export class ServiciosService {
   private behaviorSubject = new BehaviorSubject<boolean>(false);
   subjectObservable$ = this.behaviorSubject.asObservable();
 
+
+  usuario: Usuario = new Usuario();
+  private behaviorSubjectUsuario = new BehaviorSubject<Usuario>(this.usuario);
+  subjectObservableUsuario$ = this.behaviorSubjectUsuario.asObservable();
+
+
   constructor(
     private httpClient: HttpClient,
     private matDialog: MatDialog,
@@ -31,6 +37,8 @@ export class ServiciosService {
       usuario: usuario,
       clave: clave
     }).subscribe(data => {
+      this.usuario = data[0];
+      this.behaviorSubjectUsuario.next(this.usuario);
       this.loginStatus((data.length > 0 && data[0].activo == 1 ? true : false));
     })
   }

@@ -9,8 +9,6 @@ import { Usuario } from '../interfaces/Usuario';
 })
 export class UsuariosService {
 
-
-
   usuarios: Array<Usuario> = [];
 
   private behaviorSubjectUsuarios = new BehaviorSubject<Array<Usuario>>(this.usuarios);
@@ -36,7 +34,7 @@ export class UsuariosService {
   }
 
 
-  actualizaUsuario(usuarios:Array<Usuario>) {
+  actualizaUsuario(usuarios: Array<Usuario>) {
     this.httpClient.put<Usuario>(`${Constantes.backend}usuarios`, usuarios)
       .subscribe(data => {
         alert(data);

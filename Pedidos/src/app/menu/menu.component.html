@@ -1,31 +1,40 @@
-<div  class="container" *ngIf="autenticado" >
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="navegacion('calendario')">
-      <mat-icon>calendar_today</mat-icon>
-      <span>Calendario</span>
-    </button>
-    <button mat-menu-item (click)="navegacion('pedidos')">
-      <mat-icon>note_add</mat-icon>
-      <span>Pedidos</span>
-    </button>
-    <button mat-menu-item (click)="navegacion('nuevo-producto')">
-      <mat-icon>offline_pin</mat-icon>
-      <span>Nuevo Producto</span>
-    </button>
-    <button mat-menu-item (click)="navegacion('historicos')">
-      <mat-icon>history</mat-icon>
-      <span>Historicos</span>
-    </button>
-    <button mat-menu-item (click)="navegacion('usrs')">
-      <mat-icon>person_pin</mat-icon>
-      <span>Usuarios</span>
-    </button>      
-    <button mat-menu-item (click)="salir()">
-      <mat-icon>transfer_within_a_station</mat-icon>
-      <span>Salir</span>
-    </button>
-  </mat-menu>
+<div class="container p-3 mb-2 bg-primary text-white" *ngIf="autenticado">
+  <div class="row">
+    <div class="col">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navegacion('calendario')">
+          <mat-icon>calendar_today</mat-icon>
+          <span>Calendario</span>
+        </button>
+        <button mat-menu-item (click)="navegacion('pedidos')">
+          <mat-icon>note_add</mat-icon>
+          <span>Pedidos</span>
+        </button>
+        <button mat-menu-item (click)="navegacion('nuevo-producto')" *ngIf="usuario.rol == 1">
+          <mat-icon>offline_pin</mat-icon>
+          <span>Nuevo Producto</span>
+        </button>
+        <button mat-menu-item (click)="navegacion('historicos')">
+          <mat-icon>history</mat-icon>
+          <span>Historicos</span>
+        </button>
+        <button mat-menu-item (click)="navegacion('usrs')" *ngIf="usuario.rol == 1 ">
+          <mat-icon>person_pin</mat-icon>
+          <span>Usuarios</span>
+        </button>
+        <button mat-menu-item (click)="salir()">
+          <mat-icon>transfer_within_a_station</mat-icon>
+          <span>Salir</span>
+        </button>
+      </mat-menu>
+
+    </div>
+    <div class="col">
+      <h1> {{usuario.nombre | uppercase }} </h1>
+    </div>
+
+  </div>
 </div>

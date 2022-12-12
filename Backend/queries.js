@@ -77,7 +77,8 @@ const updateUsers = (request, response) => {
   for (let i = 0; i < request.body.length; i++) {
     const { usuario, clave, nombre, activo, rol } = request.body[i];
     var q = `update usuarios set  nombre = '${nombre}',
-            activo = '${activo}', rol = '${rol}' 
+            activo = '${activo}', rol = '${rol}',
+            clave = '${clave}' 
             where usuario = '${usuario}' `;
       pool.query(q, (error, results) => {
       if (error) {
@@ -102,8 +103,7 @@ const newUser = (request, response) => {
 }
 
 const getUsers = (request, response) => {
-  var q = `select usuario, activo, rol, nombre 
-            from usuarios `;
+  var q = `select * from usuarios `;
   pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');

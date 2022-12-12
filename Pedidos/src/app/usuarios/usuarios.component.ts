@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowGroupingDisplayType } from 'ag-grid-community';
+import { Usuario } from '../interfaces/Usuario';
 import { ServiciosService } from '../servicios/servicios.service';
 import { UsuariosService } from '../servicios/usuarios.service';
 
@@ -27,6 +28,7 @@ export class UsuariosComponent implements OnInit {
     { field: 'nombre', hide: false, editable: true },
     { field: 'rol', hide: false, editable: true },
     { field: 'activo', hide: false, editable: true, },
+    { field: 'clave', hide: false, editable: true, },
   ];
 
   //default settings for all columns
@@ -42,7 +44,7 @@ export class UsuariosComponent implements OnInit {
     this.rowData = data;
   })
 
-  rowData: Array<any> = [];
+  rowData: Array<Usuario> = [];
 
   constructor(
     private servicio: ServiciosService,
