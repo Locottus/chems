@@ -10,7 +10,7 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const routes: Routes = [
-  { path: 'usuarios-crud', component: UsuariosComponent, canActivate: [AuthGuard] },
+  { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
   { path: 'calendario', component: CalendarioComponent, canActivate: [AuthGuard] },
   { path: 'pedidos', component: PedidosComponent, canActivate: [AuthGuard] },
   { path: 'nuevo-producto', component: NuevoPedidoComponent, canActivate: [AuthGuard] },
