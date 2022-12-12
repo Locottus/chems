@@ -1,12 +1,9 @@
 # docker build  -t ng-backend-chemita .
-# docker run  ng-backend-chemita
-
+# docker run --publish 3000:3000 -d ng-backend-chemita  
 FROM node:19
-
 WORKDIR /backend
 EXPOSE 3000
-
-COPY ["package.json", "package-lock.json", "index.js", "queries.js",  "/backend/"]
-
+COPY package.json /backend/
 RUN npm install
-RUN node index.js
+COPY . /backend/
+CMD [ "npm", "start" ]
