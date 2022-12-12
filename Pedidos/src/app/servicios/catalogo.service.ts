@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Catalogo } from '../interfaces/Catalogo';
+import { Constantes } from '../interfaces/Constantes';
 
 
 @Injectable({
@@ -15,7 +16,8 @@ export class CatalogoService {
   subjectObservableCatalogo$ = this.behaviorSubjectCatalogo.asObservable();
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+
   ) { }
 
   catalogEmitter(c: Array<Catalogo>) {
@@ -24,7 +26,7 @@ export class CatalogoService {
   }
 
   getCatalogo() {
-    this.httpClient.get<Array<Catalogo>>('http://localhost:3000/api/catalogo')
+    this.httpClient.get<Array<Catalogo>>(`${Constantes.backend}catalogo`)
       .subscribe(data => {
         this.cat = data;
         this.cat.forEach(e => { e.cantidad = 0; })
@@ -32,12 +34,16 @@ export class CatalogoService {
       })
   }
 
-  async actualizaCatalogo(catalogo: Array<Catalogo>) {
-    return this.httpClient.put('http://localhost:3000/api/catalogo', catalogo).subscribe();
+  actualizaCatalogo(catalogo: Array<Catalogo>) {
+    this.httpClient.put(`${Constantes.backend}catalogo`, catalogo).subscribe(data => {
+      alert(data);
+    });
   }
 
   insertaCatalogo(catalogo: Catalogo) {
-    return this.httpClient.post('http://localhost:3000/api/catalogo', catalogo).subscribe();
+    this.httpClient.post(`${Constantes.backend}catalogo`, catalogo).subscribe(data => {
+      alert(data);
+    });
   }
 
 

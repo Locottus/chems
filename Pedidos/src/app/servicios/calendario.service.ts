@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Constantes } from '../interfaces/Constantes';
 import { DetallePedido } from '../interfaces/DetallePedido';
 
 
@@ -15,7 +16,7 @@ export class CalendarioService {
   
   constructor(
     private httpClient: HttpClient,
-    
+     
   ) { }
 
   calendarioEmitter(p: Array<DetallePedido>) {
@@ -25,7 +26,7 @@ export class CalendarioService {
 
   getPedidosCalendario(fechaInicio: string, fechaFin: string) {
     //console.log('get pedidos');
-    return this.httpClient.get<Array<DetallePedido>>('http://localhost:3000/api/pedidos-mes', {
+    return this.httpClient.get<Array<DetallePedido>>(`${Constantes.backend}pedidos-mes`, {
       params: {
         fechaInicio: fechaInicio,
         fechaFin: fechaFin

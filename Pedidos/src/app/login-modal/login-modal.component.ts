@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Usuario } from '../interfaces/Usuario';
 import { ServiciosService } from '../servicios/servicios.service';
 
 @Component({
@@ -7,11 +8,14 @@ import { ServiciosService } from '../servicios/servicios.service';
   templateUrl: './login-modal.component.html',
   styleUrls: ['./login-modal.component.css']
 })
-export class LoginModalComponent  {
+export class LoginModalComponent {
+
+  @Input() isCreation: boolean = false;
 
   usr: string = "";
   pwd: string = "";
-
+  pwd2: string = "";
+  nombre: string = "";
   errorLogin: boolean = true;
   errorMsg: string = "";
 
@@ -34,11 +38,12 @@ export class LoginModalComponent  {
 
   constructor(
     public dialogRef: MatDialogRef<LoginModalComponent>,
-    public servicio: ServiciosService
+    public servicio: ServiciosService,
+    private matDialog: MatDialog,
   ) { }
 
   validar() {
-    this.servicio.login(this.usr.toLowerCase(),this.pwd);
+    this.servicio.login(this.usr.toLowerCase(), this.pwd);
 
   }
 
@@ -48,6 +53,29 @@ export class LoginModalComponent  {
     setTimeout(() => {
       this.errorLogin = true;
     }, 3000);
+  }
+
+  crearUsuario() {
+    if (this.pwd != this.pwd2) {
+      //alert('las contraseñas no coinciden, pruebe de nuevo.');
+      this.showError('las contraseñas no coinciden, pruebe de nuevo.');
+    } else if (this.nombre == ''){
+      this.showError('Ingrese nombre del usuario');
+    }else if (this.usr == ''){
+      this.showError('Ingrese email del usuario');
+    }else{
+      let usuario: Usuario = new Usuario();
+      usuario.nombre = this.nombre;
+      usuario.clave = this.pwd;
+      usuario.activo = 1;
+      usuario.rol = 0;
+      usuario.usuario = this.usr;
+      this.servicio.nuevoUsuario(usuario);
+    }
+  }
+
+  cerrar(){
+    this.matDialog.closeAll();
   }
 }
 
