@@ -80,7 +80,7 @@ const updateUsers = (request, response) => {
             activo = '${activo}', rol = '${rol}',
             clave = '${clave}' 
             where usuario = '${usuario}' `;
-      pool.query(q, (error, results) => {
+    pool.query(q, (error, results) => {
       if (error) {
         errors = errors + 1;
       }
