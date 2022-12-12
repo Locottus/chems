@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Constantes } from '../interfaces/Constantes';
 import { DetallePedido } from '../interfaces/DetallePedido';
 
 @Injectable({
@@ -13,7 +14,7 @@ export class PedidosService {
   ) { }
 
   guardaPedido(pedido: DetallePedido) {
-    return this.httpClient.post('http://localhost:3000/api/pedidos-mes', pedido).subscribe();
+    return this.httpClient.post(`${Constantes.backend}pedidos-mes`, pedido).subscribe();
   }
 
 }
