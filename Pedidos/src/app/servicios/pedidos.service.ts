@@ -15,7 +15,7 @@ export class PedidosService {
   ) { }
 
   guardaPedido(pedido: DetallePedido) {
-    this.httpClient.post( `${this.constantes.backend}pedidos-mes` , pedido).subscribe(data =>{
+    this.httpClient.post( `${Constantes.backend}pedidos-mes` , pedido).subscribe(data =>{
       alert(data);
     });
   }

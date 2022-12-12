@@ -9,7 +9,7 @@ import { ServiciosService } from 'src/app/servicios/servicios.service';
   templateUrl: './nuevo-pedido.component.html',
   styleUrls: ['./nuevo-pedido.component.css']
 })
-export class NuevoPedidoComponent  {
+export class NuevoPedidoComponent {
   errorLogin: boolean = true;
   errorMsg: string = "";
 
@@ -36,7 +36,6 @@ export class NuevoPedidoComponent  {
 
   agregarCatalogo() {
     this.catalogoService.insertaCatalogo(this.catalogo);
-    //alert('Actualizado');
     this.catalogo = new Catalogo();
   }
 

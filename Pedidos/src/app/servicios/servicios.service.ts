@@ -18,8 +18,6 @@ export class ServiciosService {
   constructor(
     private httpClient: HttpClient,
     private matDialog: MatDialog,
-    private constantes: Constantes,
-
   ) {
     //this.getJSON();
   }
@@ -29,7 +27,7 @@ export class ServiciosService {
   }
 
   async login(usuario: string, clave: string) {
-    this.httpClient.post<any>(`${this.constantes.backend}login`, {
+    this.httpClient.post<any>(`${Constantes.backend}login`, {
       usuario: usuario,
       clave: clave
     }).subscribe(data => {
@@ -38,13 +36,10 @@ export class ServiciosService {
   }
 
   async nuevoUsuario(usuario: Usuario) {
-    this.httpClient.post<Usuario>(`${this.constantes.backend}usuarios`, usuario)
-    .subscribe(data => {
-
-      //console.log(data);
-      alert(data);
-      //this.loginStatus((data.length > 0 && data[0].activo == 1 ? true : false));
-    })
+    this.httpClient.post<Usuario>(`${Constantes.backend}usuarios`, usuario)
+      .subscribe(data => {
+        alert(data);
+      })
   }
 
 

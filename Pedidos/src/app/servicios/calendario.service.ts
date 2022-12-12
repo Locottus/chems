@@ -16,8 +16,7 @@ export class CalendarioService {
   
   constructor(
     private httpClient: HttpClient,
-    private constantes: Constantes,
-    
+     
   ) { }
 
   calendarioEmitter(p: Array<DetallePedido>) {
@@ -27,7 +26,7 @@ export class CalendarioService {
 
   getPedidosCalendario(fechaInicio: string, fechaFin: string) {
     //console.log('get pedidos');
-    return this.httpClient.get<Array<DetallePedido>>(`${this.constantes.backend}pedidos-mes`, {
+    return this.httpClient.get<Array<DetallePedido>>(`${Constantes.backend}pedidos-mes`, {
       params: {
         fechaInicio: fechaInicio,
         fechaFin: fechaFin

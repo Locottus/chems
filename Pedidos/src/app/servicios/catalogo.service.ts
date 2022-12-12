@@ -17,7 +17,6 @@ export class CatalogoService {
 
   constructor(
     private httpClient: HttpClient,
-    private constantes:Constantes,
 
   ) { }
 
@@ -27,7 +26,7 @@ export class CatalogoService {
   }
 
   getCatalogo() {
-    this.httpClient.get<Array<Catalogo>>(`${this.constantes.backend}catalogo`)
+    this.httpClient.get<Array<Catalogo>>(`${Constantes.backend}catalogo`)
       .subscribe(data => {
         this.cat = data;
         this.cat.forEach(e => { e.cantidad = 0; })
@@ -36,13 +35,13 @@ export class CatalogoService {
   }
 
   actualizaCatalogo(catalogo: Array<Catalogo>) {
-    this.httpClient.put(`${this.constantes.backend}catalogo`, catalogo).subscribe(data =>{
+    this.httpClient.put(`${Constantes.backend}catalogo`, catalogo).subscribe(data => {
       alert(data);
     });
   }
 
   insertaCatalogo(catalogo: Catalogo) {
-    this.httpClient.post(`${this.constantes.backend}catalogo`, catalogo).subscribe(data =>{
+    this.httpClient.post(`${Constantes.backend}catalogo`, catalogo).subscribe(data => {
       alert(data);
     });
   }
