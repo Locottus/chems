@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowGroupingDisplayType } from 'ag-grid-community';
 import { Usuario } from '../interfaces/Usuario';
+import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { ServiciosService } from '../servicios/servicios.service';
 import { UsuariosService } from '../servicios/usuarios.service';
 
@@ -49,6 +51,7 @@ export class UsuariosComponent implements OnInit {
   constructor(
     private servicio: ServiciosService,
     private usuariosService: UsuariosService,
+    public matDialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -80,11 +83,21 @@ export class UsuariosComponent implements OnInit {
   onCellValueChanged(e: CellValueChangedEvent) {
   }
 
-  Actualizar(){
+  actualizar(){
     this.usuariosService.actualizaUsuario(this.rowData);
   }
 
-  Reiniciar(){
+  reiniciar(){
     this.usuariosService.obtieneUsuarios();
+  }
+
+  openDialog() {
+    /*this.matDialog.open(LoginModalComponent,
+      {
+        
+        data: {
+          isCreation: true
+        }
+      });*/
   }
 }
