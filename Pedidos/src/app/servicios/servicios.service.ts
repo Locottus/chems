@@ -35,14 +35,6 @@ export class ServiciosService {
     })
   }
 
-  async nuevoUsuario(usuario: Usuario) {
-    this.httpClient.post<Usuario>(`${Constantes.backend}usuarios`, usuario)
-      .subscribe(data => {
-        alert(data);
-      })
-  }
-
-
   logout() {
     this.behaviorSubject.next(false);
   }

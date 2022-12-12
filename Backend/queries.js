@@ -75,8 +75,8 @@ const loginUser = (request, response) => {
 const updateUsers = (request, response) => {
   let errors = 0;
   for (let i = 0; i < request.body.length; i++) {
-    const { usuario, clave, nombre, activo, rol } = request.body
-    var q = `update usuarios set  nombre = '${nombre}'
+    const { usuario, clave, nombre, activo, rol } = request.body[i];
+    var q = `update usuarios set  nombre = '${nombre}',
             activo = '${activo}', rol = '${rol}' 
             where usuario = '${usuario}' `;
       pool.query(q, (error, results) => {

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Usuario } from '../interfaces/Usuario';
 import { ServiciosService } from '../servicios/servicios.service';
+import { UsuariosService } from '../servicios/usuarios.service';
 
 @Component({
   selector: 'app-login-modal',
@@ -40,6 +41,7 @@ export class LoginModalComponent {
     public dialogRef: MatDialogRef<LoginModalComponent>,
     public servicio: ServiciosService,
     private matDialog: MatDialog,
+    private usuarioServicio: UsuariosService
   ) { }
 
   validar() {
@@ -70,7 +72,7 @@ export class LoginModalComponent {
       usuario.activo = 1;
       usuario.rol = 0;
       usuario.usuario = this.usr;
-      this.servicio.nuevoUsuario(usuario);
+      this.usuarioServicio.nuevoUsuario(usuario);
     }
   }
 
