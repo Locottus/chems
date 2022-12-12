@@ -59,7 +59,9 @@ export class MenuComponent implements  AfterViewInit {
       case 'historicos':
         this.router.navigateByUrl('/grid-calendario')
         break;
-  
+      case 'usrs':
+      this.router.navigateByUrl('/usuarios')
+      break; 
     }
   }
 

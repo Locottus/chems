@@ -16,6 +16,9 @@ export class LoginModalComponent  {
   errorMsg: string = "";
 
   autenticado: boolean = false;
+
+  loginClick: boolean = false;
+
   /**
   * observable to refresh the data when the modal updates.
   */
@@ -23,7 +26,7 @@ export class LoginModalComponent  {
     this.autenticado = loginStatus;
     if (this.autenticado)
       this.dialogRef.close();
-    else
+    else if (this.autenticado && this.loginClick)
       this.showError('Ingrese Credenciales');
 
   });
