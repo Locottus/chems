@@ -1,7 +1,7 @@
 version: '3.5'
 services:
  backend:
-  image: node:19
+  image: ng-backend-chemita
   volumes:
    - c:\angular\chems\backend:/backend #windows setup
    #- /chems/backend:/backend #linux setup

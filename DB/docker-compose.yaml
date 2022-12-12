@@ -4,7 +4,7 @@ services:
   volumes:
    - c:\postgres:/var/lib/postgresql/data #windows setup
    #- /var/postgres/:/var/lib/postgresql/data #linux setup
-  image: ng-backend-chemita
+  image: postgres
   restart: always
   ports:
    - 5432:5432
