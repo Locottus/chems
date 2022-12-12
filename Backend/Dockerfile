@@ -9,4 +9,4 @@ EXPOSE 3000
 COPY ["package.json", "package-lock.json", "index.js", "queries.js",  "/backend/"]
 
 RUN npm install
-CMD ["node",  "index.js"]
+RUN node index.js

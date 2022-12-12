@@ -6,6 +6,7 @@ import { Usuario } from '../interfaces/Usuario';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { ServiciosService } from '../servicios/servicios.service';
 import { UsuariosService } from '../servicios/usuarios.service';
+import { NuevoUsuarioComponent } from './componentes/nuevo-usuario/nuevo-usuario.component';
 
 @Component({
   selector: 'app-usuarios',
@@ -20,6 +21,7 @@ export class UsuariosComponent implements OnInit {
   gridApi!: GridApi;
   gridColumnApi!: any;
 
+  isCreation: boolean = false;
   //grid settings
   gridWidth: string = "100%";
   gridHeight: string = "600px";
@@ -83,21 +85,32 @@ export class UsuariosComponent implements OnInit {
   onCellValueChanged(e: CellValueChangedEvent) {
   }
 
-  actualizar(){
+  actualizar() {
     this.usuariosService.actualizaUsuario(this.rowData);
   }
 
-  reiniciar(){
+  reiniciar() {
     this.usuariosService.obtieneUsuarios();
   }
 
+  callback(){
+
+  }
+  
   openDialog() {
-    /*this.matDialog.open(LoginModalComponent,
+    this.isCreation = true;
+    this.matDialog.open(NuevoUsuarioComponent,
       {
-        
+        disableClose: true,
         data: {
           isCreation: true
         }
-      });*/
+      }).afterClosed().subscribe(()=>{
+        this.reiniciar();
+      });
+  }
+
+  finishedCreation(event: any) {
+    this.isCreation = event;
   }
 }

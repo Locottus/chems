@@ -46,7 +46,9 @@ export class MenuComponent implements  AfterViewInit {
   }
 
   openDialog() {
-    this.matDialog.open(LoginModalComponent, { disableClose: true });
+    this.matDialog.open(LoginModalComponent, 
+      { disableClose: true,   
+      });
   }
 
 
