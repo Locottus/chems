@@ -1,11 +1,26 @@
 version: '3.5'
 services:
- backend:
-  image: ng-backend-chemita
-  volumes:
-   - c:\angular\chems\backend:/backend #windows setup
+ api:
+  #image: ng-backend-chemita
+  build: .
+  #volumes:
+   #- c:\angular\chems\backend:/backend #windows setup
    #- /chems/backend:/backend #linux setup
   restart: always
+  depends_on: 
+   - postgres
   ports:
    - 3000:3000
+
+ postgres:
+  container_name: postgres
+  volumes:
+   - c:\postgres:/var/lib/postgresql/data #windows setup
+   #- /var/postgres/:/var/lib/postgresql/data #linux setup
+  image: postgres
+  restart: always
+  ports:
+   - 5432:5432
+  environment:
+   POSTGRES_PASSWORD: 'Guatemala1'
 

@@ -1,6 +1,7 @@
 version: '3.5'
 services:
- postgresql:
+ postgres:
+  container_name: postgres
   volumes:
    - c:\postgres:/var/lib/postgresql/data #windows setup
    #- /var/postgres/:/var/lib/postgresql/data #linux setup
