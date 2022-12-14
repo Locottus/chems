@@ -83,7 +83,6 @@ export class CalendarioComponent implements  AfterViewInit {
 
   onDateClick(res: any) {
     //alert('Clicked on date : ' + res.dateStr)
-    //let fecha = this.calendarioService.getFormattedDate(res.dateStr);
     this.router.navigateByUrl(`/pedidos?fecha=${res.dateStr}`)
   }
 
