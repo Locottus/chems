@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Usuario } from '../interfaces/Usuario';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
+import { CalendarioService } from '../servicios/calendario.service';
 import { ServiciosService } from '../servicios/servicios.service';
 
 @Component({
@@ -28,13 +29,14 @@ export class MenuComponent implements  AfterViewInit {
   usuario: Usuario = new Usuario();
   dataUsuario$ = this.servicio.subjectObservableUsuario$.subscribe(async (usrData)=>{
     this.usuario = usrData;
-    console.log(this.usuario);
+    //console.log(this.usuario);
   })
 
   constructor( 
     private matDialog: MatDialog,
     private servicio: ServiciosService,
-    private router: Router
+    private router: Router,
+    private calendarioService: CalendarioService,
     ) { }
   
   
@@ -60,7 +62,8 @@ export class MenuComponent implements  AfterViewInit {
         this.router.navigateByUrl('/calendario')
         break;
       case 'pedidos':
-        this.router.navigateByUrl('/pedidos')
+        let fecha = this.calendarioService.getFormattedDate(new Date().toString());
+        this.router.navigateByUrl(`/pedidos?fecha=${fecha}`)
         break;
       case 'nuevo-producto':
         this.router.navigateByUrl('/nuevo-producto')

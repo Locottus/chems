@@ -9,6 +9,8 @@ import { DetallePedido } from '../interfaces/DetallePedido';
 import { Catalogo } from '../interfaces/Catalogo';
 import { PedidosService } from '../servicios/pedidos.service';
 import { CatalogoService } from '../servicios/catalogo.service';
+import { ActivatedRoute } from '@angular/router';
+import { CalendarioService } from '../servicios/calendario.service';
 
 //https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow
 
@@ -74,11 +76,18 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     private matDialog: MatDialog,
     private servicio: ServiciosService,
     private pedidosService: PedidosService,
-    private catalogoService: CatalogoService
+    private catalogoService: CatalogoService,
+    private route: ActivatedRoute,
+    private calendarioService:CalendarioService,
   ) { }
 
   ngOnInit() {
     this.getCatalog();
+    this.detallePedido.hora = this.calendarioService.getCurrentHour();
+    this.route.queryParams
+      .subscribe(params => {
+        this.detallePedido.date = params["fecha"];
+      });
   }
 
   getCatalog() {
@@ -116,8 +125,11 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     this.detallePedido.detalle = detalle;
     this.detallePedido.detalleJson = detalleJson;
     this.detallePedido.total = total;
-    this.pedidosService.guardaPedido(this.detallePedido);
-    this.reset();
+
+    //this.pedidosService.guardaPedido(this.detallePedido);
+    
+    //this.reset();
+    console.log(this.detallePedido);
   }
 
   /*  onLogout() {

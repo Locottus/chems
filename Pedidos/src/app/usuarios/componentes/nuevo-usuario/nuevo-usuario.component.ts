@@ -48,8 +48,9 @@ export class NuevoUsuarioComponent implements OnInit {
   }
 
   crearUsuario() {
-    if (this.pwd != this.pwd2) {
-      //alert('las contraseñas no coinciden, pruebe de nuevo.');
+    if (this.pwd.length > 8 || this.pwd2.length > 8) {
+      this.showError('las contraseñas deben tener mas de 8 caracteres.');
+    } else if (this.pwd != this.pwd2) {
       this.showError('las contraseñas no coinciden, pruebe de nuevo.');
     } else if (this.nombre == '') {
       this.showError('Ingrese nombre del usuario');
