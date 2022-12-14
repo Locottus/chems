@@ -104,8 +104,8 @@ const updateUsers = (request, response) => {
 
 const newUser = (request, response) => {
   const { usuario, clave, nombre, } = request.body
-  var q = `insert into usuarios (usuario,clave,nombre)
-            values ('${usuario}' , '${clave}', '${nombre}') `;
+  var q = `insert into usuarios (usuario,clave,nombre,rol,activo)
+            values ('${usuario}' , '${clave}', '${nombre}',0,1) `;
   pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');
