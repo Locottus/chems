@@ -34,7 +34,7 @@ export class UsuariosService {
   }
 
 
-  actualizaUsuario(usuarios: Array<Usuario>) {
+  actualizaUsuarios(usuarios: Array<Usuario>) {
     this.httpClient.put<Usuario>(`${Constantes.backend}usuarios`, usuarios)
       .subscribe(data => {
         alert(data);

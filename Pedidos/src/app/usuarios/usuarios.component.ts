@@ -86,7 +86,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   actualizar() {
-    this.usuariosService.actualizaUsuario(this.rowData);
+    this.usuariosService.actualizaUsuarios(this.rowData);
   }
 
   reiniciar() {
