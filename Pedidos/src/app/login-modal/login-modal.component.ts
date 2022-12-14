@@ -14,7 +14,7 @@ export class LoginModalComponent  implements OnInit{
 
   //@Input() isCreation: boolean = false;
   //@Output() finishedCreation = new EventEmitter<any>();
-  isCreation: boolean = false;
+  //isCreation: boolean = false;
 
   usr: string = "";
   pwd: string = "";
@@ -70,5 +70,10 @@ export class LoginModalComponent  implements OnInit{
     this.matDialog.closeAll();
     //this.finishedCreation.emit(true);
   }
+
+  passwordReset(){
+    //TODO
+  }
+
 }
 

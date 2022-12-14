@@ -10,7 +10,8 @@
 
 </div>
 <br />
-<button class="btn btn-primary" [hidden]="isCreation" (click)="validar()">Submit</button>
+<button class="btn btn-primary"  (click)="validar()">Submit</button>&nbsp;
+<button class="btn btn-danger" [hidden]="true" (click)="passwordReset()">Reiniciar Clave</button>
 
 <div *ngIf="!errorLogin" class="alert alert-danger" role="alert">
     {{errorMsg}}

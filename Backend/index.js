@@ -25,6 +25,7 @@ app.get(`${apiURL}`, (request, response) => {
 })
 
 app.post(`${apiURL}login`, db.loginUser)
+app.put(`${apiURL}password/reset`, db.resetPassword)
 
 app.get(`${apiURL}usuarios`, db.getUsers)
 app.post(`${apiURL}usuarios`, db.newUser)

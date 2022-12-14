@@ -2,7 +2,7 @@ const Pool = require('pg').Pool
 
 const pool = new Pool({
   user: 'postgres',
-  host: 'postgres',
+  host: 'localhost',
   database: 'chemita',
   password: 'Guatemala1',
   port: 5432,
@@ -69,6 +69,18 @@ const loginUser = (request, response) => {
       response.status(500).send('{"msg":"' + error + '"}');
     }
     response.status(200).json(results.rows);
+  })
+}
+
+const resetPassword = (request, response) => {
+  const { usuario, clave } = request.body
+  var q = `update usuarios set clave =   '${clave}'
+            where usuario = '${usuario}' `;
+  pool.query(q, (error, results) => {
+    if (error) {
+      response.status(500).send('{"msg":"' + error + '"}');
+    }
+    response.status(200).json('{"msg":"Clave de Usuario actualizada correctamente."}');
   })
 }
 
@@ -200,5 +212,6 @@ module.exports = {
   getmeses,
   insertaCatalogo,
   actualizaCatalogo,
+  resetPassword,
 }
 
