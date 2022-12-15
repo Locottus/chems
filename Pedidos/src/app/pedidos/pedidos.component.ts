@@ -11,6 +11,7 @@ import { PedidosService } from '../servicios/pedidos.service';
 import { CatalogoService } from '../servicios/catalogo.service';
 import { ActivatedRoute } from '@angular/router';
 import { CalendarioService } from '../servicios/calendario.service';
+import { Usuario } from '../interfaces/Usuario';
 
 //https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow
 
@@ -55,18 +56,14 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   };
 
   rowData: Array<Catalogo> = [];
+  isAdmin:boolean = false;
 
-  //autenticado: boolean = false;
-  /**
-  * observable to refresh the data when the modal updates.
-  */
-  /*dataLogin$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
-    this.autenticado = loginStatus;
-    if (!this.autenticado){
-      this.servicio.navegaOrigen();
-    }
-
-  });*/
+  usuario: Usuario = new Usuario();
+  dataUsuario$ = this.servicio.subjectObservableUsuario$.subscribe(async (usrData)=>{
+    this.usuario = usrData;
+    this.isAdmin = (this.usuario.rol == 1? true : false)
+    //console.log(this.usuario);
+  })
 
   dataCatalogo$ = this.catalogoService.subjectObservableCatalogo$.subscribe(async (data) => {
     this.rowData = data;
@@ -83,11 +80,11 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getCatalog();
-    this.detallePedido.hora = this.calendarioService.getCurrentHour();
     this.route.queryParams
       .subscribe(params => {
         this.detallePedido.date = params["fecha"];
       });
+      this.detallePedido.hora  = this.calendarioService.getCurrentHour();
   }
 
   getCatalog() {

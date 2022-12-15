@@ -74,7 +74,11 @@
         <div class="row">
           <br/>
           <div class="col centrado">
-            <button class="btn btn-primary" (click)="Actualizar()">Actualizar Catalogo</button>
+            <button 
+              class="btn btn-primary" 
+              (click)="Actualizar()"
+              [hidden]="!isAdmin"
+            >Actualizar Catalogo</button>
           </div>
 
         </div>

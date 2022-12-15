@@ -62,14 +62,14 @@ export class CalendarioService {
     let day = date.getDate().toString();
     day = day.length > 1 ? day : '0' + day;
     
-    return `${year}-${month}-${day}`;//month + '/' + day + '/' + year;
+    return `${year}-${month}-${day}`;
   }
 
   getCurrentHour(){
     const d = new Date();
     let hour = d.getHours();
-    let minutes = d.getMinutes();
-    return `${hour}:${minutes}`
+    let minutes = d.getMinutes();//
+    return `${hour.toString().padStart(2 ,"0")}:${minutes.toString().padStart(2 ,"0")}`;
   }
 
 }

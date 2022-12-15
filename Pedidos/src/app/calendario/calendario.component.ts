@@ -5,7 +5,6 @@ import { DetallePedido } from '../interfaces/DetallePedido';
 import { MostrarPedidoComponent } from '../pedidos/componentes/mostrar-pedido/mostrar-pedido.component';
 import { CalendarioService } from '../servicios/calendario.service';
 import { ServiciosService } from '../servicios/servicios.service';
-import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,27 +18,7 @@ export class CalendarioComponent implements  AfterViewInit {
 
   calendarApi: any;
   calendarOptions: CalendarOptions;
-  //autenticado: boolean = false;
-  /**
-  * observable to refresh the data when the modal updates.
-  */
-  /*dataLogin$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
-    this.autenticado = loginStatus;
-    if (!this.autenticado) {
-      this.servicio.navegaOrigen();
-    }
-  });*/
-
-  /**
-* observable to refresh the data when the modal updates.
-*/
-/*  dataChange$ = this.servicio.subjectObservable$.subscribe(async (loginStatus) => {
-    this.autenticado = loginStatus;
-  });
-*/
-  /**
-  * observable to refresh the data when the modal updates.
-  */
+  
   dataCalendar$ = this.calendarioService.subjectObservableCalendario$.subscribe(async (data) => {
     this.eventos = data;
     this.calendarOptions = {
