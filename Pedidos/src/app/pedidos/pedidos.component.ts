@@ -40,11 +40,11 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
   columnDefs: ColDef[] = [
     { field: 'id', hide: false, maxWidth: 100, },
-    { field: 'nombre', hide: false, editable: true },
-    { field: 'empresa', hide: false, editable: true },
-    { field: 'presentacion', hide: false, editable: true, },
+    { field: 'nombre', hide: false, editable: true, },
     { field: 'cantidad', hide: false, editable: true, },
     { field: 'precio', hide: false, editable: true, },
+    { field: 'empresa', hide: false, editable: true, },
+    { field: 'presentacion', hide: false, editable: true, },
   ];
 
   //default settings for all columns
