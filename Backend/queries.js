@@ -177,7 +177,7 @@ const pedidosMes = (request, response) => {
             select
             ID,TITLE,to_char("date", 'YYYY-MM-DD') AS DATE,
             DETALLE,NOMBRE,TELEFONO,UBICACION,NOTA,
-            HORA,RECORDATORIO,TOTAL  
+            HORA,RECORDATORIO,TOTAL, DETALLEJSON  
             from pedido where date between '${fechaInicio}' and '${fechaFin}'  
             order by date asc `;
   pool.query(q, (error, results) => {

@@ -36,6 +36,8 @@ export class GridCalendarioComponent  {
     { field: 'nota', hide: false, },
     { field: 'hora', hide: false, },
     { field: 'recordatorio', hide: false, },
+    { field: 'total', hide: false, },
+    { field: 'detallejson', hide: false, },
 
   ];
 

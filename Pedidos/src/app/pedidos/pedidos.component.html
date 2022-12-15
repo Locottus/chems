@@ -121,17 +121,15 @@
          </div> 
          
          <div class="col-6 margenes">
-          <label>Dias previos de recordatorio</label>
+          <label>Dia de recordatorio</label>
+          <label>Fecha de entrega</label>
           <input 
-            type="number" 
-            class="form-control" 
-            id="Recordatorio" 
-            placeholder="Recordatorio" 
-            name="Recordatorio"
-            required
+            type="date" 
+            class="date form-control" 
+            id="Fecha" 
+            name="Fecha"
             [(ngModel)]="detallePedido.recordatorio"
-            >
-         </div>  
+          >
       </div>
     </div>
     <div class="row">

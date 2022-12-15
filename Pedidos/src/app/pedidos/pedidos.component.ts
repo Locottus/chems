@@ -82,7 +82,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     this.getCatalog();
     this.route.queryParams
       .subscribe(params => {
-        this.detallePedido.date = params["fecha"];
+        this.detallePedido.recordatorio = this.detallePedido.date = params["fecha"];
       });
       this.detallePedido.hora  = this.calendarioService.getCurrentHour();
   }
@@ -161,7 +161,13 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
   reset() {
     this.getCatalog();
-    this.detallePedido = new DetallePedido();
+    this.detallePedido.nombre = "";
+    this.detallePedido.telefono = "";
+    this.detallePedido.detalle = "";
+    this.detallePedido.detalleJson = [];
+    this.detallePedido.ubicacion = "";
+    this.detallePedido.total = 0;
+    this.detallePedido.title = "";
     this.myInputField.nativeElement.focus();
   }
 

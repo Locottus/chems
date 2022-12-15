@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS public."pedido"
     nota text COLLATE pg_catalog."default",
     hora text COLLATE pg_catalog."default",
     detallejson text COLLATE pg_catalog."default",
-    recordatorio numeric,
+    recordatorio timestamp without time zone NOT NULL,
     total numeric
 )
 
