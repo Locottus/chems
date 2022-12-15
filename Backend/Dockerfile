@@ -1,5 +1,5 @@
 # docker build  -t ng-backend-chemita .
-# docker run --publish 3000:3000 -d ng-backend-chemita  
+# docker run --p 3000:3000 -d ng-backend-chemita  
 # docker exec -it ng-backend-chemita /bin/bash
 FROM node:19
 WORKDIR /backend
@@ -11,6 +11,6 @@ COPY . .
 #CMD [ "npm", "start" ]
 
 # If you are building your code for production
- RUN npm ci --only=production
+# RUN npm ci --only=production
 
-CMD [ "node", "index.js" ]
+CMD [ "npm", "start" ]
