@@ -126,10 +126,10 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     this.detallePedido.detalleJson = detalleJson;
     this.detallePedido.total = total;
 
-    //this.pedidosService.guardaPedido(this.detallePedido);
+    this.pedidosService.guardaPedido(this.detallePedido);
     
-    //this.reset();
-    console.log(this.detallePedido);
+    this.reset();
+    //console.log(this.detallePedido);
   }
 
   /*  onLogout() {
