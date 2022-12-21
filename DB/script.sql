@@ -1,3 +1,9 @@
+/*
+docker exec -it 05b3a3471f6f bash
+root@05b3a3471f6f:/# psql -U postgres
+postgres-# CREATE DATABASE mytest;
+postgres-# \q
+*/
 create database chemita;
 
 -- Table: public.usuarios
@@ -37,7 +43,7 @@ CREATE TABLE IF NOT EXISTS public."pedido"
     nota text COLLATE pg_catalog."default",
     hora text COLLATE pg_catalog."default",
     detallejson text COLLATE pg_catalog."default",
-    recordatorio timestamp without time zone NOT NULL,
+    recordatorio timestamp without time zone  NULL,
     total numeric
 )
 

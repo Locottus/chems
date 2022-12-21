@@ -72,4 +72,12 @@ export class CalendarioService {
     return `${hour.toString().padStart(2 ,"0")}:${minutes.toString().padStart(2 ,"0")}`;
   }
 
+  convertDateToYYYYMMDD(date:Date) {
+    var year = date.getFullYear();
+    var month = (1 + date.getMonth()).toString().padStart(2, '0');
+    var day = date.getDate().toString().padStart(2, '0');
+  
+    return year + '-' + month + '-' + day;
+  }
+
 }
