@@ -54,7 +54,6 @@ export class LoginModalComponent  implements OnInit{
 
   validar() {
     this.servicio.login(this.usr.toLowerCase(), this.pwd);
-
   }
 
   showError(msg: string) {
@@ -74,6 +73,7 @@ export class LoginModalComponent  implements OnInit{
   passwordReset(){
     //TODO
   }
+
 
 }
 
