@@ -50,6 +50,7 @@ export class LoginModalComponent  implements OnInit{
     /*if (this.autenticado){
       this.isCreation = this.data.isCreation;
     }*/
+    //this.servicio.CheckPassword('Guatemala99^')
   }
 
   validar() {

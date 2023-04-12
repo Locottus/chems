@@ -22,6 +22,8 @@ export class UsuariosService {
     this.httpClient.post<Usuario>(`${Constantes.backend}usuarios`, usuario)
       .subscribe(data => {
         alert(data);
+      },err=>{
+        alert(err.message);
       })
   }
 
@@ -30,6 +32,8 @@ export class UsuariosService {
       .subscribe(data => {
         //alert(data);
         this.behaviorSubjectUsuarios.next(data);
+      },err=>{
+        alert(err.message);
       })
   }
 
@@ -38,6 +42,8 @@ export class UsuariosService {
     this.httpClient.put<Usuario>(`${Constantes.backend}usuarios`, usuarios)
       .subscribe(data => {
         alert(data);
+      },err=>{
+        alert(err.message);
       })
   }
 

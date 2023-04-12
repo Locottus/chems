@@ -31,18 +31,24 @@ export class CatalogoService {
         this.cat = data;
         this.cat.forEach(e => { e.cantidad = 0; })
         this.catalogEmitter(this.cat);
+      },err=>{
+        alert(err.message);
       })
   }
 
   actualizaCatalogo(catalogo: Array<Catalogo>) {
     this.httpClient.put(`${Constantes.backend}catalogo`, catalogo).subscribe(data => {
       alert(data);
+    },err=>{
+      alert(err.message);
     });
   }
 
   insertaCatalogo(catalogo: Catalogo) {
     this.httpClient.post(`${Constantes.backend}catalogo`, catalogo).subscribe(data => {
       alert(data);
+    },err=>{
+      alert(err.message);
     });
   }
 

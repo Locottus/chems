@@ -40,7 +40,13 @@ export class ServiciosService {
       this.usuario = data[0];
       this.behaviorSubjectUsuario.next(this.usuario);
       this.loginStatus((data.length > 0 && data[0].activo == 1 ? true : false));
-    })
+      //console.log(data);
+    }, err =>{ 
+      let u:Usuario  = new Usuario();
+      this.behaviorSubjectUsuario.next(u);
+        alert(err.message);
+        console.log(err);
+      })
   }
 
   logout() {
@@ -59,12 +65,12 @@ export class ServiciosService {
     //https://www.w3resource.com/javascript/form/password-validation.php
     let exp:RegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
     if (exp.test(pwd)) {      
-      //console.log(pwd,' OK');
+      console.log(pwd,' OK');
       return true;
     }
     else {
       //this.showError('El Password debe ser de 8 a 15 posiciones, debe tener mayusculas y minusculas, numeros y al menos 1 caracter especial')
-      console.log('ERROR');
+      console.log(pwd,' ERROR');
       return false;
     }
   } 

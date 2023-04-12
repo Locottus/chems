@@ -1,0 +1,28 @@
+
+<div id="hasNumber" *ngIf="hasNumber" class="green center">
+    <span>
+        <mat-icon>check_circle</mat-icon>
+        Password has a number
+    </span>
+</div>
+
+<div id="noHasNumber" *ngIf="!hasNumber" class="red center">
+    <span>
+        <mat-icon>highlight_off</mat-icon>
+        Password does not have a number
+    </span>
+</div>
+
+<div id="hasCapital" *ngIf="hasCapital" class="green center">
+    <span>
+        <mat-icon>check_circle</mat-icon>
+        Password has a capital letter
+    </span>
+</div>
+
+<div id="nohasCapital" *ngIf="!hasCapital" class="red center">
+    <span>
+        <mat-icon>highlight_off</mat-icon>
+        Password does not have a capital letter
+    </span>
+</div>

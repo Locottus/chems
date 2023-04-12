@@ -29,6 +29,7 @@ import { MostrarPedidoComponent } from './pedidos/componentes/mostrar-pedido/mos
 import { GridCalendarioComponent } from './calendario/componentes/grid-calendario/grid-calendario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { NuevoUsuarioComponent } from './usuarios/componentes/nuevo-usuario/nuevo-usuario.component';
+import { PwdValidationComponent } from './pwd-validation/pwd-validation.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -50,7 +51,8 @@ FullCalendarModule.registerPlugins([
     MostrarPedidoComponent,
     GridCalendarioComponent,
     UsuariosComponent,
-    NuevoUsuarioComponent
+    NuevoUsuarioComponent,
+    PwdValidationComponent
   ],
   imports: [
     BrowserModule,

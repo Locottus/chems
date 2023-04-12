@@ -35,6 +35,8 @@ export class CalendarioService {
       data => {
         this.pedidos = data;
         this.calendarioEmitter(this.pedidos);
+      },err=>{
+        alert(err.message);
       }
     );
   }
