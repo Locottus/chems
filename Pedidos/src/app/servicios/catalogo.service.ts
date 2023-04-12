@@ -32,7 +32,7 @@ export class CatalogoService {
         console.error(err);
         //Handle the error here
         alert(err.message);
-        return throwError(err);    //Rethrow it back to component
+        return throwError(() => err);
       })
     )
       .subscribe(data => {
@@ -49,7 +49,7 @@ export class CatalogoService {
         console.error(err);
         //Handle the error here
         alert(err.message);
-        return throwError(err);    //Rethrow it back to component
+        return throwError(() => err);
       })
     ).subscribe(data => {
       alert(data);
@@ -63,7 +63,7 @@ export class CatalogoService {
         console.error(err);
         //Handle the error here
         alert(err.message);
-        return throwError(err);    //Rethrow it back to component
+        return throwError(() => err);
       })
     ).subscribe(data => {
       alert(data);

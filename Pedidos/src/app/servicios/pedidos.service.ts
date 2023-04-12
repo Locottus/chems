@@ -21,7 +21,7 @@ export class PedidosService {
         console.error(err);
         //Handle the error here
         alert(err.message);
-        return throwError(err);    //Rethrow it back to component
+        return throwError(() => err);
       })
     )
     .subscribe(data =>{

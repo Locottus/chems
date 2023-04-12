@@ -42,7 +42,7 @@ export class ServiciosService {
         console.error(err);
         //Handle the error here
         alert(err.message);
-        return throwError(err);    //Rethrow it back to component
+        return throwError(() => err);
       })
     ).subscribe(data => {
       this.usuario = data[0];
@@ -66,16 +66,16 @@ export class ServiciosService {
 
   CheckPassword(pwd: string) {
     //https://www.w3resource.com/javascript/form/password-validation.php
-    let exp:RegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-    if (exp.test(pwd)) {      
-      console.log(pwd,' OK');
+    let exp: RegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    if (exp.test(pwd)) {
+      console.log(pwd, ' OK');
       return true;
     }
     else {
       //this.showError('El Password debe ser de 8 a 15 posiciones, debe tener mayusculas y minusculas, numeros y al menos 1 caracter especial')
-      console.log(pwd,' ERROR');
+      console.log(pwd, ' ERROR');
       return false;
     }
-  } 
+  }
 
 }

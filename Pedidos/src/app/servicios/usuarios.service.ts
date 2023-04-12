@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, throwError } from 'rxjs';
 import { Constantes } from '../interfaces/Constantes';
@@ -18,44 +18,49 @@ export class UsuariosService {
     private httpClient: HttpClient,
   ) { }
 
+  handleError(error: HttpErrorResponse) {
+    return throwError(error);
+  }
+
   nuevoUsuario(usuario: Usuario) {
     this.httpClient.post<Usuario>(`${Constantes.backend}usuarios`, usuario)
       .subscribe(data => {
         alert(data);
-      },err=>{
+      }, err => {
         alert(err.message);
       })
   }
 
   obtieneUsuarios() {
     this.httpClient.get<Array<Usuario>>(`${Constantes.backend}usuarios`).pipe(
-      catchError((err) => {
+      catchError((error:HttpErrorResponse) => {
         console.log('error caught in service')
-        console.error(err);
+        console.error(error);
 
         //Handle the error here
-        alert(err.message);
-        return throwError(err);    //Rethrow it back to component
+        alert(error.message);
+        return throwError(() => error);    //Rethrow it back to component
       })
     ).subscribe(data => {
-        //alert(data);
-        this.behaviorSubjectUsuarios.next(data);
-      })
+      //alert(data);
+      this.behaviorSubjectUsuarios.next(data);
+    })
   }
 
 
   actualizaUsuarios(usuarios: Array<Usuario>) {
     this.httpClient.put<Usuario>(`${Constantes.backend}usuarios`, usuarios).pipe(
-      catchError((err) => {
-        console.log('error caught in service')
-        console.error(err);
-        //Handle the error here
-        alert(err.message);
-        return throwError(err);    //Rethrow it back to component
-      })
-    ).subscribe(data => {
-        alert(data);
-      })
+      catchError((error: HttpErrorResponse) => {
+        console.warn(
+          'the interceptor has caught an error, process it here',
+          error
+        );
+        alert(error.message);
+        return throwError(() => error);
+      }
+    )).subscribe(data => {
+      alert(data);
+    })
   }
 
 }
