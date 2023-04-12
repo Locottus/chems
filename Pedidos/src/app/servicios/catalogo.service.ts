@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, catchError, throwError } from 'rxjs';
 import { Catalogo } from '../interfaces/Catalogo';
 import { Constantes } from '../interfaces/Constantes';
 
@@ -26,29 +26,47 @@ export class CatalogoService {
   }
 
   getCatalogo() {
-    this.httpClient.get<Array<Catalogo>>(`${Constantes.backend}catalogo`)
+    this.httpClient.get<Array<Catalogo>>(`${Constantes.backend}catalogo`).pipe(
+      catchError((err) => {
+        console.log('error caught in service')
+        console.error(err);
+        //Handle the error here
+        alert(err.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    )
       .subscribe(data => {
         this.cat = data;
         this.cat.forEach(e => { e.cantidad = 0; })
         this.catalogEmitter(this.cat);
-      },err=>{
-        alert(err.message);
       })
   }
 
   actualizaCatalogo(catalogo: Array<Catalogo>) {
-    this.httpClient.put(`${Constantes.backend}catalogo`, catalogo).subscribe(data => {
+    this.httpClient.put(`${Constantes.backend}catalogo`, catalogo).pipe(
+      catchError((err) => {
+        console.log('error caught in service')
+        console.error(err);
+        //Handle the error here
+        alert(err.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    ).subscribe(data => {
       alert(data);
-    },err=>{
-      alert(err.message);
     });
   }
 
   insertaCatalogo(catalogo: Catalogo) {
-    this.httpClient.post(`${Constantes.backend}catalogo`, catalogo).subscribe(data => {
+    this.httpClient.post(`${Constantes.backend}catalogo`, catalogo).pipe(
+      catchError((err) => {
+        console.log('error caught in service')
+        console.error(err);
+        //Handle the error here
+        alert(err.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    ).subscribe(data => {
       alert(data);
-    },err=>{
-      alert(err.message);
     });
   }
 

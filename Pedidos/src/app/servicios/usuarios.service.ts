@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, catchError, throwError } from 'rxjs';
 import { Constantes } from '../interfaces/Constantes';
 import { Usuario } from '../interfaces/Usuario';
 
@@ -28,22 +28,33 @@ export class UsuariosService {
   }
 
   obtieneUsuarios() {
-    this.httpClient.get<Array<Usuario>>(`${Constantes.backend}usuarios`)
-      .subscribe(data => {
+    this.httpClient.get<Array<Usuario>>(`${Constantes.backend}usuarios`).pipe(
+      catchError((err) => {
+        console.log('error caught in service')
+        console.error(err);
+
+        //Handle the error here
+        alert(err.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    ).subscribe(data => {
         //alert(data);
         this.behaviorSubjectUsuarios.next(data);
-      },err=>{
-        alert(err.message);
       })
   }
 
 
   actualizaUsuarios(usuarios: Array<Usuario>) {
-    this.httpClient.put<Usuario>(`${Constantes.backend}usuarios`, usuarios)
-      .subscribe(data => {
-        alert(data);
-      },err=>{
+    this.httpClient.put<Usuario>(`${Constantes.backend}usuarios`, usuarios).pipe(
+      catchError((err) => {
+        console.log('error caught in service')
+        console.error(err);
+        //Handle the error here
         alert(err.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    ).subscribe(data => {
+        alert(data);
       })
   }
 

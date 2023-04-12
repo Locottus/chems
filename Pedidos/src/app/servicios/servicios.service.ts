@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BehaviorSubject, Observable, shareReplay, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, shareReplay, tap, throwError } from 'rxjs';
 import { Constantes } from '../interfaces/Constantes';
 import { Usuario } from '../interfaces/Usuario';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
@@ -36,17 +36,20 @@ export class ServiciosService {
     this.httpClient.post<any>(`${Constantes.backend}login`, {
       usuario: usuario,
       clave: clave
-    }).subscribe(data => {
+    }).pipe(
+      catchError((err) => {
+        console.log('error caught in service')
+        console.error(err);
+        //Handle the error here
+        alert(err.message);
+        return throwError(err);    //Rethrow it back to component
+      })
+    ).subscribe(data => {
       this.usuario = data[0];
       this.behaviorSubjectUsuario.next(this.usuario);
       this.loginStatus((data.length > 0 && data[0].activo == 1 ? true : false));
       //console.log(data);
-    }, err =>{ 
-      let u:Usuario  = new Usuario();
-      this.behaviorSubjectUsuario.next(u);
-        alert(err.message);
-        console.log(err);
-      })
+    })
   }
 
   logout() {
