@@ -5,10 +5,10 @@ services:
   volumes:
    - c:\postgres:/var/lib/postgresql/data #windows setup
    #- /var/postgres/:/var/lib/postgresql/data #linux setup
-  image: postgres
+  image: postgres:15
   restart: always
   ports:
    - 5432:5432
   environment:
    POSTGRES_PASSWORD: 'Guatemala1'
-
+   POSTGRES_USER: postgres
