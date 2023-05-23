@@ -15,17 +15,6 @@ services:
    POSTGRES_PASSWORD: 'Guatemala1'
    POSTGRES_USER: postgres
    
- backend:
-  image: ng-backend-chemita
-  build:
-   dockerfile: Dockerfile
-  restart: always
-  ports:
-   - 3000:3000 
-  networks:
-   - default
-
-   #https://stackoverflow.com/questions/61578005/nodejs-14-in-a-docker-container-cant-connect-to-postgres-db-in-out-docker
    
 networks:
   default:

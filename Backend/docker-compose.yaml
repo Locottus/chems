@@ -1,3 +1,5 @@
+#https://stackoverflow.com/questions/61578005/nodejs-14-in-a-docker-container-cant-connect-to-postgres-db-in-out-docker
+
 version: '3.5'
 services:
  postgres:
@@ -26,8 +28,6 @@ services:
   networks:
    - default
   depends_on:
-   - postgres
-   #https://stackoverflow.com/questions/61578005/nodejs-14-in-a-docker-container-cant-connect-to-postgres-db-in-out-docker
-   
+   - postgres   
 networks:
   default:
