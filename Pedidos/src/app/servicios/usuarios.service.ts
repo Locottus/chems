@@ -18,22 +18,24 @@ export class UsuariosService {
     private httpClient: HttpClient,
   ) { }
 
-  handleError(error: HttpErrorResponse) {
-    return throwError(error);
-  }
 
   nuevoUsuario(usuario: Usuario) {
-    this.httpClient.post<Usuario>(`${Constantes.backend}usuarios`, usuario)
-      .subscribe(data => {
-        alert(data);
-      }, err => {
-        alert(err.message);
+    this.httpClient.post<Usuario>(`${Constantes.backend}usuarios`, usuario).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.log('error caught in service')
+        console.error(error);
+        //Handle the error here
+        alert(error.message);
+        return throwError(() => error);    //Rethrow it back to component
       })
+    ).subscribe(data => {
+      alert(data);
+    })
   }
 
   obtieneUsuarios() {
     this.httpClient.get<Array<Usuario>>(`${Constantes.backend}usuarios`).pipe(
-      catchError((error:HttpErrorResponse) => {
+      catchError((error: HttpErrorResponse) => {
         console.log('error caught in service')
         console.error(error);
 
@@ -58,9 +60,9 @@ export class UsuariosService {
         alert(error.message);
         return throwError(() => error);
       }
-    )).subscribe(data => {
-      alert(data);
-    })
+      )).subscribe(data => {
+        alert(data);
+      })
   }
 
 }

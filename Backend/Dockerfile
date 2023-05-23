@@ -2,9 +2,9 @@
 # docker run --p 3000:3000 -d ng-backend-chemita  
 # docker exec -it ng-backend-chemita /bin/bash
 FROM node:20
-WORKDIR /backend
+WORKDIR /usr/src/app
 EXPOSE 3000
-COPY package*.json /backend/
+COPY package*.json ./
 
 RUN npm install
 COPY . .
@@ -14,3 +14,4 @@ COPY . .
 # RUN npm ci --only=production
 
 CMD [ "npm", "start" ]
+

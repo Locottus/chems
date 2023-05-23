@@ -2,6 +2,8 @@ version: '3.5'
 services:
  postgres:
   container_name: postgres
+  networks:
+   - default  
   volumes:
    - c:\postgres:/var/lib/postgresql/data #windows setup
    #- /var/postgres/:/var/lib/postgresql/data #linux setup
@@ -12,3 +14,18 @@ services:
   environment:
    POSTGRES_PASSWORD: 'Guatemala1'
    POSTGRES_USER: postgres
+   
+ backend:
+  image: ng-backend-chemita
+  build:
+   dockerfile: Dockerfile
+  restart: always
+  ports:
+   - 3000:3000 
+  networks:
+   - default
+
+   #https://stackoverflow.com/questions/61578005/nodejs-14-in-a-docker-container-cant-connect-to-postgres-db-in-out-docker
+   
+networks:
+  default:
