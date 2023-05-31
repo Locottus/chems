@@ -9,6 +9,9 @@
         <div class="row">
             <button class="btn btn-warning" (click)="imprimir()">Imprimir</button>
         </div>
+        <div class="row" *ngIf="fileReady">
+            <a [href]="fileUrl" download={{pedido.extendedProps.telefono}}.txt>Descargar Pedido</a>
+        </div>
     </div>
     <br />
     <div class=" scroll_div">
