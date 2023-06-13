@@ -27,7 +27,7 @@ export class GridCalendarioComponent {
 
   columnDefs: ColDef[] = [
     { field: 'id', hide: false, maxWidth: 100, },
-    { field: 'title', hide: false, editable: true },
+    { field: 'title', hide: false,  },
     { field: 'detalle', hide: false, editable: true },
     { field: 'nombre', hide: false, editable: true },
     { field: 'telefono', hide: false, editable: true },

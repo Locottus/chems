@@ -192,7 +192,7 @@ const savePedidosMes = (request, response) => {
   const { title, date, detalle, nombre, telefono, ubicacion, nota, hora, recordatorio, detalleJson, total, estado } = request.body
   var q = `insert into pedido (title, date, detalle, nombre, telefono, ubicacion, nota, hora, recordatorio, detalleJson, total, estado) 
            values
-           ('${title}', '${date}', '${detalle}', '${nombre}', '${telefono}', '${ubicacion}', '${nota}', '${hora}', '${recordatorio}', '${JSON.stringify(detalleJson)}', '${total}', ${estado});`;
+           ( '${title}', '${date}', '${detalle}', '${nombre}', '${telefono}', '${ubicacion}', '${nota}', '${hora}', '${recordatorio}', '${JSON.stringify(detalleJson)}', '${total}', '${estado}' );`;
   pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');

@@ -38,7 +38,7 @@ export class CalendarioService {
     ).subscribe(
       data => {
         console.log(data);
-        alert(data.msg);
+        alert(data);
       }
     );
   }

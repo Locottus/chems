@@ -25,7 +25,8 @@ export class PedidosService {
       })
     )
     .subscribe(data =>{
-      console.log(data);
+      //console.log(data);
+      alert(data);
     });
   }
 
