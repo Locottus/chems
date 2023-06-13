@@ -177,7 +177,7 @@ const pedidosMes = (request, response) => {
             select
             ID,TITLE,to_char("date", 'YYYY-MM-DD') AS DATE,
             DETALLE,NOMBRE,TELEFONO,UBICACION,NOTA,
-            HORA,RECORDATORIO,TOTAL, DETALLEJSON  
+            HORA,RECORDATORIO,TOTAL, DETALLEJSON, estado  
             from pedido where date between '${fechaInicio}' and '${fechaFin}'  
             order by date asc `;
   pool.query(q, (error, results) => {
@@ -189,16 +189,33 @@ const pedidosMes = (request, response) => {
 }
 
 const savePedidosMes = (request, response) => {
-  const { title, date, detalle, nombre, telefono, ubicacion, nota, hora, recordatorio, detalleJson, total } = request.body
-  var q = `insert into pedido (title, date, detalle, nombre, telefono, ubicacion, nota, hora, recordatorio, detalleJson, total) 
+  const { title, date, detalle, nombre, telefono, ubicacion, nota, hora, recordatorio, detalleJson, total, estado } = request.body
+  var q = `insert into pedido (title, date, detalle, nombre, telefono, ubicacion, nota, hora, recordatorio, detalleJson, total, estado) 
            values
-           ('${title}', '${date}', '${detalle}', '${nombre}', '${telefono}', '${ubicacion}', '${nota}', '${hora}', '${recordatorio}', '${JSON.stringify(detalleJson)}', '${total}');`;
+           ('${title}', '${date}', '${detalle}', '${nombre}', '${telefono}', '${ubicacion}', '${nota}', '${hora}', '${recordatorio}', '${JSON.stringify(detalleJson)}', '${total}', ${estado});`;
   pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');
     }
     response.status(200).json('{"msg":"Success"}');
   })
+}
+
+const actualizaPedido = (request, response) => {
+  let errors = 0;
+  for (let i = 0; i < request.body.length; i++) {
+    const { title, date, detalle, nombre, telefono, ubicacion, nota, hora, recordatorio, detalleJson, total, estado , id} = request.body[i];
+    var q = `update pedido  set title = '${title}', detalle = '${detalle}', nombre = '${nombre}', telefono= '${telefono}',
+             ubicacion= '${ubicacion}', nota= '${nota}', hora= '${hora}', recordatorio= '${recordatorio}', estado= '${estado}',
+             date= '${date}', total= '${total}'
+             where ${id} = id`;
+    pool.query(q, (error, results) => {
+      if (error) {
+        errors = errors + 1;
+      }
+    })
+  }
+  response.status(200).json(`{"msg":"Success", "errors": ${errors}}`);
 }
 
 module.exports = {
@@ -213,5 +230,6 @@ module.exports = {
   insertaCatalogo,
   actualizaCatalogo,
   resetPassword,
+  actualizaPedido,
 }
 

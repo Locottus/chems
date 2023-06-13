@@ -38,6 +38,7 @@ app.put(`${apiURL}catalogo`, db.actualizaCatalogo)
 
 app.get(`${apiURL}pedidos-mes`, db.pedidosMes)
 app.post(`${apiURL}pedidos-mes`, db.savePedidosMes)
+app.put(`${apiURL}pedidos-mes`, db.actualizaPedido)
 
 
 app.listen(port, () => {

@@ -12,7 +12,7 @@ import { ServiciosService } from 'src/app/servicios/servicios.service';
   templateUrl: './grid-calendario.component.html',
   styleUrls: ['./grid-calendario.component.css']
 })
-export class GridCalendarioComponent  {
+export class GridCalendarioComponent {
   @ViewChild("myInputFocus") myInputField: ElementRef;
   @ViewChild('topGrid') agGrid!: AgGridAngular;
 
@@ -27,18 +27,18 @@ export class GridCalendarioComponent  {
 
   columnDefs: ColDef[] = [
     { field: 'id', hide: false, maxWidth: 100, },
-    { field: 'title', hide: false, },
-    { field: 'date', hide: false, },
-    { field: 'detalle', hide: false, },
-    { field: 'nombre', hide: false, },
-    { field: 'telefono', hide: false, },
-    { field: 'ubicacion', hide: false, },
-    { field: 'nota', hide: false, },
-    { field: 'hora', hide: false, },
-    { field: 'recordatorio', hide: false, },
-    { field: 'total', hide: false, },
+    { field: 'title', hide: false, editable: true },
+    { field: 'detalle', hide: false, editable: true },
+    { field: 'nombre', hide: false, editable: true },
+    { field: 'telefono', hide: false, editable: true },
+    { field: 'ubicacion', hide: false, editable: true },
+    { field: 'nota', hide: false, editable: true },
+    { field: 'hora', hide: false, editable: true },
+    { field: 'recordatorio', hide: false, editable: true },
+    { field: 'estado', hide: false, editable: true },    
+    { field: 'date', hide: false,editable: true },    
+    { field: 'total', hide: false,editable: true },
     { field: 'detallejson', hide: false, },
-
   ];
 
   //default settings for all columns
@@ -101,4 +101,9 @@ export class GridCalendarioComponent  {
     this.gridApi.exportDataAsCsv();
     //this.gridApi.exportDataAsExcel({});
   }
+
+  actualizar(){
+    this.calendarioService.updatePedidosCalendario(this.rowData)
+  }
+
 }

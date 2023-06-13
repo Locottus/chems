@@ -91,3 +91,4 @@ TABLESPACE pg_default;
 ALTER TABLE IF EXISTS public."detalle-pedido"
     OWNER to postgres;
 
+alter table public.pedido add column estado text null;

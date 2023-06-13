@@ -9,5 +9,6 @@ export class DetallePedido {
     public hora: string;
     public recordatorio: string;
     public detalleJson: Array<any> = [];
-    public total:number;
+    public total: number;
+    public estado: string = "nuevo";
 }

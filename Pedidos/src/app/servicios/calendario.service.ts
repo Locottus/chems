@@ -24,6 +24,25 @@ export class CalendarioService {
     this.behaviorSubjectCalendario.next(this.pedidos);
   }
 
+  updatePedidosCalendario(pedidos:Array<DetallePedido>){
+    return this.httpClient.put<any>(`${Constantes.backend}pedidos-mes`, pedidos
+    ).pipe(
+      catchError((err) => {
+        console.log('error caught in service')
+        console.error(err);
+        //Handle the error here
+        alert(err.message);
+        return throwError(() => err);    
+
+      })
+    ).subscribe(
+      data => {
+        console.log(data);
+        alert(data.msg);
+      }
+    );
+  }
+
   getPedidosCalendario(fechaInicio: string, fechaFin: string) {
     //console.log('get pedidos');
     return this.httpClient.get<Array<DetallePedido>>(`${Constantes.backend}pedidos-mes`, {
