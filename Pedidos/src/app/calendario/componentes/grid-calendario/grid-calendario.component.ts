@@ -92,9 +92,7 @@ export class GridCalendarioComponent {
   }
 
   obtienePedidos() {
-    console.log('obtiene pedidos');
     this.calendarioService.getPedidosCalendario(this.fechaInicio, this.fechaFin);
-
   }
 
   excel() {
@@ -104,6 +102,30 @@ export class GridCalendarioComponent {
 
   actualizar(){
     this.calendarioService.updatePedidosCalendario(this.rowData)
+  }
+
+  csv(){
+    let datos : Array<any> = [];
+    for (let i = 0; i < this.rowData.length ; i++){
+      let detalles = this.rowData[i].detallejson.toString().length > 0 ||  this.rowData[i].detallejson != undefined  ? JSON.parse(this.rowData[i].detallejson.toString()) : [{}];
+      //console.log(detalles);
+      let dato : DetallePedido = new DetallePedido();
+      dato.date = this.rowData[i].date;
+      dato.detalleJson = detalles;
+      dato.detallejson = detalles;
+      dato.estado = this.rowData[i].estado;
+      dato.hora = this.rowData[i].hora;
+      dato.nombre = this.rowData[i].nombre;
+      dato.nota = this.rowData[i].nota;
+      dato.recordatorio = this.rowData[i].recordatorio;
+      dato.telefono = this.rowData[i].telefono;
+      dato.title = this.rowData[i].title;
+      dato.total = this.rowData[i].total;
+      console.log(dato);
+      datos.push(dato);
+    }
+    console.log('********************')
+    console.log(datos);
   }
 
 }

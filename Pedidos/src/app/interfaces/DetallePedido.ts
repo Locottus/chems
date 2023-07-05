@@ -11,4 +11,6 @@ export class DetallePedido {
     public detalleJson: Array<any> = [];
     public total: number;
     public estado: string = "nuevo";
+    public detallejson: any ;
+
 }
