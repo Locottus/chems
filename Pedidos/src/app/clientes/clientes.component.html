@@ -1,0 +1,116 @@
+<div class="container" >
+    <app-menu></app-menu>
+    <div class="centrado">
+      <h2>Creacion de Nuevo Cliente</h2>
+    </div>
+    <div class="form-row ">
+
+        <div class="col margenes">
+            <input 
+              type="number" 
+              class="form-control" 
+              id="id" 
+              placeholder="Id del cliente"
+              name="id" 
+              required
+             [(ngModel)]="nuevoCliente.id"
+             autofocus
+             #myInputFocus
+            >
+          </div>
+
+      <div class="col margenes">
+        <input 
+          type="text" 
+          class="form-control" 
+          id="Nombre" 
+          placeholder="Nombre del cliente"
+          name="nombre" 
+          required
+         [(ngModel)]="nuevoCliente.nombre"
+         autofocus
+        >
+      </div>
+      
+      <div class="form-row ">
+        <div class="col margenes">
+          <input 
+            type="text" 
+            class="form-control" 
+            id="Telefono" 
+            placeholder="Telefono"
+            name="Telefono" 
+            required
+           [(ngModel)]="nuevoCliente.telefono"
+          >
+        </div>
+  
+        <div class="col margenes">
+          <input 
+            type="text" 
+            class="form-control" 
+            id="Ubicacion" 
+            placeholder="Ubicaicon" 
+            name="ubicacion"
+            required
+            [(ngModel)]="nuevoCliente.ubicacion"
+          >
+        </div>
+  
+        <div class="col margenes">
+          <input 
+            type="text" 
+            class="form-control" 
+            id="Email" 
+            placeholder="Email" 
+            name="Email"
+            required
+            [(ngModel)]="nuevoCliente.email"
+          >
+        </div>
+
+        <br/>
+        <div class="col centrado">
+          <button 
+            class="btn btn-primary" 
+            (click)="AgregarCliente()"
+            [hidden]="!isAdmin"
+          >Agregar Cliente</button>
+        </div>        
+  
+        <div class="col margenes">
+          <ag-grid-angular
+            id="agGrid"
+            #topGrid
+            class="ag-theme-alpine"
+            style="width: 100%; height: 450px;"
+            [rowData]="rowData"
+            [columnDefs]="columnDefs"
+            [animateRows]="true"
+            (firstDataRendered)="onFirstDataRendered($event)"
+            [groupDisplayType]="groupDisplayType"
+            (gridReady)="onGridReady($event)"
+            [defaultColDef]="defaultColDef"
+            (cellValueChanged)="onCellValueChanged($event)"      
+          ></ag-grid-angular>    
+            
+          <br/>
+
+          <div class="row">
+            <br/>
+            <div class="col centrado">
+              <button 
+                class="btn btn-primary" 
+                (click)="Actualizar()"
+                [hidden]="!isAdmin"
+              >Actualizar Catalogo</button>
+            </div>
+  
+          </div>
+  
+        </div>
+  
+      </div>
+    
+  </div>
+  

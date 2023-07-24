@@ -8,6 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NuevoPedidoComponent } from './pedidos/componentes/nuevo-pedido/nuevo-pedido.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { ClientesComponent } from './clientes/clientes.component';
 
 const routes: Routes = [
   { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard] },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'pedidos', component: PedidosComponent, canActivate: [AuthGuard] },
   { path: 'nuevo-producto', component: NuevoPedidoComponent, canActivate: [AuthGuard] },
   { path: 'grid-calendario', component: GridCalendarioComponent, canActivate: [AuthGuard] },
+  { path: 'clientes', component: ClientesComponent, canActivate: [AuthGuard] },
   { path: '', component: MenuComponent },
   { path: '**', component: NotFoundComponent, canActivate: [AuthGuard] },
 ];

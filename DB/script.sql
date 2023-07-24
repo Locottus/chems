@@ -92,3 +92,15 @@ ALTER TABLE IF EXISTS public."detalle-pedido"
     OWNER to postgres;
 
 alter table public.pedido add column estado text null;
+
+
+
+CREATE TABLE IF NOT EXISTS public.clientes
+(
+    id numeric NOT NULL,
+	nombre text COLLATE pg_catalog."default" NOT NULL,
+    telefono text COLLATE pg_catalog."default" NOT NULL,
+    ubicacion text COLLATE pg_catalog."default" NOT NULL,
+    email text COLLATE pg_catalog."default"  NULL,    
+    CONSTRAINT clientes_pkey PRIMARY KEY (id)
+)

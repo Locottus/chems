@@ -74,6 +74,10 @@ export class MenuComponent implements  AfterViewInit {
       case 'usrs':
       this.router.navigateByUrl('/usuarios')
       break; 
+      case 'clientes':
+      this.router.navigateByUrl('/clientes')
+      break; 
+
     }
   }
 
