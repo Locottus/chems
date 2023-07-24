@@ -218,6 +218,34 @@ const actualizaPedido = (request, response) => {
   response.status(200).json(`{"msg":"Success", "errors": ${errors}}`);
 }
 
+
+const clientes = (request, response) => {
+  //console.log(fechaInicio,fechaFin);
+  var q = ` select
+            ID,NOMBRE,UBICACION,TELEFONO,EMAIL
+            from CLIENTES
+            order by id `;
+  pool.query(q, (error, results) => {
+    if (error) {
+      response.status(500).send('{"msg":"' + error + '"}');
+    }
+    response.status(200).json(results.rows);
+  })
+}
+
+const addClient = (request, response) => {
+  const { id, nombre, ubiacion, telefono, email } = request.body
+  var q = `insert into clientes (id, nombre, ubiacion, telefono, email) 
+           values 
+           ('${id}', '${nombre}', '${ubiacion}', '${telefono}', ${email});`;
+  pool.query(q, (error, results) => {
+    if (error) {
+      response.status(500).send('{"msg":"' + error + '"}');
+    }
+    response.status(200).json('{"msg":"Success"}');
+  })
+}
+
 module.exports = {
   loginUser,
   getUsers,
@@ -231,5 +259,7 @@ module.exports = {
   actualizaCatalogo,
   resetPassword,
   actualizaPedido,
+  addClient,
+  clientes,
 }
 
