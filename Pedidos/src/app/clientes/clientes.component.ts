@@ -12,6 +12,7 @@ import { CatalogoService } from '../servicios/catalogo.service';
 import { ActivatedRoute } from '@angular/router';
 import { Usuario } from '../interfaces/Usuario';
 import { Cliente } from '../interfaces/Cliente';
+import { ClientesService } from '../servicios/clientes.service';
 
 @Component({
   selector: 'app-clientes',
@@ -62,20 +63,21 @@ export class ClientesComponent implements OnInit {
     //console.log(this.usuario);
   })
 
-  /*dataCatalogo$ = this.catalogoService.subjectObservableCatalogo$.subscribe(async (data) => {
+  /*
+  dataCatalogo$ = this.catalogoService.subjectObservableCatalogo$.subscribe(async (data) => {
     this.rowData = data;
-  })*/
-
+  })
+*/
   constructor(
     private matDialog: MatDialog,
     private servicio: ServiciosService,
     private pedidosService: PedidosService,
-    private catalogoService: CatalogoService,
+    private clientesService: ClientesService,
     private route: ActivatedRoute,
   ) { }
 
-  ngOnInit() {
-    this.getCatalog();
+  async ngOnInit() {
+    await this.getCatalog();
     
     /*this.route.queryParams
       .subscribe(params => {
@@ -84,8 +86,9 @@ export class ClientesComponent implements OnInit {
 */
   }
 
-  getCatalog() {
-    this.catalogoService.getCatalogo();
+  async getCatalog() {
+    let response = await this.clientesService.obtieneClientes();
+    console.log(response);
   }
 
   ngAfterViewInit() {
@@ -135,6 +138,7 @@ export class ClientesComponent implements OnInit {
   AgregarCliente() {
     //TODO
     //this.catalogoService.insertaCatalogo(this.rowData);
+
   }
 
   Actualizar() {

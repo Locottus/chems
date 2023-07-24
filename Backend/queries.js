@@ -172,7 +172,6 @@ const getmeses = (request, response) => {
 const pedidosMes = (request, response) => {
   const fechaInicio = request.query.fechaInicio;
   const fechaFin = request.query.fechaFin;
-  //console.log(fechaInicio,fechaFin);
   var q = `
             select
             ID,TITLE,to_char("date", 'YYYY-MM-DD') AS DATE,
@@ -220,7 +219,6 @@ const actualizaPedido = (request, response) => {
 
 
 const clientes = (request, response) => {
-  //console.log(fechaInicio,fechaFin);
   var q = ` select
             ID,NOMBRE,UBICACION,TELEFONO,EMAIL
             from CLIENTES
