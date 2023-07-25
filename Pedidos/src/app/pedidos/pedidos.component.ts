@@ -28,7 +28,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   @ViewChild('topGrid') agGrid!: AgGridAngular;
 
   catalogo: Array<Catalogo> = [];
-  selectedValue:string;
+  selectedValue: string;
 
   gridApi!: GridApi;
   gridColumnApi!: any;
@@ -58,12 +58,12 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   };
 
   rowData: Array<Catalogo> = [];
-  isAdmin:boolean = false;
+  isAdmin: boolean = false;
 
   usuario: Usuario = new Usuario();
-  dataUsuario$ = this.servicio.subjectObservableUsuario$.subscribe(async (usrData)=>{
+  dataUsuario$ = this.servicio.subjectObservableUsuario$.subscribe(async (usrData) => {
     this.usuario = usrData;
-    this.isAdmin = (this.usuario.rol == 1? true : false)
+    this.isAdmin = (this.usuario.rol == 1 ? true : false)
     //console.log(this.usuario);
   })
 
@@ -71,7 +71,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     this.rowData = data;
   })
 
-  clientes:any;
+  clientes: any;
 
   constructor(
     private matDialog: MatDialog,
@@ -79,8 +79,8 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     private pedidosService: PedidosService,
     private catalogoService: CatalogoService,
     private route: ActivatedRoute,
-    private calendarioService:CalendarioService,
-    private clientesService:ClientesService
+    private calendarioService: CalendarioService,
+    private clientesService: ClientesService
   ) { }
 
   async ngOnInit() {
@@ -89,12 +89,12 @@ export class PedidosComponent implements OnInit, AfterViewInit {
       .subscribe(params => {
         this.detallePedido.recordatorio = this.detallePedido.date = params["fecha"];
       });
-      this.detallePedido.hora  = this.calendarioService.getCurrentHour();
+    this.detallePedido.hora = this.calendarioService.getCurrentHour();
   }
 
   async getCatalog() {
     this.catalogoService.getCatalogo();
-    (await this.clientesService.obtieneClientes()).subscribe(data =>{this.clientes = data; }); 
+    (await this.clientesService.obtieneClientes()).subscribe(data => { this.clientes = data; });
   }
 
   ngAfterViewInit() {
@@ -104,8 +104,8 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
 
-    for(let i = 0; i < this.clientes.length; i ++){
-      if (this.clientes[i].id == parseInt(this.selectedValue)){
+    for (let i = 0; i < this.clientes.length; i++) {
+      if (this.clientes[i].id == parseInt(this.selectedValue)) {
         this.detallePedido.nombre = this.clientes[i].nombre;
         this.detallePedido.ubicacion = this.clientes[i].ubicacion;
         this.detallePedido.telefono = this.clientes[i].telefono;
@@ -140,7 +140,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     this.detallePedido.total = total;
 
     this.pedidosService.guardaPedido(this.detallePedido);
-    
+
     this.reset();
     //console.log(this.detallePedido);
 
@@ -199,14 +199,10 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
   }
 
-  selected(cliente:Cliente){
-    console.log(cliente);
+  selected(cliente: Cliente) {
     this.detallePedido.nombre = cliente.nombre;
     this.detallePedido.ubicacion = cliente.ubicacion;
     this.detallePedido.telefono = cliente.telefono;
   }
 
-  changeClient(event:any){
-    console.log(event);
-  }
 }
