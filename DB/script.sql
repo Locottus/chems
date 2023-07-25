@@ -95,7 +95,7 @@ alter table public.pedido add column estado text null;
 
 
 
-CREATE TABLE IF NOT EXISTS public.clientes
+CREATE TABLE IF NOT EXISTS public."clientes"
 (
     id numeric NOT NULL,
 	nombre text COLLATE pg_catalog."default" NOT NULL,

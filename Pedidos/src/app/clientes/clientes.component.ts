@@ -112,8 +112,8 @@ export class ClientesComponent implements OnInit {
   onCellValueChanged(e: CellValueChangedEvent) {
   }
 
-  reset() {
-    this.getCatalog();
+  async reset() {
+    await this.getCatalog();
     this.nuevoCliente.nombre = "";
     this.nuevoCliente.telefono = "";
     this.nuevoCliente.ubicacion = "";
@@ -122,14 +122,14 @@ export class ClientesComponent implements OnInit {
     this.myInputField.nativeElement.focus();
   }
 
-  AgregarCliente() {
-    console.log(this.nuevoCliente);
+  async AgregarCliente() {
     this.clientesService.salvaClientes(this.nuevoCliente);
+    this.reset();
   }
 
   Actualizar() {
     //alert('Actualizado');
-    this.clientesService.salvaClientes(this.rowData);
+    this.clientesService.actualizaClientes(this.rowData);
   }
 
 }
