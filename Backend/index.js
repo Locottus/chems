@@ -40,10 +40,9 @@ app.get(`${apiURL}pedidos-mes`, db.pedidosMes)
 app.post(`${apiURL}pedidos-mes`, db.savePedidosMes)
 app.put(`${apiURL}pedidos-mes`, db.actualizaPedido)
 
-
 app.get(`${apiURL}clientes`, db.clientes)
 app.post(`${apiURL}clientes`, db.addClient)
-
+app.put(`${apiURL}clientes`, db.actualizaClientes)
 
 app.listen(port, () => {
   console.log(`App chemita backend running on port ${port}.`)

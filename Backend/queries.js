@@ -232,16 +232,31 @@ const clientes = (request, response) => {
 }
 
 const addClient = (request, response) => {
-  const { id, nombre, ubiacion, telefono, email } = request.body
+  const { id, nombre, ubicacion, telefono, email } = request.body
   var q = `insert into clientes (id, nombre, ubiacion, telefono, email) 
            values 
-           ( '${id}', '${nombre}', '${ubiacion}', '${telefono}', '${email}' ); `;
+           ( '${id}', '${nombre}', '${ubicacion}', '${telefono}', '${email}' ); `;
   pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');
     }
     response.status(200).json('{"msg":"Success"}');
   })
+}
+
+const actualizaClientes = (request, response) => {
+  let errors = 0;
+  for (let i = 0; i < request.body.length; i++) {
+    const { id, nombre, ubicacion, telefono, email } = request.body[i];
+    var q = `update clientes  set nombre = '${nombre}', telefono = '${telefono}', ubicacion = '${ubicacion}', email = '${email}' 
+             where ${id} = id`;
+    pool.query(q, (error, results) => {
+      if (error) {
+        errors = errors + 1;
+      }
+    })
+  }
+  response.status(200).json(`{"msg":"Success", "errors": ${errors}}`);
 }
 
 module.exports = {
@@ -259,5 +274,6 @@ module.exports = {
   actualizaPedido,
   addClient,
   clientes,
+  actualizaClientes,
 }
 
