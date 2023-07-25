@@ -13,7 +13,7 @@ export class ClientesService {
     private httpClient: HttpClient
   ) { }
 
-  async obtieneClientes(){
+  async obtieneClientes() {
     return this.httpClient.get(`${Constantes.backend}clientes`).pipe(
       catchError((err) => {
         console.log('error caught in service')
@@ -23,10 +23,10 @@ export class ClientesService {
         return throwError(() => err);
       })
     )
-    
+
   }
 
-  salvaClientes(cliente:Cliente){
+  salvaClientes(cliente: Cliente) {
     return this.httpClient.post(`${Constantes.backend}clientes`, cliente).pipe(
       catchError((err) => {
         console.log('error caught in service')
@@ -36,10 +36,26 @@ export class ClientesService {
         return throwError(() => err);
       })
     )
-    .subscribe(data =>{
-      //console.log(data);
-      alert(data);
-    });
+      .subscribe(data => {
+        //console.log(data);
+        alert(data);
+      });
+  }
+
+  actualizaClientes(clientes: Array<Cliente>) {
+    return this.httpClient.put(`${Constantes.backend}clientes`, clientes).pipe(
+      catchError((err) => {
+        console.log('error caught in service')
+        console.error(err);
+        //Handle the error here
+        alert(err.message);
+        return throwError(() => err);
+      })
+    )
+      .subscribe(data => {
+        //console.log(data);
+        alert(data);
+      });
   }
 
 }

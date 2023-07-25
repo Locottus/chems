@@ -233,7 +233,7 @@ const clientes = (request, response) => {
 
 const addClient = (request, response) => {
   const { id, nombre, ubicacion, telefono, email } = request.body
-  var q = `insert into clientes (id, nombre, ubiacion, telefono, email) 
+  var q = `insert into clientes (id, nombre, ubicacion, telefono, email) 
            values 
            ( '${id}', '${nombre}', '${ubicacion}', '${telefono}', '${email}' ); `;
   pool.query(q, (error, results) => {

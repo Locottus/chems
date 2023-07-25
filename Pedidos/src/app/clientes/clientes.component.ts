@@ -54,20 +54,15 @@ export class ClientesComponent implements OnInit {
   };
 
   rowData: any;//Array<Cliente> = [];
-  isAdmin:boolean = false;
+  isAdmin: boolean = false;
 
   usuario: Usuario = new Usuario();
-  dataUsuario$ = this.servicio.subjectObservableUsuario$.subscribe(async (usrData)=>{
+  dataUsuario$ = this.servicio.subjectObservableUsuario$.subscribe(async (usrData) => {
     this.usuario = usrData;
-    this.isAdmin = (this.usuario.rol == 1? true : false)
+    this.isAdmin = (this.usuario.rol == 1 ? true : false)
     //console.log(this.usuario);
   })
 
-  /*
-  dataCatalogo$ = this.catalogoService.subjectObservableCatalogo$.subscribe(async (data) => {
-    this.rowData = data;
-  })
-*/
   constructor(
     private matDialog: MatDialog,
     private servicio: ServiciosService,
@@ -81,7 +76,7 @@ export class ClientesComponent implements OnInit {
   }
 
   async getCatalog() {
-  (await this.clientesService.obtieneClientes()).subscribe(data =>{this.rowData = data; }); 
+    (await this.clientesService.obtieneClientes()).subscribe(data => { this.rowData = data; });
   }
 
   ngAfterViewInit() {
@@ -127,13 +122,14 @@ export class ClientesComponent implements OnInit {
     this.myInputField.nativeElement.focus();
   }
 
-   AgregarCliente() {
+  AgregarCliente() {
     console.log(this.nuevoCliente);
     this.clientesService.salvaClientes(this.nuevoCliente);
   }
 
   Actualizar() {
     //alert('Actualizado');
+    this.clientesService.salvaClientes(this.rowData);
   }
 
 }
