@@ -12,6 +12,8 @@ import { CatalogoService } from '../servicios/catalogo.service';
 import { ActivatedRoute } from '@angular/router';
 import { CalendarioService } from '../servicios/calendario.service';
 import { Usuario } from '../interfaces/Usuario';
+import { ClientesService } from '../servicios/clientes.service';
+import { Cliente } from '../interfaces/Cliente';
 
 //https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow
 
@@ -26,7 +28,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
   @ViewChild('topGrid') agGrid!: AgGridAngular;
 
   catalogo: Array<Catalogo> = [];
-
+  selectedValue:string;
 
   gridApi!: GridApi;
   gridColumnApi!: any;
@@ -69,6 +71,8 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     this.rowData = data;
   })
 
+  clientes:any;
+
   constructor(
     private matDialog: MatDialog,
     private servicio: ServiciosService,
@@ -76,9 +80,10 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     private catalogoService: CatalogoService,
     private route: ActivatedRoute,
     private calendarioService:CalendarioService,
+    private clientesService:ClientesService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.getCatalog();
     this.route.queryParams
       .subscribe(params => {
@@ -87,8 +92,9 @@ export class PedidosComponent implements OnInit, AfterViewInit {
       this.detallePedido.hora  = this.calendarioService.getCurrentHour();
   }
 
-  getCatalog() {
+  async getCatalog() {
     this.catalogoService.getCatalogo();
+    (await this.clientesService.obtieneClientes()).subscribe(data =>{this.clientes = data; }); 
   }
 
   ngAfterViewInit() {
@@ -97,6 +103,16 @@ export class PedidosComponent implements OnInit, AfterViewInit {
 
 
   onSubmit() {
+
+    for(let i = 0; i < this.clientes.length; i ++){
+      if (this.clientes[i].id == parseInt(this.selectedValue)){
+        this.detallePedido.nombre = this.clientes[i].nombre;
+        this.detallePedido.ubicacion = this.clientes[i].ubicacion;
+        this.detallePedido.telefono = this.clientes[i].telefono;
+        //this.detallePedido.id = this.clientes[i].id;
+        break;
+      }
+    }
     let msg: string = `\nNombre: ${this.detallePedido.nombre}\nTelefono: ${this.detallePedido.telefono}\nUbicacion: ${this.detallePedido.ubicacion}\n`;
     let detalle: string = "";
     let detalleJson: Array<any> = [];
@@ -127,6 +143,7 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     
     this.reset();
     //console.log(this.detallePedido);
+
   }
 
   /*  onLogout() {
@@ -180,5 +197,16 @@ export class PedidosComponent implements OnInit, AfterViewInit {
     this.catalogoService.actualizaCatalogo(this.rowData);
     //alert('Actualizado');
 
+  }
+
+  selected(cliente:Cliente){
+    console.log(cliente);
+    this.detallePedido.nombre = cliente.nombre;
+    this.detallePedido.ubicacion = cliente.ubicacion;
+    this.detallePedido.telefono = cliente.telefono;
+  }
+
+  changeClient(event:any){
+    console.log(event);
   }
 }

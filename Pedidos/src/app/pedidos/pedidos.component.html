@@ -17,7 +17,25 @@
        #myInputFocus
       >
     </div>
-    
+
+    <div class="form-row ">
+      <div class="col margenes">
+        <mat-form-field>
+          <mat-label>Listado de Clientes</mat-label>
+          <mat-select 
+          [(ngModel)]="selectedValue"
+          >
+            <mat-option *ngFor="let cliente of clientes" [value]="cliente.id"  
+              
+            >
+              {{cliente.id}} - {{cliente.nombre}} - {{cliente.ubicacion}} - {{cliente.telefono}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!--
     <div class="form-row ">
       <div class="col margenes">
         <input 
@@ -54,7 +72,7 @@
           [(ngModel)]="detallePedido.ubicacion"
         >
       </div>
-
+    -->
       <div class="col margenes">
         <ag-grid-angular
           id="agGrid"

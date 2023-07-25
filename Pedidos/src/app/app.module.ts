@@ -31,6 +31,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { NuevoUsuarioComponent } from './usuarios/componentes/nuevo-usuario/nuevo-usuario.component';
 import { PwdValidationComponent } from './pwd-validation/pwd-validation.component';
 import { ClientesComponent } from './clientes/clientes.component';
+import {MatSelectModule} from '@angular/material/select';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -71,7 +72,8 @@ FullCalendarModule.registerPlugins([
     AgGridModule,
     HttpClientModule,
     MatMenuModule,
-    FullCalendarModule
+    FullCalendarModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
