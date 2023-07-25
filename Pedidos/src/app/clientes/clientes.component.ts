@@ -53,7 +53,7 @@ export class ClientesComponent implements OnInit {
     resizable: true,
   };
 
-  rowData: Array<Cliente> = [];
+  rowData: any;//Array<Cliente> = [];
   isAdmin:boolean = false;
 
   usuario: Usuario = new Usuario();
@@ -78,17 +78,10 @@ export class ClientesComponent implements OnInit {
 
   async ngOnInit() {
     await this.getCatalog();
-    
-    /*this.route.queryParams
-      .subscribe(params => {
-        this.detallePedido.recordatorio = this.detallePedido.date = params["fecha"];
-      });
-*/
   }
 
   async getCatalog() {
-    let response = await this.clientesService.obtieneClientes();
-    console.log(response);
+  (await this.clientesService.obtieneClientes()).subscribe(data =>{this.rowData = data; }); 
   }
 
   ngAfterViewInit() {
@@ -97,9 +90,7 @@ export class ClientesComponent implements OnInit {
 
 
   onSubmit() {
-   
     this.reset();
-
   }
 
   /**
@@ -135,10 +126,9 @@ export class ClientesComponent implements OnInit {
     this.myInputField.nativeElement.focus();
   }
 
-  AgregarCliente() {
-    //TODO
-    //this.catalogoService.insertaCatalogo(this.rowData);
-
+   AgregarCliente() {
+    console.log(this.nuevoCliente);
+    this.clientesService.salvaClientes(this.nuevoCliente);
   }
 
   Actualizar() {

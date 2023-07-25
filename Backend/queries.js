@@ -235,7 +235,7 @@ const addClient = (request, response) => {
   const { id, nombre, ubiacion, telefono, email } = request.body
   var q = `insert into clientes (id, nombre, ubiacion, telefono, email) 
            values 
-           ('${id}', '${nombre}', '${ubiacion}', '${telefono}', ${email});`;
+           ( '${id}', '${nombre}', '${ubiacion}', '${telefono}', '${email}' ); `;
   pool.query(q, (error, results) => {
     if (error) {
       response.status(500).send('{"msg":"' + error + '"}');
