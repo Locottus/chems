@@ -123,6 +123,7 @@ export class ClientesComponent implements OnInit {
     this.nuevoCliente.telefono = "";
     this.nuevoCliente.ubicacion = "";
     this.nuevoCliente.email = "";
+    this.nuevoCliente.id = 0;
     this.myInputField.nativeElement.focus();
   }
 

@@ -13,7 +13,7 @@ export class ClientesService {
     private httpClient: HttpClient
   ) { }
 
-  obtieneClientes(){
+  async obtieneClientes(){
     return this.httpClient.get(`${Constantes.backend}clientes`).pipe(
       catchError((err) => {
         console.log('error caught in service')
@@ -23,10 +23,7 @@ export class ClientesService {
         return throwError(() => err);
       })
     )
-    .subscribe(data =>{
-      //console.log(data);
-      alert(data);
-    });
+    
   }
 
   salvaClientes(cliente:Cliente){
