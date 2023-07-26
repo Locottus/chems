@@ -5,7 +5,7 @@ import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridRea
 import { DetallePedido } from 'src/app/interfaces/DetallePedido';
 import { CalendarioService } from 'src/app/servicios/calendario.service';
 import { ServiciosService } from 'src/app/servicios/servicios.service';
-
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-grid-calendario',
@@ -64,6 +64,7 @@ export class GridCalendarioComponent {
     private servicio: ServiciosService,
     private calendarioService: CalendarioService,
     public matDialog: MatDialog,
+    private sanitizer: DomSanitizer
   ) { }
 
 
@@ -126,6 +127,29 @@ export class GridCalendarioComponent {
     }
     console.log('********************')
     console.log(datos);
+    this.saveFile(datos);
+  }
+
+  fileUrl: any;
+  fileReady: boolean = false;
+
+  saveFile(lista: Array<any>) {
+    let fix: any = "REPORTE DE PEDIDOS\n";
+    lista.forEach(e => {
+      if (e.length > 0) {
+        fix = fix + e + '\n';
+        if (e.detallejson.length > 0){
+          for (let f = 0; f < e.detallejson.length; f++){
+            
+          }
+          
+        }
+      }
+    });
+    const data: any = fix;
+    const blob = new Blob([data], { type: 'application/octet-stream' });
+    this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
+
   }
 
 }
