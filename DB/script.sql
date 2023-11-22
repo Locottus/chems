@@ -52,6 +52,18 @@ TABLESPACE pg_default;
 ALTER TABLE IF EXISTS public."pedido"
     OWNER to postgres;
 	
+
+
+CREATE TABLE IF NOT EXISTS public."detalle"
+(
+    pedido numeric NOT NULL,
+    articulo numeric NOT NULL,
+    cantidad numeric NULL,
+    precio numeric NULL,
+    CONSTRAINT detall_pkey PRIMARY KEY (pedido,articulo)
+)
+
+
 -- Table: public.catalogo
 
 -- DROP TABLE IF EXISTS public.catalogo;
@@ -104,3 +116,8 @@ CREATE TABLE IF NOT EXISTS public."clientes"
     email text COLLATE pg_catalog."default"  NULL,    
     CONSTRAINT clientes_pkey PRIMARY KEY (id)
 )
+
+
+
+
+

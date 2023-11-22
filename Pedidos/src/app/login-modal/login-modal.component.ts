@@ -16,8 +16,8 @@ export class LoginModalComponent  implements OnInit{
   //@Output() finishedCreation = new EventEmitter<any>();
   //isCreation: boolean = false;
 
-  usr: string = "";
-  pwd: string = "";
+  usr: string = "herlich@gmail.com";
+  pwd: string = "SuperClave2024";
   errorLogin: boolean = true;
   errorMsg: string = "";
 
